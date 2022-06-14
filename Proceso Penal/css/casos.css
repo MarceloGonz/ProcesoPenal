@@ -1,0 +1,32 @@
+.header{
+  background-color: #1E1F28;
+}
+
+.header h2{
+  color: #FFFFFF;
+  margin-left: 10%;
+  font-size: 20px;
+  font-family: sans-serif;
+  
+}
+.header h3{
+  color: #FFFFFF;
+  margin-left: 20%;
+  font-size: 20px;
+  font-family: sans-serif;
+
+}
+
+.header{
+  
+}
+
+.cabecera .avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+  position: absolute;
+  top: 0px;
+  left:20px;
+
+}
