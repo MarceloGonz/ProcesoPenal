@@ -10,59 +10,65 @@
 </head>
 
 <body>
-    <section class="Involucrados">
-        <h3>Involucrados</h3>
-        <div class="TarjetaInvolucrado">
-            <h2 id="NombreInvolucrado">NombreInvolucrado</h2>
-            <h3 id="Contacto">Contacto</h3>
-            <div class="TextoBajo">
-                <h3 id="Cedula">Cedula</h3>
-                <h3 id="ROL">ROL</h3>
+    <main>
+        <section class="Involucrados">
+            <h3 id="involucrados">Involucrados</h3>
+            <div class="TarjetaInvolucrado">
+                <h2 id="NombreInvolucrado">NombreInvolucrado volucrado lucrado NombreInvolucrado</h2>
+                <h3 id="Contacto">Contacto</h3>
+                <div class="TextoBajo">
+                    <h3 id="Cedula">Cedula</h3>
+                    <h3 id="ROL">ROL</h3>
+                </div>
             </div>
+        </section>
+        <div class="Container_Derecha">
+            <section class="Cedula">
+                <div class="ContainerCedula">
+                    <form action="">
+                        <input type="text" name="Cedula" placeholder="Ingrese Cedula">
+                        <input type="submit" value="EnviarCedula">
+                    </form>
+                </div>
+            </section>
+
+            <section class="RegistroCaso">
+                <input type="text" name="NombreCaso">
+                <input type="radio" name="Estado" id="enProceso" value="enProceso" checked>
+                <input type="radio" name="Estado" id="Terminado" value="Terminado" checked>
+                <button id="NuevoCaso">NUEVO CASO</button>
+
+            </section>
+            <section class="RegistroAudiencia">
+                <form action="">
+                    <input type="text" name="Dirrecion">
+                    <input type="text" name="NombreLugar">
+                    <input type="date" name="FechaAudiencia">
+                    <div class="HoraAudiencia">
+                        <label>Hora de la audiencia</label>
+                        <input type="number" name="Hora" id="Hora" max="23" min="0">
+                        <h3>:</h3>
+                        <input type="number" name="Minutos" id="Minutos" max="59" min="0">
+                    </div>
+                    <select name="Categorias" id="Categorias">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <textarea name="DescripcionAudiencia" id="DescripcionAudiencia" cols="50" rows="10"></textarea>
+                    <button id="Guardar">GUARDAR</button>
+                    <h3>CODIGO DEL PROCESO</h3>
+                    <button id="Notificar">NOTIFICAR</button>
+
+
+                </form>
+                <div class="BotonesBajos">
+                    <button id="ver">ver audiencias</button>
+                    <button id="añadir">añadir audiencias</button>
+                </div>
+            </section>
         </div>
-    </section>
-    <section class="Cedula">
-        <form action="">
-            <input type="text" name="Cedula" placeholder="Ingrese Cedula">
-            <input type="submit" value="EnviarCedula">
-        </form>
-    </section>
-
-    <section class="RegistroCaso">
-        <input type="text" name="NombreCaso">
-        <input type="radio" name="Estado" id="enProceso" value="enProceso" checked>
-        <input type="radio" name="Estado" id="Terminado" value="Terminado" checked>
-        <button id="NuevoCaso">NUEVO CASO</button>
-
-    </section>
-    <section class="RegistroAudiencia">
-        <form action="">
-            <input type="text" name="Dirrecion">
-            <input type="text" name="NombreLugar">
-            <input type="date" name="FechaAudiencia">
-            <div class="HoraAudiencia">
-                <label>Hora de la audiencia</label>
-                <input type="number" name="Hora" id="Hora" max="23" min="0">
-                <h3>:</h3>
-                <input type="number" name="Minutos" id="Minutos" max="59" min="0">
-            </div>
-            <select name="Categorias" id="Categorias">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-            <textarea name="DescripcionAudiencia" id="DescripcionAudiencia" cols="50" rows="10"></textarea>
-            <button id="Guardar">GUARDAR</button>
-            <h3>CODIGO DEL PROCESO</h3>
-            <button id="Notificar">NOTIFICAR</button>
-
-
-        </form>
-        <div class="BotonesBajos">
-            <button id="ver">ver audiencias</button>
-            <button id="añadir">añadir audiencias</button>
-        </div>
-    </section>
+    </main>
 </body>
 
 </html>
