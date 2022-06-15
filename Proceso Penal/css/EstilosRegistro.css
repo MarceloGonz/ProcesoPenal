@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     background-color: whitesmoke;
+    font-family: sans-serif;
 
 }
 
@@ -36,30 +37,61 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+
 }
 
 .Involucrados #involucrados{
     font-size: 20px;
     text-align: center;
     margin: 10px;
+    border-bottom: #000000 solid 3px;
 }
 
 .TarjetaInvolucrado {
-    padding: 5px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 10px;
     height: 160px;
     width: 265px;
     background-color: #69001A; 
+    color: #f7f5f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    cursor: default;
+    transition: all 400ms ease;
+    border: #000000 solid 2px;
+}
+.TarjetaInvolucrado:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4) ;
+    transform: translate(-0.4%);
 }
 .TarjetaInvolucrado *{
     background-color: #69001A;  
 }
-.TarjetaInvolucrado h2{
-    font-size: 18px; 
-    height: auto;
+.TarjetaInvolucrado #NombreInvolucrado{
+    font-size: 17px;   
+    line-height: 1.2;
+    
 
 }
+.TarjetaInvolucrado #Contacto{
+    font-size: 16px;   
+    line-height: 1.2;
+    font-weight: 400;
 
+}
+.TarjetaInvolucrado .TextoBajo{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.TarjetaInvolucrado *{
+    font-size: 16px;   
+    font-weight: 400;
+}
+/*termina involucrados */
 .RegistroCaso {
     height: auto;
     width: auto;
@@ -68,8 +100,7 @@ main {
 }
 
 .RegistroAudiencia {
-    height: auto;
-    width: auto;
+   
     background-color: #ECECEC;
     margin: 5px 0;
 }
