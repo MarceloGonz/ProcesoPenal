@@ -4,9 +4,11 @@
     padding: 0;
     background-color: FFFFFF;
     font-family: sans-serif;
+    font-size: 16px;
     --negro: #1E1F28;
     --fondo: #FFFFFF;
     --fondoGris: #ECECEC;
+    --amarillo:#C9932C;
 }
 
 main {
@@ -18,7 +20,9 @@ main {
 
 .Container_Derecha {
     display: grid;
-    grid-template-rows: 0.6fr 1fr 3fr;
+    grid-template-rows: 0.8fr 0.8fr 3fr 1.5fr;
+    margin-right: 60px;
+    
 }
 
 /*colores: fondo #FFFFFF Letras: #f7f5f0 negro #1E1F28*/
@@ -42,7 +46,7 @@ main {
     background-color: var(--fondo);
     height: 35px;
     width: 350px;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center;
 }
 
@@ -61,9 +65,11 @@ main {
 }
 
 .ContainerCedula #btnCedula:hover {
-    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
-    background: #373949;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 1);
+    background: #C9932C;
     transform: translate(-3%);
+    color: var(--negro);
+
 }
 
 /*Termina BoxCedula*/
@@ -78,11 +84,13 @@ main {
     margin: 20px 20px;
     padding: 10px;
     height: 100%;
+    width: 70%;
     background-color: var(--fondoGris);
     border-radius: 15px;
-
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Involucrados #involucrados {
@@ -96,7 +104,7 @@ main {
     padding: 10px;
     border-radius: 10px;
     height: 160px;
-    width: 265px;
+    width: 100%;
     background-color: #69001A;
     color: var(--fondo);
     display: flex;
@@ -116,16 +124,16 @@ main {
 
 .TarjetaInvolucrado * {
     background-color: rgba(0, 0, 0, 0.0);
-
 }
 
 .TarjetaInvolucrado #NombreInvolucrado {
-    font-size: 17px;
+    font-size: 1.1em;
     line-height: 1.2;
+    font-weight: 600;
 }
 
 .TarjetaInvolucrado #Contacto {
-    font-size: 16px;
+    font-size: 1em;
     line-height: 1.2;
     font-weight: 400;
 }
@@ -133,11 +141,10 @@ main {
 .TarjetaInvolucrado .TextoBajo {
     display: flex;
     justify-content: space-between;
-
 }
 
 .TarjetaInvolucrado * {
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 400;
 }
 
@@ -151,29 +158,72 @@ main {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     padding: 15px 20px;
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
 }
-.RegistroCaso #NombreCaso{
+
+.RegistroCaso #NombreCaso {
     height: 40px;
     width: 100%;
     background-color: var(--negro);
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 20px;
     color: var(--fondo);
     margin-bottom: 20px;
     padding: 0 10px;
 }
-.RegistroCaso .cotainerSwitch{
+
+.RegistroCaso .cotainerSwitch {
     display: flex;
     justify-content: center;
 }
-.RegistroCaso .etiquetaSwitch{
-font-size: 20px;
-margin: 0 20px;
-line-height: 1.7em;
-border: var(--negro) solid 1px;
-border-radius: 5px;
-padding: 0 5px;
+
+.RegistroCaso .etiquetaSwitch {
+    font-size: 16px;
+    margin: 0 5px;
+    font-weight: 500;
+    line-height: 2.1em;
+    border: rgba(0, 0, 0, 0.1) solid 2px;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin: 0 20px;
+    height: 2.1em;
+}
+
+.RegistroCaso #enProceso {
+    color: var(--fondo);
+    background-color: #711717;
+}
+
+.RegistroCaso #terminado {
+    color: var(--fondo);
+    background-color: #3F846D;
+}
+
+.RegistroCaso #NuevoCaso {
+    height: 2.1em;
+    padding: 0 5px;
+    border: ridge;
+    background: var(--negro);
+    color: var(--fondo);
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 400ms ease;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+
+
+}
+
+.RegistroCaso #NuevoCaso:hover {
+    transform: translateX(-1%) translateY(-1%);
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 1);
+    background: var(--amarillo);
+    color: var(--negro);
+
 }
 
 .RegistroCaso .switch {
@@ -183,9 +233,10 @@ padding: 0 5px;
     --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
     --toggle-shadow-offset: 10px;
     --toggle-wider: 3em;
-    --color-grey: #3F846D;
-    --color-green: #711717;
+    --color-grey: #711717;
+    --color-green: #3F846D;
 }
+
 .RegistroCaso .slider {
     display: inline-block;
     width: var(--button-width);
@@ -196,6 +247,7 @@ padding: 0 5px;
     transition: 0.3s all ease-in-out;
     border: var(--negro) solid 2px;
 }
+
 .RegistroCaso .slider::after {
     content: "";
     display: inline-block;
@@ -209,20 +261,25 @@ padding: 0 5px;
     box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
     transition: 0.3s all ease-in-out;
 }
-.RegistroCaso  .switch input[type="checkbox"]:checked+.slider {
+
+.RegistroCaso .switch input[type="checkbox"]:checked+.slider {
     background-color: var(--color-green);
 }
-.RegistroCaso  .switch input[type="checkbox"]:checked+.slider::after {
+
+.RegistroCaso .switch input[type="checkbox"]:checked+.slider::after {
     transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
     box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
 }
-.RegistroCaso  .switch input[type="checkbox"] {
+
+.RegistroCaso .switch input[type="checkbox"] {
     display: none;
 }
-.RegistroCaso  .switch input[type="checkbox"]:active+.slider::after {
+
+.RegistroCaso .switch input[type="checkbox"]:active+.slider::after {
     width: var(--toggle-wider);
 }
-.RegistroCaso  .switch input[type="checkbox"]:checked:active+.slider::after {
+
+.RegistroCaso .switch input[type="checkbox"]:checked:active+.slider::after {
     transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
 }
 
@@ -230,6 +287,188 @@ padding: 0 5px;
 
 .RegistroAudiencia {
     background-color: #ECECEC;
-    margin: 5px 0;
+    margin: 10px 0;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.RegistroAudiencia form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+    justify-content: space-between;
+}
+
+.RegistroAudiencia #Direcion {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    background: var(--negro);
+    padding: 0 10px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.RegistroAudiencia #NombreLugar {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    background: var(--negro);
+    padding: 0 10px;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.RegistroAudiencia #FechaAudiencia {
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.RegistroAudiencia .HoraAudiencia {
+    display: flex;
+    flex-wrap: wrap;
+    height: 45px;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegistroAudiencia .HoraAudiencia h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.RegistroAudiencia #hora {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+
+}
+
+.RegistroAudiencia .Horas {
+    margin: 0 3px;
+    width: 35px;
+    text-align: center;
+    border-radius: 3px;
+    height: 25px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.RegistroAudiencia #Categorias {
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.RegistroAudiencia .containerDescripcion {
+    padding: 0 10px 10px 10px;
+    background: var(--negro);
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.RegistroAudiencia .containerDescripcion h3 {
+    color: var(--fondo);
+    font-size: 1.2em;
+    margin: 10px 5px;
+
+}
+
+.RegistroAudiencia #DescripcionAudiencia {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.RegistroAudiencia .GuardarNotificar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.RegistroAudiencia .btnGN {
+    height: 2.1em;
+    padding: 0 5px;
+    border: ridge;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 400ms ease;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.RegistroAudiencia #Guardar{
+    background: var(--fondoGris);
+}
+.RegistroAudiencia #Notificar{
+    background: var(--negro);
+    color: var(--fondo);
+}
+
+.RegistroAudiencia #Notificar:hover{
+    background: var(--amarillo);
+    color: var(--fondo);
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 1);
+    transform: translateX(-1%) translateY(-1%);
+}
+
+.RegistroAudiencia #Guardar:hover{
+    background: var(--fondo);
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 1);
+    transform: translateX(-1%) translateY(-1%);
+}
+.containerBtnBajos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.BotonesBajos {
+    display: flex;
+    flex-wrap: wrap;
+    height: min-content;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.BotonesBajos .btnVA{
+    margin: 0 12px;
+    height: 2.1em;
+    padding: 0 5px;
+    border: none;
+    font-size: 16px;
+
+    border-radius: 5px;
+    transition: all 400ms ease;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--negro);
+    color: var(--fondo);
+}
+
+.BotonesBajos .btnVA:hover{
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 1);
+    transform: translateX(-1%) translateY(-1%);
+    background: #30323f;
 }

@@ -39,45 +39,51 @@
 
             <section class="RegistroCaso">
                 <input type="text" name="NombreCaso" id="NombreCaso" placeholder="Nombre del caso">
-                <div class="cotainerSwitch" >
-                    <h3 class="etiquetaSwitch" id="enProceso">En proceso</h3>
+                <div class="cotainerSwitch">
+                    <h3 class="etiquetaSwitch" id="enProceso">EN PROCESO</h3>
                     <label class="switch">
                         <input type="checkbox" name="EstadoProceso" id="cbEstadoProceso">
                         <span class="slider"></span>
                     </label>
-                    <h3 class="etiquetaSwitch" id="terminado">Terminado</h3>
+                    <h3 class="etiquetaSwitch" id="terminado">TERMINADO</h3>
                 </div>
                 <button id="NuevoCaso">NUEVO CASO</button>
 
             </section>
             <section class="RegistroAudiencia">
                 <form action="">
-                    <input type="text" name="Dirrecion">
-                    <input type="text" name="NombreLugar">
-                    <input type="date" name="FechaAudiencia">
+                    <input type="text" name="Direcion" id="Direcion" placeholder="Direccion de la audiencia">
+                    <input type="text" name="NombreLugar" id="NombreLugar" placeholder="Lugar de la audiencia">
+                    <input type="date" name="FechaAudiencia" id="FechaAudiencia" placeholder="mm/dd/aa">
                     <div class="HoraAudiencia">
-                        <label>Hora de la audiencia</label>
-                        <input type="number" name="Hora" id="Hora" max="23" min="0">
+                        <label id="hora">Hora de la audiencia</label>
+                        <input type="number" name="Hora" id="Hora" max="23" min="0" class="Horas" placeholder="h">
                         <h3>:</h3>
-                        <input type="number" name="Minutos" id="Minutos" max="59" min="0">
+                        <input type="number" name="Minutos" id="Minutos" max="59" min="0" class="Horas" placeholder="m">
                     </div>
                     <select name="Categorias" id="Categorias">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
-                    <textarea name="DescripcionAudiencia" id="DescripcionAudiencia" cols="50" rows="10"></textarea>
-                    <button id="Guardar">GUARDAR</button>
-                    <h3>CODIGO DEL PROCESO</h3>
-                    <button id="Notificar">NOTIFICAR</button>
-
-
+                    <div class="containerDescripcion">
+                        <h3>Descripcion de la audiencia</h3>
+                        <textarea name="DescripcionAudiencia" id="DescripcionAudiencia" cols="50" rows="10"></textarea>
+                    </div>
+                    <div class="GuardarNotificar">
+                        <button id="Guardar" class="btnGN">GUARDAR</button>
+                        <h3>CODIGO DEL PROCESO</h3>
+                        <button id="Notificar" class="btnGN">NOTIFICAR</button>
+                    </div>
                 </form>
-                <div class="BotonesBajos">
-                    <button id="ver">ver audiencias</button>
-                    <button id="añadir">añadir audiencias</button>
-                </div>
+
             </section>
+            <div class="containerBtnBajos">
+                <div class="BotonesBajos">
+                    <button id="ver" class="btnVA">ver audiencias</button>
+                    <button id="añadir" class="btnVA">añadir audiencias</button>
+                </div>
+            </div>
         </div>
     </main>
 </body>
