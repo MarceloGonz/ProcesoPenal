@@ -2,9 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
+    background-color: FFFFFF;
     font-family: sans-serif;
-
+    --negro: #1E1F28;
+    --fondo: #FFFFFF;
+    --fondoGris: #ECECEC;
 }
 
 main {
@@ -19,33 +21,75 @@ main {
     grid-template-rows: 0.6fr 1fr 3fr;
 }
 
+/*colores: fondo #FFFFFF Letras: #f7f5f0 negro #1E1F28*/
 
+/*Inicia BoxCedula*/
 .cedula {
     display: flex;
     justify-content: center;
 }
-.ContainerCedula{
+
+.ContainerCedula {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    
+
 }
 
+.ContainerCedula #Cedula {
+    border-radius: 5px;
+    background-color: var(--fondo);
+    height: 35px;
+    width: 350px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.ContainerCedula #btnCedula {
+    border: none;
+    outline: none;
+    background: #1E1F28;
+    color: var(--fondo);
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    margin-left: 20px;
+    transition: all 400ms ease;
+}
+
+.ContainerCedula #btnCedula:hover {
+    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+    background: #373949;
+    transform: translate(-3%);
+}
+
+/*Termina BoxCedula*/
 /* Involucrados*/
 .Involucrados {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+}
+
+.containerIzquierda {
+    margin: 20px 20px;
+    padding: 10px;
+    height: 100%;
+    background-color: var(--fondoGris);
+    border-radius: 15px;
+
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
 
 }
 
-.Involucrados #involucrados{
+.Involucrados #involucrados {
     font-size: 20px;
     text-align: center;
-    margin: 10px;
-    border-bottom: #000000 solid 3px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .TarjetaInvolucrado {
@@ -53,54 +97,139 @@ main {
     border-radius: 10px;
     height: 160px;
     width: 265px;
-    background-color: #69001A; 
-    color: #f7f5f0;
+    background-color: #69001A;
+    color: var(--fondo);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
     cursor: default;
     transition: all 400ms ease;
-    border: #000000 solid 2px;
+    border: #69001A ridge 2px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
+
 .TarjetaInvolucrado:hover {
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4) ;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
     transform: translate(-0.4%);
+    background-color: #750420;
 }
-.TarjetaInvolucrado *{
-    background-color: #69001A;  
-}
-.TarjetaInvolucrado #NombreInvolucrado{
-    font-size: 17px;   
-    line-height: 1.2;
-    
+
+.TarjetaInvolucrado * {
+    background-color: rgba(0, 0, 0, 0.0);
 
 }
-.TarjetaInvolucrado #Contacto{
-    font-size: 16px;   
+
+.TarjetaInvolucrado #NombreInvolucrado {
+    font-size: 17px;
+    line-height: 1.2;
+}
+
+.TarjetaInvolucrado #Contacto {
+    font-size: 16px;
     line-height: 1.2;
     font-weight: 400;
-
 }
-.TarjetaInvolucrado .TextoBajo{
+
+.TarjetaInvolucrado .TextoBajo {
     display: flex;
     justify-content: space-between;
-    
+
 }
-.TarjetaInvolucrado *{
-    font-size: 16px;   
+
+.TarjetaInvolucrado * {
+    font-size: 16px;
     font-weight: 400;
 }
+
 /*termina involucrados */
+
 .RegistroCaso {
     height: auto;
     width: auto;
-    background-color: #ECECEC;
+    background-color: var(--fondoGris);
     margin: 5px 0;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    
+}
+.RegistroCaso #NombreCaso{
+    height: 40px;
+    width: 100%;
+    background-color: var(--negro);
+    border-radius: 10px;
+    font-size: 20px;
+    color: var(--fondo);
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+.RegistroCaso .cotainerSwitch{
+    display: flex;
+    justify-content: center;
+}
+.RegistroCaso .etiquetaSwitch{
+font-size: 20px;
+margin: 0 20px;
+line-height: 1.7em;
+border: var(--negro) solid 1px;
+border-radius: 5px;
+padding: 0 5px;
 }
 
+.RegistroCaso .switch {
+    --button-width: 3.5em;
+    --button-height: 2em;
+    --toggle-diameter: 1.5em;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 3em;
+    --color-grey: #3F846D;
+    --color-green: #711717;
+}
+.RegistroCaso .slider {
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+    border: var(--negro) solid 2px;
+}
+.RegistroCaso .slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+}
+.RegistroCaso  .switch input[type="checkbox"]:checked+.slider {
+    background-color: var(--color-green);
+}
+.RegistroCaso  .switch input[type="checkbox"]:checked+.slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+.RegistroCaso  .switch input[type="checkbox"] {
+    display: none;
+}
+.RegistroCaso  .switch input[type="checkbox"]:active+.slider::after {
+    width: var(--toggle-wider);
+}
+.RegistroCaso  .switch input[type="checkbox"]:checked:active+.slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+
+
 .RegistroAudiencia {
-   
     background-color: #ECECEC;
     margin: 5px 0;
+    display: flex;
 }

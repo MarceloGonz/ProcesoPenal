@@ -11,31 +11,42 @@
 
 <body>
     <main>
+
         <section class="Involucrados">
+
             <h3 id="involucrados">Involucrados</h3>
-            <div class="TarjetaInvolucrado">
-                <h2 id="NombreInvolucrado">NombreIn volucrado voluc rado lucrado </h2>
-                <h3 id="Contacto">Contacto</h3>
-                <div class="TextoBajo">
-                    <h3 id="Cedula">Cedula</h3>
-                    <h3 id="ROL">ROL</h3>
+            <div class="containerIzquierda">
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">NombreIn volucrado voluc rado lucrado </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                    </div>
                 </div>
             </div>
         </section>
+
         <div class="Container_Derecha">
             <section class="Cedula">
                 <div class="ContainerCedula">
                     <form action="">
-                        <input type="text" name="Cedula" placeholder="Ingrese Cedula">
-                        <input type="submit" value="EnviarCedula">
+                        <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="Cedula">
+                        <input type="submit" value="+" id="btnCedula">
                     </form>
                 </div>
             </section>
 
             <section class="RegistroCaso">
-                <input type="text" name="NombreCaso">
-                <input type="radio" name="Estado" id="enProceso" value="enProceso" checked>
-                <input type="radio" name="Estado" id="Terminado" value="Terminado" checked>
+                <input type="text" name="NombreCaso" id="NombreCaso" placeholder="Nombre del caso">
+                <div class="cotainerSwitch" >
+                    <h3 class="etiquetaSwitch" id="enProceso">En proceso</h3>
+                    <label class="switch">
+                        <input type="checkbox" name="EstadoProceso" id="cbEstadoProceso">
+                        <span class="slider"></span>
+                    </label>
+                    <h3 class="etiquetaSwitch" id="terminado">Terminado</h3>
+                </div>
                 <button id="NuevoCaso">NUEVO CASO</button>
 
             </section>
