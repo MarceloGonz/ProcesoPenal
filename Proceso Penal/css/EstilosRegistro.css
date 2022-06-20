@@ -2,25 +2,26 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: FFFFFF;
     font-family: sans-serif;
     font-size: 16px;
     --negro: #1E1F28;
-    --fondo: #FFFFFF;
-    --fondoGris: #ECECEC;
+    --fondo: #ffffff;
+    --fondoGris: #FAFAFA;
     --amarillo:#C9932C;
+    --azul:#3d405b;
 }
 
 main {
     width: 100%;
-    height: 1000px;
+    height: 800px;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    background: var(--fondoGris);
 }
 
 .Container_Derecha {
     display: grid;
-    grid-template-rows: 0.8fr 0.8fr 3fr 1.5fr;
+    grid-template-rows: 0.6fr 0.8fr 3fr 0.6fr;
     margin-right: 60px;
     
 }
@@ -40,11 +41,17 @@ main {
     height: 100%;
 
 }
+.ContainerCedula form{
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+}
 
 .ContainerCedula #Cedula {
     border-radius: 5px;
     background-color: var(--fondo);
-    height: 35px;
+    height: 1.8rem;
     width: 350px;
     font-size: 1em;
     text-align: center;
@@ -55,8 +62,8 @@ main {
     outline: none;
     background: #1E1F28;
     color: var(--fondo);
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     border-radius: 5px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
     font-size: 22px;
@@ -84,9 +91,9 @@ main {
     margin: 20px 20px;
     padding: 10px;
     height: 100%;
-    width: 70%;
-    background-color: var(--fondoGris);
-    border-radius: 15px;
+    width: 250px;
+    background-color: var(--fondo);
+    border-radius: 5px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
@@ -101,17 +108,22 @@ main {
 }
 
 .TarjetaInvolucrado {
-    border-radius: 5px;
-    height: 160px;
-    width: 100%;
+    padding: 0;
+    border-radius: 3px;
+    height: 120px;
+    width: 220px;
     background-color: var(--fondo);
     color: var(--negro);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: default;
+    cursor:pointer; 
+    cursor: hand;
     transition: all 400ms ease;
-    border: #69001A solid 1px;
+    border-right: #A24247 solid 2px;
+    border-bottom: #A24247 solid 2px;
+    border-top: #A24247 solid 1px;
+    border-left: #A24247 solid 1px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -127,98 +139,122 @@ main {
 
 .TarjetaInvolucrado #NombreInvolucrado {
     padding: 5px 7px;
-    font-size: 1.1em;
+    font-size: 1em;
     line-height: 1.2;
-    font-weight: 600;
-    background-color: #69001A;
-    color: var(--fondo);
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--negro);
     border-radius: 3px 3px 0 0;
+    
+    
 }
 
 .TarjetaInvolucrado #Contacto {
-    font-size: 1em;
+    font-size: 0.9em;
     line-height: 1.2;
-    font-weight: 600;
-    padding: 0 7px 5px 7px;
+    font-weight: normal;
+    padding: 0 7px 0 7px;
 }
 
 .TarjetaInvolucrado .TextoBajo {
     display: flex;
     justify-content: space-between;
-    padding: 0 7px 5px 7px;
+    flex-wrap: wrap;
+    width: 218px;
+    font-size: 0.9rem;
+}
+.TarjetaInvolucrado #Cedula{
+    padding-left: 7px;
+    font-size: 0.9rem;
+}
+.TarjetaInvolucrado #ROL{
+    padding-right: 7px;
+    font-size: 0.9rem;
+}
+.TarjetaInvolucrado #DecoradorTarjeta{
+    background: linear-gradient(30deg ,transparent 30%,rgba(162, 66, 71, 0.5) 10%,rgba(113, 23, 23, 0.5) 50%,#A24247 50%);
+    /*#711717
+    rgba(113, 23, 23, 0.5)*/
+    height: 15px;
+    width: 218px;
+    margin-bottom: 4px;
+
 }
 
 .TarjetaInvolucrado * {
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: normal;
 }
 
 /*termina involucrados */
 
 .RegistroCaso {
-    height: auto;
-    width: auto;
-    background-color: var(--fondoGris);
+    background-color: var(--fondo);
     margin: 5px 0;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    padding: 15px 20px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 15px 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
-
+    align-items: center;
+    
+    
 }
 
 .RegistroCaso #NombreCaso {
-    height: 40px;
+    height: 1.8rem;
     width: 100%;
     background-color: var(--negro);
-    border-radius: 5px;
-    font-size: 20px;
+    border-radius: 3px;
+    font-size: 1rem;
     color: var(--fondo);
-    margin-bottom: 20px;
+   
     padding: 0 10px;
+    font-weight: normal;
+    border: var(--negro) solid 2px;
 }
 
 .RegistroCaso .cotainerSwitch {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .RegistroCaso .etiquetaSwitch {
-    font-size: 16px;
-    margin: 0 5px;
-    font-weight: 500;
-    line-height: 2.1em;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.7rem;
     border: rgba(0, 0, 0, 0.1) solid 2px;
     border-radius: 5px;
-    padding: 0 5px;
-    margin: 0 20px;
-    height: 2.1em;
+    height: 1.8rem;
+    padding: 0 3px;
 }
 
 .RegistroCaso #enProceso {
-    color: var(--fondo);
-    background-color: #711717;
+    color: #A24247;
+    
 }
 
 .RegistroCaso #terminado {
-    color: var(--fondo);
-    background-color: #3F846D;
+    color: #548273;
+    
+
 }
 
 .RegistroCaso #NuevoCaso {
     height: 2.1em;
     padding: 0 5px;
-    border: ridge;
-    background: var(--negro);
+    border: none;
+    background: var(--azul);
+    cursor: pointer;
     color: var(--fondo);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: normal;
     border-radius: 5px;
     transition: all 400ms ease;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+    
 
 
 }
@@ -238,8 +274,8 @@ main {
     --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
     --toggle-shadow-offset: 10px;
     --toggle-wider: 3em;
-    --color-grey: #711717;
-    --color-green: #3F846D;
+    --color-grey: #A24247;
+    --color-green: #548273;
 }
 
 .RegistroCaso .slider {
@@ -251,6 +287,7 @@ main {
     position: relative;
     transition: 0.3s all ease-in-out;
     border: var(--negro) solid 2px;
+    margin: 0 10px;
 }
 
 .RegistroCaso .slider::after {
@@ -291,71 +328,75 @@ main {
 
 
 .RegistroAudiencia {
-    background-color: #ECECEC;
+    background-color: var(--fondo);
     margin: 10px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px 15px;
+    padding: 15px 50px;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .RegistroAudiencia form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    height: 80%;
     justify-content: space-between;
 }
 
 .RegistroAudiencia #Direcion {
     width: 100%;
-    height: 35px;
-    border-radius: 5px;
+    height: 1.8rem;
+    border-radius: 3px;
+    border: var(--negro) solid 2px;
     background: var(--negro);
     padding: 0 10px;
-    font-size: 1.3em;
+    font-size: 1rem;
     margin-bottom: 10px;
+    font-weight: normal;
 }
 
 .RegistroAudiencia #NombreLugar {
     width: 100%;
-    height: 35px;
-    border-radius: 5px;
+    height: 1.8rem;
+    border-radius: 3px;
     background: var(--negro);
     padding: 0 10px;
-    font-size: 1.3em;
+    font-size: 1rem;
     margin-bottom: 5px;
+    border: var(--negro) solid 2px;
 }
 
 .RegistroAudiencia #FechaAudiencia {
     width: 250px;
-    height: 35px;
-    border-radius: 5px;
+    height: 1.8rem;
+    border-radius: 3px;
     padding: 0 10px;
     font-size: 1em;
     margin-top: 5px;
+    font-weight: normal;
+    border: var(--negro) solid 1px;
 }
 
 .RegistroAudiencia .HoraAudiencia {
     display: flex;
     flex-wrap: wrap;
     height: 45px;
-    width: 30%;
+    width: 250px;
     justify-content: center;
     align-items: center;
 }
 
 .RegistroAudiencia .HoraAudiencia h3 {
-    font-size: 1.2em;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .RegistroAudiencia #hora {
     width: 100%;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1rem;
 
 }
 
@@ -365,6 +406,7 @@ main {
     text-align: center;
     border-radius: 3px;
     height: 25px;
+    border: var(--negro) solid 2px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -374,25 +416,27 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .RegistroAudiencia #Categorias {
-    width: 300px;
-    height: 35px;
-    border-radius: 5px;
+    width: 250px;
+    height: 1.8rem;
+    border-radius: 3px;
     text-align: center;
     margin-top: 5px;
+    border: var(--negro) solid 1px;
 }
 
 .RegistroAudiencia .containerDescripcion {
-    padding: 0 10px 10px 10px;
+    padding: 0 8px;
     background: var(--negro);
-    border-radius: 5px;
+    border-radius: 3px;
     width: 100%;
     margin-top: 5px;
 }
 
 .RegistroAudiencia .containerDescripcion h3 {
     color: var(--fondo);
-    font-size: 1.2em;
+    font-size: 1rem;
     margin: 10px 5px;
+    font-weight: normal;
 
 }
 
@@ -400,6 +444,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     border-radius: 5px;
     padding: 5px;
+    height: 125px;
 }
 
 .RegistroAudiencia .GuardarNotificar {

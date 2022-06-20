@@ -1,22 +1,22 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: FFFFFF;
-    font-family: sans-serif;
-    font-size: 16px;
-    --negro: #1E1F28;
-    --fondo: #FFFFFF;
-    --amarillo:#C9932C;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  --negro: #1E1F28;
+  --fondo: #FFFFFF;
+  --amarillo: #C9932C;
 }
-.containerHeader{
+
+.containerHeader {
   height: 70px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.containerHeader .usuario{
+.containerHeader .usuario {
   height: 40px;
   width: 100%;
   display: flex;
@@ -25,32 +25,34 @@
   padding: 5px 15px;
 }
 
-.containerHeader .usuario img{
+.containerHeader .usuario img {
   height: 30px;
-width: 30px;
-margin-right: 8px;
-}
-.containerHeader .usuario h3{
-  font-size: 1em;
-  font-weight: 400; 
+  width: 30px;
+  margin-right: 8px;
 }
 
-.containerHeader .cabecera{
+.containerHeader .usuario h3 {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.containerHeader .cabecera {
   height: 40px;
   background-color: var(--negro);
   display: flex;
   width: 100%;
-  justify-content:flex-start ;
-}
-.cabecera .avatar{
-position: absolute;
-max-height: 60px;
-max-width: 60px;
-top: 15px;
-left: 5px;
+  justify-content: flex-start;
 }
 
-.cabecera .header{
+.cabecera .avatar {
+  position: absolute;
+  max-height: 60px;
+  max-width: 60px;
+  top: 15px;
+  left: 15px;
+}
+
+.cabecera .header {
   height: 40px;
   width: 100%;
   display: flex;
@@ -58,16 +60,18 @@ left: 5px;
   padding: 0 25px 0 90px;
   justify-content: space-between;
 }
-.header .navegador{
+
+.header .navegador {
   display: flex;
 }
-.cabecera .header .a{
+
+.cabecera .header .a {
   display: flex;
   height: 40px;
   align-items: center;
 }
 
-.cabecera .header a{
+.cabecera .header a {
   margin: 0 20px;
   text-decoration: none;
   color: var(--fondo);
@@ -75,14 +79,13 @@ left: 5px;
   font-size: 1.1em;
   font-weight: bold;
 }
-.cabecera .header .a:hover{
+
+.cabecera .header .a:hover {
   background: var(--amarillo);
 }
-.search #buscador{
+
+.search #buscador {
   border-radius: 5px;
   height: 30px;
   width: 300px;
 }
-
-
-

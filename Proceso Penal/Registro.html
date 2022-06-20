@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/EstilosRegistro.css">
+    <link rel="stylesheet" href="css/estilosRegistro.css">
     <link rel="stylesheet" href="css/header.css">
 
 </head>
@@ -14,46 +14,45 @@
 
 <body>
 
-    <<section class="containerHeader"> 
-    <section class="usuario">
-      <img src="images/usuario.png" class="avatar2" alt="Avatar Image">
-      <h3 class="nombre"> Juan Rocio Juzman Alvarado</h3>
-  </section>
-      <header class="cabecera">
-        <img src="images/logo.png" class="avatar" alt="Avatar Image">
+    <section class="containerHeader">
+        <section class="usuario">
+            <img src="images/usuario.png" class="avatar2" alt="Avatar Image">
+            <h3 class="nombre"> Juan Rocio Juzman Alvarado</h3>
+        </section>
+        <header class="cabecera">
+            <img src="images/logo.png" class="avatar" alt="Avatar Image">
 
-        <nav class="header">
-            <div class="navegador">
-                <div class="a">
-          <a href="casos.html">Casos</a>
-          </div>
-          <div class="a">
-          <a href="Registro.html">Registro Casos</a>
-          </div> 
-          </div>
-          <div class="search">
-            <form action="#">
-                <input type="text"
-                    placeholder=" Cedula,Nombre del Caso, Id del Caso"
-                    name="search" id="buscador">
-            </form>
-        </div>
-        </nav>
-      </header>
-   </section>
+            <nav class="header">
+                <div class="navegador">
+                    <div class="a">
+                        <a href="casos.html">Casos</a>
+                    </div>
+                    <div class="a">
+                        <a href="Registro.html">Registro Casos</a>
+                    </div>
+                </div>
+                <div class="search">
+                    <form action="#">
+                        <input type="text" placeholder=" Cedula,Nombre del Caso, Id del Caso" name="search"
+                            id="buscador">
+                    </form>
+                </div>
+            </nav>
+        </header>
+    </section>
     <main>
-
         <section class="Involucrados">
-
             <h3 id="involucrados">Involucrados</h3>
             <div class="containerIzquierda">
                 <div class="TarjetaInvolucrado">
-                    <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas </h2>
+                    <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas  </h2>
                     <h3 id="Contacto">Contacto</h3>
                     <div class="TextoBajo">
                         <h3 id="Cedula">Cedula</h3>
                         <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
                     </div>
+                    
                 </div>
             </div>
         </section>
@@ -71,14 +70,14 @@
             <section class="RegistroCaso">
                 <input type="text" name="NombreCaso" id="NombreCaso" placeholder="Nombre del caso">
                 <div class="cotainerSwitch">
-                    <h3 class="etiquetaSwitch" id="enProceso">EN PROCESO</h3>
+                    <h3 class="etiquetaSwitch" id="enProceso">En proceso</h3>
                     <label class="switch">
                         <input type="checkbox" name="EstadoProceso" id="cbEstadoProceso">
                         <span class="slider"></span>
                     </label>
-                    <h3 class="etiquetaSwitch" id="terminado">TERMINADO</h3>
+                    <h3 class="etiquetaSwitch" id="terminado">Terminado</h3>
                 </div>
-                <button id="NuevoCaso">NUEVO CASO</button>
+                <button id="NuevoCaso">Nuevo caso</button>
 
             </section>
             <section class="RegistroAudiencia">
