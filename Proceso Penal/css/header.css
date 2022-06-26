@@ -10,39 +10,39 @@
 }
 
 .containerHeader {
-  height: 80px;
-  width: 100%;
+  height: 84px;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
 }
 
 .containerHeader .usuario {
-  height: 40px;
+  height: 38px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 5px 15px;
+  padding: 5px 25px;
 }
 
 .containerHeader .usuario img {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   margin-right: 8px;
 }
 
 .containerHeader .usuario h3 {
-  font-size: 1em;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .containerHeader .cabecera {
-  height: 40px;
+  height: 44px;
   background-color: var(--negro);
   display: flex;
   width: 100%;
-  justify-content: flex-start;
 }
+
 
 .cabecera .avatar {
   position: absolute;
@@ -53,11 +53,11 @@
 }
 
 .cabecera .header {
-  height: 40px;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 25px 0 90px;
+  padding-left: 90px;
   justify-content: space-between;
 }
 
@@ -69,23 +69,47 @@
   display: flex;
   height: 40px;
   align-items: center;
+  transition: all 0.3s ease;
+  margin: 0 1px;
 }
 
 .cabecera .header a {
-  margin: 0 20px;
+  display: flex;
   text-decoration: none;
   color: var(--fondo);
-  transition: all 400ms ease;
-  font-size: 1.1em;
+  height: 40px;
+  align-items: center;
+  width: 100%;
+}
+.cabecera .header a span{
   font-weight: bold;
+  font-size: 1rem;
+  margin: 0 20px;
 }
 
 .cabecera .header .a:hover {
   background: var(--amarillo);
 }
 
+.search form{
+  display: flex;
+  align-items: center;
+
+}
+.search form img{
+  height: 25px;
+  width: 25px;
+  margin: 0 10px;
+}
+
 .search #buscador {
   border-radius: 5px;
-  height: 30px;
+  height: 1.9rem;
   width: 300px;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0 10px;
+  border: var(--fondo) solid 2px;
+  background-color: var(--fondo);
+  margin-right: 15px;
 }

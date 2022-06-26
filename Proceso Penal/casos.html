@@ -1,141 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Dale Like Al Proceso Penal</title>
-    <link rel="stylesheet" href="css/casos.css">
-    <link rel="stylesheet" href="css/header.css">
-  </head>
-  
-  <body>
-    
 
-  <section class="containerHeader"> 
+<head>
+  <meta charset="utf-8">
+  <title>Dale Like Al Proceso Penal</title>
+  <link rel="stylesheet" href="css/casos.css">
+  <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+
+
+  <section class="containerHeader">
     <section class="usuario">
       <img src="images/usuario.png" class="avatar2" alt="Avatar Image">
       <h3 class="nombre"> Juan Rocio Juzman Alvarado</h3>
-  </section>
-      <header class="cabecera">
-        <img src="images/logo.png" class="avatar" alt="Avatar Image">
+    </section>
+    <header class="cabecera">
+      <img src="images/logo.png" class="avatar" alt="Avatar Image">
 
-        <nav class="header">
-          <div class="navegador">
-            <div class="a">
-          <a href="casos.html">Casos</a>
+      <nav class="header">
+        <div class="navegador">
+          <div class="a">
+            <a href="casos.html"><span>Casos</span></a>
           </div>
           <div class="a">
-          <a href="Registro.html">Registro Casos</a>
-          </div> 
+            <a href="Registro.html"><span>Registro de casos</span> </a>
           </div>
-          <div class="search">
-            <form action="#">
-                <input type="text"
-                    placeholder=" Cedula,Nombre del Caso, Id del Caso"
-                    name="search" id="buscador">
-            </form>
         </div>
-        </nav>
-      </header>
-   </section>
+        <div class="search">
+          <form action="#">
+            <img src="images/buscar.png" alt="Buscar">
+            <input type="text" placeholder="Cedula,Nombre del Caso, Id del Caso" name="search" id="buscador">
+          </form>
+        </div>
+      </nav>
+    </header>
+  </section>
 
-    <div class="contenido">
-      <h2>Casos Terminados</h2>
+  <section class="containerMain">
+    <article class="proximasAu">
+      <div class="titleGroup">
+        <h2>Proximas Audiencias</h2>
+        <button><span>Ver mas</span></button>
+      </div>
+      <div class="containerTarjetas">
+        <div class="tarjetas proximas">
+          <div class="headerTargeta">
+            <h3 id="nombreCaso">Caso: atropello maria</h3>
+          </div>
+          <h3>Audiencia 3 </h3>
+          <h3>Fecha: 08/20/2022</h3>
+          <h3>Caso ID: 001</h3>
+        </div>
+        <div class="tarjetas proximas">
+          <div class="headerTargeta">
+            <h3 id="nombreCaso">Caso: atropello maria</h3>
+          </div>
 
-      <div class="cast1">
-        <h3 class="etiqueta2">Caso: Atropello Maria</h3>
-        <h3>ID: 001</h3>
-        <h4>4 Involucrados      8/20/2022</h4>
+          <h3>Audiencia 3 </h3>
+          <h3>Fecha: 08/20/2022</h3>
+
+          <h3>Caso ID: 001</h3>
+        </div>
+        <div class="tarjetas">
+          <div class="headerTargeta">
+            <h3 id="nombreCaso">Caso: atropello maria</h3>
+          </div>
+          <h3>Audiencia 3 </h3>
+          <h3>Fecha: 08/20/2022</h3>
+          <h3>Caso ID: 001</h3>
+        </div>
       </div>
 
-      <div class="cast2">
-        <h3 class="etiqueta2">Caso: Atropello Carlos</h3>
-        <h3>ID: 002</h3>
-        <h4>8 Involucrados      8/20/2022</h4>
-      </div>
 
-      <div class="cast3">
-        <h3 class="etiqueta2">Caso: Atropello Maria</h3>
-        <h3>ID: 003</h3>
-        <h4>2 Involucrados      18/20/2022</h4>
+    </article>
+    <article class="casosPro">
+      <div class="titleGroup">
+        <h2>Casos en proceso</h2>
+        <button><span>Ver mas</span></button>
       </div>
-
-      <div class="cast4">
-        <h3 class="etiqueta2">Caso: Atropello Maria</h3>
-        <h3>ID: 004</h3>
-        <h4>9 Involucrados      08/20/2022</h4>
+      <div class="containerTarjetas">
+        <div class="tarjetas proceso">
+          <div class="headerTargeta">
+            <h3 id="nombreCaso">Caso: atropello maria</h3>
+          </div>
+          <h3>Creado: 02/02/2020</h3>
+          <h3>Caso ID: 001</h3>
+        </div>
       </div>
-
-      <div class="cast5">
-        <h3 class="etiqueta2">Caso: Atropello Maria</h3>
-        <h3>ID: 005</h3>
-        <h4>5 Involucrados      04/20/2022</h4>
-      </div>      
+    </article>
+    <article class="casosTer">
+      <div class="titleGroup">
+        <h2>Casos terminados</h2>
+        <button><span>Ver mas</span></button>
+      </div>
+      <div class="containerTarjetas">
+      <div class="tarjetas terminados">
+        <div class="headerTargeta headerTerminados">
+          <h3 id="nombreCaso">Caso: atropello maria</h3>
+        </div>
+        <h3>Creado: 02/02/2020</h3>
+        <h3>Finalizado: 02/02/2022</h3>
+        <h3>Caso ID: 001</h3>
+      </div>
     </div>
+    </article>
+  </section>
 
-    <div class="audiencias">
-      <h2>Proximas Audiencias</h2>
-        <div class="caso1">
-          <h3 class="etiqueta">Caso: Atropello Maria</h3>
-          <h3>ID: 001</h3>
-          <h4>Audiencia_3      8/20/2022</h4>
-        </div>
+</body>
 
-        <div class="caso2">
-          <h3 class="etiqueta">Caso: Robo Juan</h3>
-          <h3>ID: 002</h3>
-          <h4>Audiencia_3  8/20/2022</h4>
-        </div>
-
-        <div class="caso3">
-          <h3 class="etiqueta">Caso: Robo Carlos</h3>
-          <h3>ID: 003</h3>
-          <h4>Audiencia_3         8/20/2022</h4>
-        </div>
-
-        <div class="caso4">
-          <h3 class="etiqueta">Caso: Asalto Maria</h3>
-          <h3>ID: 004</h3>
-          <h4>Audiencia_3      7/17/2022</h4>
-        </div>
-
-        <div class="caso5">
-          <h3 class="etiqueta">Caso: Atropello Maria</h3>
-          <h3>ID: 007</h3>
-          <h4>Audiencia_3  7/10/2022</h4>
-        </div>
-
-        <div class="caso6">
-          <h3 class="etiqueta">Caso: Juicio Luis</h3>
-          <h3>ID: 006</h3>
-          <h4>Audiencia_3         8/20/2022</h4>
-        </div>
-   </div>
-
-
-    <div class="proceso">
-          <h2 class="texto2"> Casos en Proceso </h2>
-
-      <div class="caso7">
-          <h3 class="etiqueta">Caso: Atropello Maria</h3>
-          <h3>ID: 001</h3>
-          <h4>Audiencia_3      8/20/2022</h4>
-        </div>
-
-        <div class="caso8">
-          <h3 class="etiqueta">Caso: Atropello Maria</h3>
-          <h3>ID: 001</h3>
-          <h4>Audiencia_3  8/20/2022</h4>
-        </div>
-
-        <div class="caso9">
-          <h3 class="etiqueta">Caso: Atropello Maria</h3>
-          <h3>ID: 001</h3>
-          <h4>Audiencia_3         8/20/2022</h4>
-        </div>
-</div>
-
-
-   
-   
-  </body>
 </html>
