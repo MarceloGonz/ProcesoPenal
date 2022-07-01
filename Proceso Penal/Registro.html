@@ -8,12 +8,12 @@
     <title>Registro</title>
     <link rel="stylesheet" href="css/EstilosRegistro.css">
     <link rel="stylesheet" href="css/header.css">
+    <script defer src="js/resgistro.js" ></script>
 
 </head>
 
-
 <body>
-
+    
     <section class="containerHeader">
         <section class="usuario">
           <img src="images/usuario.png" class="avatar2" alt="Avatar Image">
@@ -21,7 +21,6 @@
         </section>
         <header class="cabecera">
           <img src="images/logo.png" class="avatar" alt="Avatar Image">
-    
           <nav class="header">
             <div class="navegador">
               <div class="a">
@@ -40,10 +39,10 @@
           </nav>
         </header>
       </section>
-    <main>
+    <main id="main">
         <section class="Involucrados">
             <h3 id="involucrados">Involucrados</h3>
-            <div class="containerIzquierda">
+            <div class="containerIzquierda" id="containerTarjetas">
                 <div class="TarjetaInvolucrado">
                     <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas  </h2>
                     <h3 id="Contacto">Contacto</h3>
@@ -55,13 +54,14 @@
                 </div>
             </div>
         </section>
-
+        
         <div class="Container_Derecha">
             <section class="Cedula">
                 <div class="ContainerCedula">
-                    <form action="">
-                        <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="Cedula">
-                        <input type="submit" value="+" id="btnCedula">
+                    <form action="#">
+                        <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="txtCedula">
+                        <input type="button" id="btnCedula"  value="+" onclick="registo:mostarRegsitro()">
+                        
                     </form>
                 </div>
             </section>
@@ -114,7 +114,24 @@
                 </div>
             </div>
         </div>
+        
     </main>
+
+    <section class="vf" id="añadirInvolucrado">
+        <form action="#">
+            <input type="button" value="X" id="btnCerrar" onclick="registros:ocultarRegsitro()">
+            <input type="text" name="" id="vfApellidos" class="añIn" placeholder="Apellidos">
+            <input type="text" name="" id="vfNombres" class="añIn" placeholder="Nombres">
+            <input type="text" name="" id="vfCedula" readonly="readonly" class="añIn">
+            <input type="text" name="" id="vfContacto" class="añIn" placeholder="Contacto">
+            <select name="roles" id="vfRoles" class="añIn">
+                <option value="juez">juez</option>
+                <option value="abogado">abogado</option>
+                <option value="testigo">testigo</option>
+            </select>
+            <input type="button" value="Añadir" class="añIn" id="btnAñadir" onclick="registros:añadirInvolucrado()">
+        </form>
+    </section>
 </body>
 
 </html>
