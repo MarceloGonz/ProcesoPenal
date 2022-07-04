@@ -1,9 +1,9 @@
 from fastapi import FastAPI as fast
-from typing import Dict, Union
+#from typing import Dict, Union
 import modelosEntidades as mE
 from fastapi.middleware.cors import CORSMiddleware
 
-from logica import validarCredenciales as validar
+import logica as lg
 from conexionQuery import insertarUsuario as inUsu
 
 app = fast()
@@ -30,8 +30,13 @@ def ingresarUsuario (usuario: mE.usuario):
     return True
 
 @app.post("/InInvolucrado")
-def ingresarUsuario (involucrado: mE.Involucrado):
-    inUsu(involucrado.dict())
+def inInvolucrado(involucrado: mE.Involucrado):
+    lg.ingresarInvolucrado(involucrado.dict())
+    return True
+
+@app.post("/GuardarAudiencia")
+def GuarAudiencia (Audiencia: mE.Caso):
+    lg.guardarAudiencia(Audiencia.dict())
     return True
 
 @app.get("/validarUsuario/{usuario},{clave}")
@@ -39,6 +44,18 @@ def validarUsuario (usuario, clave):
     credenciales = {}
     credenciales['usuario'] = str(usuario)
     credenciales['clave'] = str(clave)
-    respuesta = validar(credenciales)
+    respuesta = lg.validarCredenciales(credenciales)
     return respuesta
 
+
+
+@app.get("/buscarInvolucrado/{cedula}")
+def buscarInvolucrado (cedula):
+    respuesta = lg.buscarInvolucrado(cedula)
+    return respuesta
+
+
+@app.get("/traerCasos")
+def traerCasos ():
+    respuesta = lg.traerCasos()
+    return respuesta

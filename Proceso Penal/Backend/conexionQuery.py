@@ -26,16 +26,81 @@ def insertarPersonas(persona):
     return lastId
 
 
+def insertarContacto(contactoPersona, idPersona):
+    LastInsert = ultimoInsert("Contactos")
+    lastId = LastInsert[0]+1
+    query = """INSERT INTO public."Contactos"
+    ("IdContactos", "IdPersona", "TipoContacto", 
+    "ValorContacto") VALUES (%s, %s, %s, %s);"""
+    cursor.execute(
+        query, (lastId, idPersona, contactoPersona["tipoContacto"], contactoPersona["ValorContacto"]))
+    con.commit()
+    return True
+
+
+def insertarPersonasAudiencia(involucrado):
+    LastInsert = ultimoInsert("PersonasAudiencia")
+    lastId = LastInsert[0]+1
+    query = """INSERT INTO public."PersonasAudiencia"(
+	"IdPersonas", "IdAudiencias", "RolPersona")
+	VALUES (%s, %s, %s);"""
+    cursor.execute(
+        query, (lastId, involucrado["IdPersonas"], involucrado["RolPersona"], involucrado["ValorContacto"]))
+    con.commit()
+    return True
+
+
 def insertarUsuario(usuario):
     LastInsert = ultimoInsert("Usuarios")
-    idPersona = insertarPersonas(usuario)
     lastId = LastInsert[0]+1
+    idPersona = insertarPersonas(usuario)
     query = """INSERT INTO public."Usuarios"(
 	"IdUsuarios", "IdPersona", "RolUsuario", "Usuario", "Clave")
 	VALUES (%s, %s, %s, %s, %s);"""
     cursor.execute(query, (lastId, idPersona,
                    usuario["rol"], usuario["usuario"], usuario["clave"]))
     con.commit()
+
+
+def insertarCaso(caso):
+    LastInsert = ultimoInsert("Casos")
+    lastId = LastInsert[0]+1
+    query = """INSERT INTO public."Casos"(
+	"IdCasos", "NombreCaso", "EstadoCaso", "Categoria", "FechaCreacion", "FechaFin", "CodigoProceso")
+	VALUES (%s, %s, %s, %s, %s, %s, %s);"""
+    cursor.execute(query, (lastId, caso["NombreCaso"], caso["EstadoCaso"], caso["Categoria"],
+                   caso["fechaCreacionCaso"], caso["fechaFinCaso"], caso["CodigoCaso"]))
+    con.commit()
+    return lastId
+
+
+def insertarAudiencia(audiencia):
+    LastInsert = ultimoInsert("Audiencias")
+    lastId = LastInsert[0]+1
+    query = """INSERT INTO public."Audiencias"(
+	"IdAudiencias", "IdCaso", "DireccionLugar", "NombreLugar", "FechaAudiencia", "FechaCreacion", "HoraAudiencia", "DescripcionAudiencia", "EstadoAudiencia", "NumeroAudiencia")
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""
+    cursor.execute(query, (lastId, audiencia["IdCasos"], audiencia["direccionAudiencia"], audiencia["lugarAudiencia"], audiencia["fechaAudiencia"],
+                   audiencia["fechaCreacionAudiencia"], audiencia["horaAudiencia"], audiencia["descripcionAudiencia"], audiencia["estadoAudiencia"], audiencia["numeroAudiencia"]))
+    con.commit()
+    return lastId
+
+
+def insertarPersonasAudiencia(personasAudiencia, idAudiencia):
+    query = """INSERT INTO public."PersonasAudiencia"(
+	"IdPersonas", "IdAudiencias", "RolPersona")
+	VALUES (%s, %s, %s);"""
+    cursor.execute(
+        query, (personasAudiencia["IdPersona"], idAudiencia, personasAudiencia["RolPersona"]))
+    con.commit()
+
+
+def buscarUltimaAudienciaIdCaso(idCaso):
+    query = f"""SELECT * FROM public."Audiencias"
+    WHERE "IdCaso" = {idCaso} ORDER BY "IdAudiencias" DESC LIMIT 1"""
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
 
 
 def buscarUsuarioCorreo(credenciales):
@@ -45,8 +110,49 @@ def buscarUsuarioCorreo(credenciales):
     cursor.execute(query)
     row = cursor.fetchone()
     return row
-    
 
+
+def buscarPersonCedula(cedula):
+    query = f"""SELECT * FROM public."Personas"
+    WHERE "cedula" = '{cedula}' """
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
+
+
+def buscarContactosPersona(Idpersona):
+    query = f"""SELECT * FROM public."Contactos"
+    WHERE "IdPersona" = '{Idpersona}' """
+    cursor.execute(query)
+    lista = cursor.fetchall()
+    return lista
+
+
+def buscarCasoId(idCaso):
+    query = f"""SELECT * FROM public."Casos"
+    WHERE "IdCasos" = '{idCaso}' """
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
+
+
+def buscarCasos():
+    query = """SELECT "IdCasos","NombreCaso","EstadoCaso","Categoria","CodigoProceso"
+    FROM public."Casos"
+	LIMIT 10"""
+    cursor.execute(query)
+    lista = cursor.fetchall()
+    return lista
+
+def buscarUltimaAudienciaIdCaso (IdCaso):
+    query = f"""SELECT "NumeroAudiencia" 
+    FROM "Audiencias"  
+    WHERE "IdCasos" = {IdCaso} 
+    ORDER BY "NumeroAudiencia" 
+    DESC LIMIT 1"""
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
 
 def cerrarConexion():
     con.close()
