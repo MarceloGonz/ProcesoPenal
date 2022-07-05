@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Casos</title>
+    <link rel="stylesheet" href="css/EstilosRegistro.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/casosdetalles.css">
+    <script defer src="js/resgistro.js" ></script>
+</head>
+<body>
+	   <section class="containerHeader">
+        <section class="usuario">
+          <img src="images/usuario.png" class="avatar2" alt="Avatar Image">
+          <h3 class="nombre"> Juan Rocio Juzman Alvarado</h3>
+        </section>
+        <header class="cabecera">
+          <img src="images/logo.png" class="avatar" alt="Avatar Image">
+          <nav class="header">
+            <div class="navegador">
+              <div class="a">
+                <a href="casos.html"><span>Casos</span></a>
+              </div>
+              <div class="a">
+                <a href="Registro.html"><span>Registro de casos</span> </a>
+              </div>
+            </div>
+            <div class="search">
+              <form action="#">
+                <img src="images/buscar.png" alt="Buscar">
+                <input type="text" placeholder="Cedula,Nombre del Caso, Id del Caso" name="search" id="buscador">
+              </form>
+            </div>
+          </nav>
+        </header>
+      </section>
+
+      	 <main id="main">
+        <section class="Involucrados">
+            <h3 id="involucrados">Involucrados</h3>
+            <div class="containerIzquierda" id="containerTarjetas">
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas  </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
+                    </div>
+                </div>
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">Carlos Juan Aguirre  </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
+                    </div>
+                </div>
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">Carmen Anahi Gomez </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
+                    </div>
+                </div>
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">Marcelo Gonzalez Gonzalez </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
+                    </div>
+                </div>
+                <div class="TarjetaInvolucrado">
+                    <h2 id="NombreInvolucrado">Carolina Abada </h2>
+                    <h3 id="Contacto">Contacto</h3>
+                    <div class="TextoBajo">
+                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="ROL">ROL</h3>
+                        <div id="DecoradorTarjeta"></div>
+                    </div>
+                </div>
+        </section>
+        
+        <div class="Container_Derecha">
+            <section class="Cedula">
+                <div class="ContainerCedula">
+                    <form action="#">
+                        <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="txtCedula">
+                        <input type="button" id="btnCedula"  value="+" onclick="registo:mostarRegsitro()">
+                        
+                    </form>
+                </div>
+            </section>
+             <section class="DetalleAudiencia">
+                   <h2>Caso: Atropello Maria</h2><br>
+                <form action="">
+      				<div class="tarjetas detalles">
+                    <div class="headerTargeta">
+                    <h3 id="nombreCaso">Audiencia 1</h3>
+                    </div>
+                    <h3>involucradas 6</h3>
+                    <h3>Fecha: 08/20/2022</h3>
+                    <h3>Notificada</h3>
+                    </div>
+
+                    <div class="tarjetas detalles">
+                    <div class="headerTargeta">
+                    <h3 id="nombreCaso">Audiencia 2</h3>
+                    </div>
+                    <h3>involucradas 6</h3>
+                    <h3>Fecha: 08/20/2022</h3>
+                    <h3>Notificada</h3>
+                    </div>
+
+                    <div class="tarjetas detalles">
+                    <div class="headerTargeta">
+                    <h3 id="nombreCaso">Audiencia 3</h3>
+                    </div>
+                    <h3>involucradas 6</h3>
+                    <h3>Fecha: 08/20/2022</h3>
+                    <h3>Proxima</h3>
+                    </div>
+
+                    <div class="tarjetas detalles">
+                    <div class="headerTargeta">
+                    <h3 id="nombreCaso">Audiencia 4</h3>
+                    </div>
+                    <h3>involucradas 6</h3>
+                    <h3>Fecha: 08/20/2022</h3>
+                    <h3>Sin Notificar</h3>
+                    </div>
+                </div>
+            </div>
+      </article>
+    </form>
+
+            </section>
+            <div class="containerBtnBajos">
+                <div class="BotonesBajos">
+                    <button id="ver" class="btnVA"><span>Ver audiencias</span></button>
+                    <button id="añadir" class="btnVA"><span>Añadir audiencias</span></button>
+                </div>
+            </div>
+        </div>
+      </main>
+
+</body>
+</html>

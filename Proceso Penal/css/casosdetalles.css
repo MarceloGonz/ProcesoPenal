@@ -1,0 +1,131 @@
+.DetalleAudiencia {
+    background-color: var(--fondo);
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.DetalleAudiencia
+ form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  height: 135px;
+  width: 240px;
+  border-right: #010433 solid 2px;
+  border-bottom: #010433 solid 2px;
+  border-top: #010433 solid 1px;
+  border-left: #010433 solid 1px;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 5px;
+  align-items: flex-start;
+  transition: all 0.4s;
+
+}
+
+.headerTargeta {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #010433;
+  width: 100%;
+  color: var(--fondo);
+  border-radius: 2px;
+  padding: 5px;
+  background: linear-gradient(-70deg ,transparent 8%,
+  rgba(162, 66, 71, 0.5) 5%,
+  rgba(113, 23, 23, 0.5) 12%,
+  #010433 12%);
+  max-height: 44%;
+  overflow: hidden;
+  align-items: center;
+}
+
+.tarjetas h3{
+  font-weight: normal;
+  width: 90%;
+  margin-left: 5px;
+  font-size: 0.9rem;
+
+}
+
+.headerTargeta h3{
+  width: 90%;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0;
+}
+
+.containerBtnBajos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.BotonesBajos {
+    display: flex;
+    flex-wrap: wrap;
+    height: min-content;
+    padding: 10px 0;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--fondo);
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 400px;
+}
+
+.BotonesBajos .btnVA {
+    margin: 0 12px;
+    height: 45px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 5px;
+    transition: all 400ms ease;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--negro);
+    color: var(--fondo);
+    display: inline-block;
+    cursor: pointer;
+    width: 163px;
+}
+
+.BotonesBajos span {
+    position: relative;
+    display: inline-block;
+    transition: 0.4s;
+}
+
+.BotonesBajos span::after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    transition: 0.4s;
+    right: -15px;
+    top: 0;
+}
+
+.btnVA:hover span {
+    padding-right: 15px;
+
+}
+
+.btnVA:hover span::after {
+    opacity: 1;
+    right: 0;
+
+}
+
+.BotonesBajos .btnVA:hover {
+    background: var(--azul);
