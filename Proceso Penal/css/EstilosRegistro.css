@@ -161,23 +161,32 @@ main {
 
 .TarjetaInvolucrado #NombreInvolucrado {
     padding: 5px 7px;
+    background-color: transparent;
+
+
+}
+.TarjetaInvolucrado #NombreInvolucrado * {
     font-size: 1em;
     line-height: 1.2;
     font-weight: bold;
     background-color: transparent;
     color: var(--negro);
-    border-radius: 3px 3px 0 0;
-
-
 }
 
+
+
 .TarjetaInvolucrado #Contacto {
+    padding: 0 7px 0 7px;
+    font-weight: normal;
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+
+.TarjetaInvolucrado #spanContacto {
     font-size: 0.9em;
     line-height: 1.2;
     font-weight: normal;
-    padding: 0 7px 0 7px;
 }
-
 .TarjetaInvolucrado .TextoBajo {
     display: flex;
     justify-content: space-between;
@@ -185,8 +194,14 @@ main {
     width: 218px;
 }
 
+
 .TarjetaInvolucrado #Cedula {
     padding-left: 7px;
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+.TarjetaInvolucrado #spanCedula {
+    
     font-size: 0.9rem;
     font-weight: normal;
 }
@@ -203,6 +218,8 @@ main {
     height: 15px;
     width: 218px;
     margin-bottom: 4px;
+    margin-top: 3px;
+    
 
 }
 
