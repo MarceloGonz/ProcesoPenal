@@ -1,3 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    --negro: #1E1F28;
+    --fondo: #ffffff;
+    --fondoGris: #FAFAFA;
+    --verde: #7FFF00;
+    --azul: #010433;
+    --amarillo: #FFD700;
+    --rojo: #8B0000;
+    --size: 1.9rem;
+}
+
 .DetalleAudiencia {
     background-color: var(--fondo);
     margin: 10px 0;
@@ -43,8 +59,8 @@
   border-radius: 2px;
   padding: 5px;
   background: linear-gradient(-70deg ,transparent 8%,
-  rgba(162, 66, 71, 0.5) 5%,
-  rgba(113, 23, 23, 0.5) 12%,
+  rgba(127, 255,0) 5%,
+  rgba(127, 255,0) 12%,
   #010433 12%);
   max-height: 44%;
   overflow: hidden;
@@ -116,16 +132,3 @@
     top: 0;
 }
 
-.btnVA:hover span {
-    padding-right: 15px;
-
-}
-
-.btnVA:hover span::after {
-    opacity: 1;
-    right: 0;
-
-}
-
-.BotonesBajos .btnVA:hover {
-    background: var(--azul);
