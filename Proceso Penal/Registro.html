@@ -47,7 +47,7 @@
                     <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas  </h2>
                     <h3 id="Contacto">Contacto</h3>
                     <div class="TextoBajo">
-                        <h3 id="Cedula">Cedula</h3>
+                        <h3 id="Cedula">Cedula <span id="spanCedula"></span> </h3>
                         <h3 id="ROL">ROL</h3>
                         <div id="DecoradorTarjeta"></div>
                     </div>
@@ -81,7 +81,7 @@
 
             </section>
             <section class="RegistroAudiencia">
-                <form action="">
+                <form action="#">
                     <input type="text" name="Direcion" id="Direcion" placeholder="Direccion de la audiencia">
                     <input type="text" name="NombreLugar" id="NombreLugar" placeholder="Lugar de la audiencia">
                     <input type="date" name="FechaAudiencia" id="FechaAudiencia" placeholder="mm/dd/aa">
@@ -103,7 +103,7 @@
                     <div class="GuardarNotificar">
                         <button id="Guardar" class="btnGN"><span>Guardar</span></button>
                         <h3>CODIGO DEL PROCESO</h3>
-                        <button id="Notificar" class="btnGN"><span>Notificar</span> </button>
+                        <button id="Notificar" class="btnGN" onclick="registro:GuardarCaso()"><span>Notificar</span> </button>
                     </div>
                 </form>
 
@@ -123,7 +123,7 @@
             <input type="button" value="X" id="btnCerrar" onclick="registros:ocultarRegsitro()">
             <input type="text" name="" id="vfApellidos" class="añIn" placeholder="Apellidos">
             <input type="text" name="" id="vfNombres" class="añIn" placeholder="Nombres">
-            <input type="text" name="" id="vfCedula" readonly="readonly" class="añIn">
+            <input type="text" name="" id="vfCedula" readonly="readonly" class="añIn" placeholder="Cedula">
             <input type="text" name="" id="vfContacto" class="añIn" placeholder="Contacto">
             <select name="roles" id="vfRoles" class="añIn">
                 <option value="juez">juez</option>
