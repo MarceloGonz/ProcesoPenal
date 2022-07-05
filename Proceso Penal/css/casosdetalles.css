@@ -67,6 +67,23 @@
   align-items: center;
 }
 
+.headerTargeta2 {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #010433;
+  width: 100%;
+  color: var(--fondo);
+  border-radius: 2px;
+  padding: 5px;
+  background: linear-gradient(-70deg ,transparent 8%,
+  rgba(255, 215, 0) 5%,
+  rgba(255, 215, 0) 12%,
+  #010433 12%);
+  max-height: 44%;
+  overflow: hidden;
+  align-items: center;
+}
+
 .tarjetas h3{
   font-weight: normal;
   width: 90%;
@@ -76,6 +93,13 @@
 }
 
 .headerTargeta h3{
+  width: 90%;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0;
+}
+
+.headerTargeta2 h3{
   width: 90%;
   font-weight: bold;
   font-size: 1rem;
