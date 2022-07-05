@@ -7,13 +7,18 @@
     --negro: #1E1F28;
     --fondo: #ffffff;
     --fondoGris: #FAFAFA;
-    --amarillo:#C9932C;
-    --azul:#3d405b;
+    --amarillo: #C9932C;
+    --azul: #3d405b;
     --size: 1.9rem;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     width: 100%;
-    height:100vh;
+    height: 100vh;
 }
 
 main {
@@ -22,17 +27,20 @@ main {
     display: grid;
     grid-template-columns: 1fr 3fr;
     background: var(--fondoGris);
-    
+
 }
+
+
 
 .Container_Derecha {
     grid-column: 2/3;
     display: grid;
     grid-template-rows: 0.6fr 0.8fr 3fr 0.6fr;
     margin: 0 7% 0 1%;
-    
-    
-    
+
+
+
+
 }
 
 /*colores: fondo #FFFFFF Letras: #f7f5f0 negro #1E1F28*/
@@ -51,14 +59,15 @@ main {
     height: 100%;
 
 }
-.ContainerCedula form{
+
+.ContainerCedula form {
     display: flex;
     align-items: center;
     height: 100%;
 
 }
 
-.ContainerCedula #Cedula {
+.ContainerCedula #txtCedula {
     border-radius: 5px;
     background-color: var(--fondo);
     height: var(--size);
@@ -94,7 +103,7 @@ main {
 .containerIzquierda {
     margin: 20px 20px;
     padding: 10px;
-    height: 100%;
+    height: 790px;
     width: 250px;
     background-color: var(--fondo);
     border-radius: 5px;
@@ -102,7 +111,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: scroll;
+
 }
+
 .Involucrados {
     display: flex;
     flex-direction: column;
@@ -126,7 +138,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor:pointer; 
+    cursor: pointer;
     cursor: hand;
     transition: all 400ms ease;
     border-right: #A24247 solid 2px;
@@ -134,6 +146,7 @@ main {
     border-top: #A24247 solid 1px;
     border-left: #A24247 solid 1px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
 }
 
 .TarjetaInvolucrado:hover {
@@ -154,8 +167,8 @@ main {
     background-color: transparent;
     color: var(--negro);
     border-radius: 3px 3px 0 0;
-    
-    
+
+
 }
 
 .TarjetaInvolucrado #Contacto {
@@ -171,17 +184,20 @@ main {
     flex-wrap: wrap;
     width: 218px;
 }
-.TarjetaInvolucrado #Cedula{
+
+.TarjetaInvolucrado #Cedula {
     padding-left: 7px;
     font-size: 0.9rem;
     font-weight: normal;
 }
-.TarjetaInvolucrado #ROL{
+
+.TarjetaInvolucrado #ROL {
     padding-right: 7px;
     font-size: 0.9rem;
 }
-.TarjetaInvolucrado #DecoradorTarjeta{
-    background: linear-gradient(30deg ,transparent 30%,rgba(162, 66, 71, 0.5) 10%,rgba(113, 23, 23, 0.5) 50%,#A24247 50%);
+
+.TarjetaInvolucrado #DecoradorTarjeta {
+    background: linear-gradient(30deg, transparent 30%, rgba(162, 66, 71, 0.5) 10%, rgba(113, 23, 23, 0.5) 50%, #A24247 50%);
     /*#711717
     rgba(113, 23, 23, 0.5)*/
     height: 15px;
@@ -204,8 +220,8 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    
-    
+
+
 }
 
 .RegistroCaso #NombreCaso {
@@ -238,12 +254,12 @@ main {
 
 .RegistroCaso #enProceso {
     color: #A24247;
-    
+
 }
 
 .RegistroCaso #terminado {
     color: #548273;
-    
+
 
 }
 
@@ -260,6 +276,7 @@ main {
     text-align: center;
     margin: 5px;
 }
+
 .RegistroCaso #NuevoCaso span {
     position: relative;
     transition: 0.4s;
@@ -273,10 +290,12 @@ main {
     right: -15px;
     transition: 0.4s;
 }
-.RegistroCaso #NuevoCaso:hover span{
-padding-right: 15px;
+
+.RegistroCaso #NuevoCaso:hover span {
+    padding-right: 15px;
 }
-.RegistroCaso #NuevoCaso:hover span:after{
+
+.RegistroCaso #NuevoCaso:hover span:after {
     opacity: 1;
     right: 0;
 }
@@ -382,7 +401,7 @@ padding-right: 15px;
     background: var(--negro);
     padding: 0 10px;
     font-size: 1rem;
-    
+
     border: var(--negro) solid 2px;
 }
 
@@ -392,7 +411,7 @@ padding-right: 15px;
     border-radius: 3px;
     padding: 0 10px;
     font-size: 1em;
-    
+
     font-weight: normal;
     border: var(--negro) solid 1px;
 }
@@ -438,7 +457,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 1.8rem;
     border-radius: 3px;
     text-align: center;
-    
+
     border: var(--negro) solid 1px;
 }
 
@@ -447,7 +466,7 @@ input[type=number]::-webkit-outer-spin-button {
     background: var(--negro);
     border-radius: 3px;
     width: 100%;
-    
+
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -474,10 +493,11 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     align-items: center;
 }
+
 .RegistroAudiencia .GuardarNotificar h3 {
     position: absolute;
     left: 53%;
-    
+
 }
 
 .RegistroAudiencia .btnGN {
@@ -491,12 +511,14 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     text-align: center;
 }
-.RegistroAudiencia .btnGN span{
+
+.RegistroAudiencia .btnGN span {
     position: relative;
     transition: 0.4s;
     display: inline-block;
 }
-.RegistroAudiencia .btnGN span::after{
+
+.RegistroAudiencia .btnGN span::after {
     content: '»';
     opacity: 0;
     position: absolute;
@@ -506,40 +528,44 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-.RegistroAudiencia #Guardar{
+.RegistroAudiencia #Guardar {
     background: var(--fondoGris);
 }
-.RegistroAudiencia #Notificar{
+
+.RegistroAudiencia #Notificar {
     background: var(--negro);
     color: var(--fondo);
 }
 
-.RegistroAudiencia .btnGN:hover span{
+.RegistroAudiencia .btnGN:hover span {
     padding-right: 15px;
 }
-.RegistroAudiencia .btnGN:hover span::after{
+
+.RegistroAudiencia .btnGN:hover span::after {
     opacity: 1;
     right: 0;
-    
+
 }
 
-.RegistroAudiencia #Notificar:hover{
+.RegistroAudiencia #Notificar:hover {
     background: var(--amarillo);
     color: var(--fondo);
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 }
 
-.RegistroAudiencia #Guardar:hover{
+.RegistroAudiencia #Guardar:hover {
     background: var(--fondo);
-    box-shadow:  1px 1px 5px rgba(0, 0, 0, 1);
-    
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+
 }
-.containerBtnBajos{
+
+.containerBtnBajos {
     width: 100%;
     display: flex;
     justify-content: center;
-    
+
 }
+
 .BotonesBajos {
     display: flex;
     flex-wrap: wrap;
@@ -552,7 +578,8 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 20px;
     width: 400px;
 }
-.BotonesBajos .btnVA{
+
+.BotonesBajos .btnVA {
     margin: 0 12px;
     height: 45px;
     padding: 0 10px;
@@ -566,12 +593,14 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     width: 163px;
 }
-.BotonesBajos span{
+
+.BotonesBajos span {
     position: relative;
     display: inline-block;
     transition: 0.4s;
 }
-.BotonesBajos span::after{
+
+.BotonesBajos span::after {
     content: '»';
     position: absolute;
     opacity: 0;
@@ -580,16 +609,83 @@ input[type=number]::-webkit-outer-spin-button {
     top: 0;
 }
 
-.btnVA:hover span{
+.btnVA:hover span {
     padding-right: 15px;
 
 }
-.btnVA:hover span::after{
+
+.btnVA:hover span::after {
     opacity: 1;
     right: 0;
 
 }
 
-.BotonesBajos .btnVA:hover{
+.BotonesBajos .btnVA:hover {
     background: var(--azul);
+}
+
+.vf {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+}
+
+#añadirInvolucrado {
+    width: 400px;
+    height: 450px;
+    background-color: #A24247;
+    border-radius: 5px;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+#añadirInvolucrado form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+
+}
+
+#añadirInvolucrado form .añIn {
+    height: var(--size);
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 0 5px;
+
+}
+
+#añadirInvolucrado #btnAñadir {
+    transition: all 0.4s ease;
+}
+
+#añadirInvolucrado #btnAñadir:hover {
+    background-color: var(--amarillo);
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.8);
+    transform: translate(-0.4%);
+}
+
+#añadirInvolucrado #btnCerrar {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 3px;
+    border: none;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+}
+
+#añadirInvolucrado #btnCerrar:hover {
+    background-color: var(--amarillo);
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.8);
 }

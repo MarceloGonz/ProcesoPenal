@@ -1,0 +1,764 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-07-04 01:51:13
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 216 (class 1259 OID 33245)
+-- Name: Audiencias; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Audiencias" (
+    "IdAudiencias" bigint NOT NULL,
+    "IdCasos" bigint NOT NULL,
+    "DireccionLugar" text NOT NULL,
+    "NombreLugar" text NOT NULL,
+    "FechaAudiencia" character varying(12) NOT NULL,
+    "FechaCreacion" character varying(12) NOT NULL,
+    "HoraAudiencia" character varying(5) NOT NULL,
+    "DescripcionAudiencia" text NOT NULL,
+    "EstadoAudiencia" character varying(30) NOT NULL,
+    "NumeroAudiencia" smallint
+);
+
+
+ALTER TABLE public."Audiencias" OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 33244)
+-- Name: Audiencias_IdAudiencia_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Audiencias_IdAudiencia_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Audiencias_IdAudiencia_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3395 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Audiencias_IdAudiencia_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Audiencias_IdAudiencia_seq" OWNED BY public."Audiencias"."IdAudiencias";
+
+
+--
+-- TOC entry 214 (class 1259 OID 33236)
+-- Name: Casos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Casos" (
+    "IdCasos" bigint NOT NULL,
+    "NombreCaso" text NOT NULL,
+    "EstadoCaso" character varying(30) NOT NULL,
+    "Categoria" character varying(100) NOT NULL,
+    "FechaCreacion" character varying(12) NOT NULL,
+    "FechaFin" character varying(12),
+    "CodigoProceso" character varying(15) NOT NULL
+);
+
+
+ALTER TABLE public."Casos" OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 33235)
+-- Name: Casos_IdCaso_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Casos_IdCaso_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Casos_IdCaso_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3396 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: Casos_IdCaso_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Casos_IdCaso_seq" OWNED BY public."Casos"."IdCasos";
+
+
+--
+-- TOC entry 221 (class 1259 OID 33328)
+-- Name: Contactos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Contactos" (
+    "IdContactos" bigint NOT NULL,
+    "IdPersona" bigint,
+    "TipoContacto" character varying(50),
+    "ValorContacto" character varying(100)
+);
+
+
+ALTER TABLE public."Contactos" OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 33327)
+-- Name: Contactos_IdContacto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Contactos_IdContacto_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Contactos_IdContacto_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3397 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: Contactos_IdContacto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Contactos_IdContacto_seq" OWNED BY public."Contactos"."IdContactos";
+
+
+--
+-- TOC entry 212 (class 1259 OID 33229)
+-- Name: Usuarios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Usuarios" (
+    "IdUsuarios" bigint NOT NULL,
+    "IdPersona" bigint NOT NULL,
+    "RolUsuario" character varying(50) NOT NULL,
+    "Usuario" character varying(100) NOT NULL,
+    "Clave" character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public."Usuarios" OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 33228)
+-- Name: Contactos_IdContactos_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Contactos_IdContactos_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Contactos_IdContactos_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3398 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: Contactos_IdContactos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Contactos_IdContactos_seq" OWNED BY public."Usuarios"."IdUsuarios";
+
+
+--
+-- TOC entry 223 (class 1259 OID 33339)
+-- Name: FechaNotificaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."FechaNotificaciones" (
+    "IdFechaNotificaciones" bigint NOT NULL,
+    "IdNotificaciones" bigint NOT NULL,
+    "fnFecha" character varying(15) NOT NULL,
+    "fnHora" character varying(10)
+);
+
+
+ALTER TABLE public."FechaNotificaciones" OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 33338)
+-- Name: FechaNotificaciones_IdFechaNotificacion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."FechaNotificaciones_IdFechaNotificacion_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."FechaNotificaciones_IdFechaNotificacion_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3399 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: FechaNotificaciones_IdFechaNotificacion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."FechaNotificaciones_IdFechaNotificacion_seq" OWNED BY public."FechaNotificaciones"."IdFechaNotificaciones";
+
+
+--
+-- TOC entry 219 (class 1259 OID 33264)
+-- Name: Notificaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Notificaciones" (
+    "IdNotificaciones" bigint NOT NULL,
+    "IdPersona" bigint,
+    "IdCaso" bigint NOT NULL,
+    "TipoNotificacion" character varying(15) NOT NULL,
+    "TipoFechaNotificacion" character varying(15),
+    "HoraNotificacion" character varying(10),
+    "FechaNotificacion" character varying(15)
+);
+
+
+ALTER TABLE public."Notificaciones" OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 33263)
+-- Name: NotificacionIndividual_IdNotificacion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."NotificacionIndividual_IdNotificacion_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."NotificacionIndividual_IdNotificacion_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3400 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: NotificacionIndividual_IdNotificacion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."NotificacionIndividual_IdNotificacion_seq" OWNED BY public."Notificaciones"."IdNotificaciones";
+
+
+--
+-- TOC entry 210 (class 1259 OID 33222)
+-- Name: Personas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Personas" (
+    "IdPersonas" bigint NOT NULL,
+    apellidos character varying(100),
+    nombres character varying(100) NOT NULL,
+    cedula character varying(15) NOT NULL
+);
+
+
+ALTER TABLE public."Personas" OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 33253)
+-- Name: PersonasAudiencia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."PersonasAudiencia" (
+    "IdPersonas" bigint NOT NULL,
+    "IdAudiencias" bigint NOT NULL,
+    "RolPersona" character varying(40) NOT NULL
+);
+
+
+ALTER TABLE public."PersonasAudiencia" OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 33221)
+-- Name: Personas_IdPersonas_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Personas_IdPersonas_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Personas_IdPersonas_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3401 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: Personas_IdPersonas_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Personas_IdPersonas_seq" OWNED BY public."Personas"."IdPersonas";
+
+
+--
+-- TOC entry 3201 (class 2604 OID 33248)
+-- Name: Audiencias IdAudiencias; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Audiencias" ALTER COLUMN "IdAudiencias" SET DEFAULT nextval('public."Audiencias_IdAudiencia_seq"'::regclass);
+
+
+--
+-- TOC entry 3200 (class 2604 OID 33239)
+-- Name: Casos IdCasos; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Casos" ALTER COLUMN "IdCasos" SET DEFAULT nextval('public."Casos_IdCaso_seq"'::regclass);
+
+
+--
+-- TOC entry 3203 (class 2604 OID 33331)
+-- Name: Contactos IdContactos; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Contactos" ALTER COLUMN "IdContactos" SET DEFAULT nextval('public."Contactos_IdContacto_seq"'::regclass);
+
+
+--
+-- TOC entry 3204 (class 2604 OID 33342)
+-- Name: FechaNotificaciones IdFechaNotificaciones; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."FechaNotificaciones" ALTER COLUMN "IdFechaNotificaciones" SET DEFAULT nextval('public."FechaNotificaciones_IdFechaNotificacion_seq"'::regclass);
+
+
+--
+-- TOC entry 3202 (class 2604 OID 33267)
+-- Name: Notificaciones IdNotificaciones; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Notificaciones" ALTER COLUMN "IdNotificaciones" SET DEFAULT nextval('public."NotificacionIndividual_IdNotificacion_seq"'::regclass);
+
+
+--
+-- TOC entry 3198 (class 2604 OID 33225)
+-- Name: Personas IdPersonas; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Personas" ALTER COLUMN "IdPersonas" SET DEFAULT nextval('public."Personas_IdPersonas_seq"'::regclass);
+
+
+--
+-- TOC entry 3199 (class 2604 OID 33232)
+-- Name: Usuarios IdUsuarios; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Usuarios" ALTER COLUMN "IdUsuarios" SET DEFAULT nextval('public."Contactos_IdContactos_seq"'::regclass);
+
+
+--
+-- TOC entry 3382 (class 0 OID 33245)
+-- Dependencies: 216
+-- Data for Name: Audiencias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Audiencias" ("IdAudiencias", "IdCasos", "DireccionLugar", "NombreLugar", "FechaAudiencia", "FechaCreacion", "HoraAudiencia", "DescripcionAudiencia", "EstadoAudiencia", "NumeroAudiencia") FROM stdin;
+1	1	venezuela y lauro guerrero	judicatura penal 1	06/08/2022	06/08/2022	15:30	primera audiencia	Proxima	1
+2	3	Calle argentina y avenida oswaldo quishpe	Edificio 5 de lo judicial	06/09/2022	04/07/2022	12:55	Atropello causa urgente presentarse sin falta	guardado	1
+3	4	Calle argentina y avenida oswaldo quishpe	Edificio 5 de lo judicial	06/09/2022	04/07/2022	12:55	Atropello causa urgente presentarse sin falta	guardado	1
+4	4	Calle argentina y avenida oswaldo quishpe	Edificio 5 de lo judicial	06/09/2022	04/07/2022	12:55	Atropello causa urgente presentarse sin falta	guardado	2
+5	4	Calle argentina y avenida oswaldo quishpe	Edificio 5 de lo judicial	06/09/2022	04/07/2022	12:55	Atropello causa urgente presentarse sin falta	guardado	3
+6	3	Calle argentina y avenida oswaldo quishpe	Edificio 5 de lo judicial	06/09/2022	04/07/2022	12:55	Atropello causa urgente presentarse sin falta	guardado	2
+\.
+
+
+--
+-- TOC entry 3380 (class 0 OID 33236)
+-- Dependencies: 214
+-- Data for Name: Casos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Casos" ("IdCasos", "NombreCaso", "EstadoCaso", "Categoria", "FechaCreacion", "FechaFin", "CodigoProceso") FROM stdin;
+1	Caso malta orta	En progreso	Judicial	06/09/2022		AB155
+2	Atropello maria	en proceso	Judicial	06/09/2022	N/A	15GH
+3	Atropello maria	en proceso	Judicial	06/09/2022	N/A	15GH
+4	Atropello maria	en proceso	Judicial	06/09/2022	N/A	15GH
+\.
+
+
+--
+-- TOC entry 3387 (class 0 OID 33328)
+-- Dependencies: 221
+-- Data for Name: Contactos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Contactos" ("IdContactos", "IdPersona", "TipoContacto", "ValorContacto") FROM stdin;
+1	2	whatsapp	0994561173
+2	2	correo	andre_noe@gmail.com
+3	8	whatsapp	0994466778
+\.
+
+
+--
+-- TOC entry 3389 (class 0 OID 33339)
+-- Dependencies: 223
+-- Data for Name: FechaNotificaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."FechaNotificaciones" ("IdFechaNotificaciones", "IdNotificaciones", "fnFecha", "fnHora") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3385 (class 0 OID 33264)
+-- Dependencies: 219
+-- Data for Name: Notificaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Notificaciones" ("IdNotificaciones", "IdPersona", "IdCaso", "TipoNotificacion", "TipoFechaNotificacion", "HoraNotificacion", "FechaNotificacion") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3376 (class 0 OID 33222)
+-- Dependencies: 210
+-- Data for Name: Personas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Personas" ("IdPersonas", apellidos, nombres, cedula) FROM stdin;
+1	GONZALEZ GONZALES	JEFFERSON MARCELO	1105182479
+2	GONZALEZ GONZALEZ	ANDREA NOEHMI	1104117492
+3	GONZALEZ GONZALEZ	DIANA GUADALUPE	1104117484
+4	GONZALEZ RIVERA	PETRONILA VICTORIA	1101910006
+5	GONZALEZ GONZALES	CRISTIAN STIVEN	1105182473
+6	CABRERA CABEZA	LUIS JOSE	1105182687
+7	CABRERA CABEZA	LUIS JOSE	1105182686
+8	CABRERA CABEZA	LUIS JOSE	1105182685
+\.
+
+
+--
+-- TOC entry 3383 (class 0 OID 33253)
+-- Dependencies: 217
+-- Data for Name: PersonasAudiencia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."PersonasAudiencia" ("IdPersonas", "IdAudiencias", "RolPersona") FROM stdin;
+2	3	Acusado
+2	4	Acusado
+2	5	Acusado
+2	6	Juez
+3	6	Acusado
+\.
+
+
+--
+-- TOC entry 3378 (class 0 OID 33229)
+-- Dependencies: 212
+-- Data for Name: Usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Usuarios" ("IdUsuarios", "IdPersona", "RolUsuario", "Usuario", "Clave") FROM stdin;
+1	1	administrador	marcelo@gmail.com	12345
+2	5	usuario	cristian@gmial.com	12345
+\.
+
+
+--
+-- TOC entry 3402 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Audiencias_IdAudiencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Audiencias_IdAudiencia_seq"', 1, true);
+
+
+--
+-- TOC entry 3403 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: Casos_IdCaso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Casos_IdCaso_seq"', 1, true);
+
+
+--
+-- TOC entry 3404 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: Contactos_IdContacto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Contactos_IdContacto_seq"', 2, true);
+
+
+--
+-- TOC entry 3405 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: Contactos_IdContactos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Contactos_IdContactos_seq"', 1, true);
+
+
+--
+-- TOC entry 3406 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: FechaNotificaciones_IdFechaNotificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."FechaNotificaciones_IdFechaNotificacion_seq"', 1, false);
+
+
+--
+-- TOC entry 3407 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: NotificacionIndividual_IdNotificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."NotificacionIndividual_IdNotificacion_seq"', 1, false);
+
+
+--
+-- TOC entry 3408 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: Personas_IdPersonas_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Personas_IdPersonas_seq"', 1, true);
+
+
+--
+-- TOC entry 3214 (class 2606 OID 33252)
+-- Name: Audiencias Audiencias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Audiencias"
+    ADD CONSTRAINT "Audiencias_pkey" PRIMARY KEY ("IdAudiencias");
+
+
+--
+-- TOC entry 3212 (class 2606 OID 33243)
+-- Name: Casos Casos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Casos"
+    ADD CONSTRAINT "Casos_pkey" PRIMARY KEY ("IdCasos");
+
+
+--
+-- TOC entry 3223 (class 2606 OID 33378)
+-- Name: Contactos Contactos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Contactos"
+    ADD CONSTRAINT "Contactos_pkey" PRIMARY KEY ("IdContactos");
+
+
+--
+-- TOC entry 3226 (class 2606 OID 33344)
+-- Name: FechaNotificaciones FechaNotificaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."FechaNotificaciones"
+    ADD CONSTRAINT "FechaNotificaciones_pkey" PRIMARY KEY ("IdFechaNotificaciones");
+
+
+--
+-- TOC entry 3219 (class 2606 OID 33269)
+-- Name: Notificaciones Notificaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Notificaciones"
+    ADD CONSTRAINT "Notificaciones_pkey" PRIMARY KEY ("IdNotificaciones");
+
+
+--
+-- TOC entry 3206 (class 2606 OID 33227)
+-- Name: Personas Personas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Personas"
+    ADD CONSTRAINT "Personas_pkey" PRIMARY KEY ("IdPersonas");
+
+
+--
+-- TOC entry 3208 (class 2606 OID 33234)
+-- Name: Usuarios Usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Usuarios"
+    ADD CONSTRAINT "Usuarios_pkey" PRIMARY KEY ("IdUsuarios");
+
+
+--
+-- TOC entry 3215 (class 1259 OID 33275)
+-- Name: fki_AudieciasCaso_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_AudieciasCaso_FK" ON public."Audiencias" USING btree ("IdCasos");
+
+
+--
+-- TOC entry 3209 (class 1259 OID 33292)
+-- Name: fki_ContactosPersonas_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_ContactosPersonas_FK" ON public."Usuarios" USING btree ("IdPersona");
+
+
+--
+-- TOC entry 3224 (class 1259 OID 33337)
+-- Name: fki_ContactosUsuarios_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_ContactosUsuarios_FK" ON public."Contactos" USING btree ("IdPersona");
+
+
+--
+-- TOC entry 3227 (class 1259 OID 33350)
+-- Name: fki_FechaNotificacionesNotificaiones_Fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_FechaNotificacionesNotificaiones_Fk" ON public."FechaNotificaciones" USING btree ("IdNotificaciones");
+
+
+--
+-- TOC entry 3220 (class 1259 OID 33310)
+-- Name: fki_NotificacionIndividualCasos_Fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_NotificacionIndividualCasos_Fk" ON public."Notificaciones" USING btree ("IdCaso");
+
+
+--
+-- TOC entry 3221 (class 1259 OID 33304)
+-- Name: fki_NotificacionIndividualPersonas_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_NotificacionIndividualPersonas_FK" ON public."Notificaciones" USING btree ("IdPersona");
+
+
+--
+-- TOC entry 3216 (class 1259 OID 33322)
+-- Name: fki_PersonasAudienciaAudiencias_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_PersonasAudienciaAudiencias_FK" ON public."PersonasAudiencia" USING btree ("IdAudiencias");
+
+
+--
+-- TOC entry 3217 (class 1259 OID 33316)
+-- Name: fki_PersonasAudienciaPersonas_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_PersonasAudienciaPersonas_FK" ON public."PersonasAudiencia" USING btree ("IdPersonas");
+
+
+--
+-- TOC entry 3210 (class 1259 OID 33281)
+-- Name: fki_c; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_c ON public."Usuarios" USING btree ("IdPersona");
+
+
+--
+-- TOC entry 3229 (class 2606 OID 33282)
+-- Name: Audiencias AudieciasCaso_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Audiencias"
+    ADD CONSTRAINT "AudieciasCaso_FK" FOREIGN KEY ("IdCasos") REFERENCES public."Casos"("IdCasos") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3234 (class 2606 OID 33332)
+-- Name: Contactos ContactosUsuarios_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Contactos"
+    ADD CONSTRAINT "ContactosUsuarios_FK" FOREIGN KEY ("IdPersona") REFERENCES public."Personas"("IdPersonas") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3235 (class 2606 OID 33345)
+-- Name: FechaNotificaciones FechaNotificacionesNotificaiones_Fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."FechaNotificaciones"
+    ADD CONSTRAINT "FechaNotificacionesNotificaiones_Fk" FOREIGN KEY ("IdNotificaciones") REFERENCES public."Notificaciones"("IdNotificaciones") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3232 (class 2606 OID 33305)
+-- Name: Notificaciones NotificacionesCasos_Fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Notificaciones"
+    ADD CONSTRAINT "NotificacionesCasos_Fk" FOREIGN KEY ("IdCaso") REFERENCES public."Casos"("IdCasos") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3233 (class 2606 OID 33299)
+-- Name: Notificaciones NotificacionesPersonas_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Notificaciones"
+    ADD CONSTRAINT "NotificacionesPersonas_FK" FOREIGN KEY ("IdPersona") REFERENCES public."Personas"("IdPersonas") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3231 (class 2606 OID 33317)
+-- Name: PersonasAudiencia PersonasAudienciaAudiencias_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PersonasAudiencia"
+    ADD CONSTRAINT "PersonasAudienciaAudiencias_FK" FOREIGN KEY ("IdAudiencias") REFERENCES public."Audiencias"("IdAudiencias") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3230 (class 2606 OID 33311)
+-- Name: PersonasAudiencia PersonasAudienciaPersonas_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PersonasAudiencia"
+    ADD CONSTRAINT "PersonasAudienciaPersonas_FK" FOREIGN KEY ("IdPersonas") REFERENCES public."Personas"("IdPersonas") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 3228 (class 2606 OID 33287)
+-- Name: Usuarios UsuariosPersonas_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Usuarios"
+    ADD CONSTRAINT "UsuariosPersonas_FK" FOREIGN KEY ("IdPersona") REFERENCES public."Personas"("IdPersonas") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+-- Completed on 2022-07-04 01:51:15
+
+--
+-- PostgreSQL database dump complete
+--
+
