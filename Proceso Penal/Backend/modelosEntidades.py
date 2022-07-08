@@ -16,13 +16,16 @@ class Contacto(BaseModel):
     tipoContacto : str
     ValorContacto : str
 
+class addContacto(BaseModel):
+    idPersona : int
+    tipoContacto : str
+    ValorContacto : str
+
 
 class Involucrado(BaseModel):
-    IdPersona : int
     apellidos : str
     nombres : str
     cedula : str
-    RolPersona : str
     contacto : List[Contacto]
 
 class InvolucradoDatos(BaseModel):

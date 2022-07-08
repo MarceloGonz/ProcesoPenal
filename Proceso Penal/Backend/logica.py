@@ -1,4 +1,6 @@
 from ast import If
+
+from sqlalchemy import true
 from conexionQuery import *
 
 def validarCredenciales (credenciales):
@@ -34,7 +36,6 @@ def buscarInvolucrado (cedula):
             contacto["tipoContacto"] = cont[2]
             contacto["valorContacto"] = cont[3]
             contactos.append(contacto)
-
         invo["contactos"]= contactos
 
         return invo
@@ -45,8 +46,8 @@ def ingresarInvolucrado (involucrado):
         idPersona = insertarPersonas(involucrado)
         for con in involucrado["contacto"]:
             insertarContacto(con,idPersona)
-        return True
-    return False
+        return idPersona
+    return res
 
 def guardarAudiencia (audiencia):
     respuesta = buscarCasoId(audiencia["IdCasos"])
@@ -83,7 +84,9 @@ def traerCasos ():
     
     return listaCasos;
         
-
+def addContacto(contacto):
+    insertarContacto(contacto,contacto['idPersona'])
+    return True
 
 
     

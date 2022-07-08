@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.post("/InUsuario")
 def ingresarUsuario (usuario: mE.usuario):
     inUsu(usuario.dict())
@@ -31,7 +30,12 @@ def ingresarUsuario (usuario: mE.usuario):
 
 @app.post("/InInvolucrado")
 def inInvolucrado(involucrado: mE.Involucrado):
-    lg.ingresarInvolucrado(involucrado.dict())
+    respuesta = lg.ingresarInvolucrado(involucrado.dict())
+    return respuesta
+
+@app.post("/agregarContacto")
+def inContacto(Contacto: mE.addContacto):
+    lg.addContacto(Contacto.dict())
     return True
 
 @app.post("/GuardarAudiencia")
@@ -48,12 +52,10 @@ def validarUsuario (usuario, clave):
     return respuesta
 
 
-
 @app.get("/buscarInvolucrado/{cedula}")
 def buscarInvolucrado (cedula):
     respuesta = lg.buscarInvolucrado(cedula)
     return respuesta
-
 
 @app.get("/traerCasos")
 def traerCasos ():
