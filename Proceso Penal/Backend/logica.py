@@ -1,6 +1,6 @@
 from ast import If
 
-from sqlalchemy import true
+
 from conexionQuery import *
 
 def validarCredenciales (credenciales):
