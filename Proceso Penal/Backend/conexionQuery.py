@@ -78,7 +78,7 @@ def insertarAudiencia(audiencia):
     LastInsert = ultimoInsert("Audiencias")
     lastId = LastInsert[0]+1
     query = """INSERT INTO public."Audiencias"(
-	"IdAudiencias", "IdCaso", "DireccionLugar", "NombreLugar", "FechaAudiencia", "FechaCreacion", "HoraAudiencia", "DescripcionAudiencia", "EstadoAudiencia", "NumeroAudiencia")
+	"IdAudiencias", "IdCasos", "DireccionLugar", "NombreLugar", "FechaAudiencia", "FechaCreacion", "HoraAudiencia", "DescripcionAudiencia", "EstadoAudiencia", "NumeroAudiencia")
 	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""
     cursor.execute(query, (lastId, audiencia["IdCasos"], audiencia["direccionAudiencia"], audiencia["lugarAudiencia"], audiencia["fechaAudiencia"],
                    audiencia["fechaCreacionAudiencia"], audiencia["horaAudiencia"], audiencia["descripcionAudiencia"], audiencia["estadoAudiencia"], audiencia["numeroAudiencia"]))
@@ -115,6 +115,13 @@ def buscarUsuarioCorreo(credenciales):
 def buscarPersonCedula(cedula):
     query = f"""SELECT * FROM public."Personas"
     WHERE "cedula" = '{cedula}' """
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
+
+def buscarPersonId(idPersona):
+    query = f"""SELECT * FROM public."Personas"
+    WHERE "IdPersonas" = '{idPersona}' """
     cursor.execute(query)
     row = cursor.fetchone()
     return row

@@ -1,28 +1,35 @@
-function mostarRegsitro() {
-    cedula = document.querySelector('#txtCedula').value;
-    console.log(cedula);
-    if (cedula == "") {
+import { GuardarCasoAPI } from "./conexionAPI.js"; 
 
+
+const btnCedula = document.querySelector('#btnCedula');
+btnCedula.addEventListener("click",mostarRegsitro);
+
+function mostarRegsitro() {
+    let cedula = document.querySelector('#txtCedula').value;
+    if (cedula == "") {
+        alert("ingrese un numero de cedula")
     } else {
-        vf = document.querySelector('#añadirInvolucrado');
+        let vf = document.querySelector('#añadirInvolucrado');
         vf.style.display = "flex";
         document.getElementById('vfCedula').value = cedula;
     }
-
-
 }
+
+const btnAñadir = document.querySelector('#btnAñadir');
+btnAñadir.addEventListener("click",añadirInvolucrado);
+
 function añadirInvolucrado() {
-    vf = document.querySelector('#añadirInvolucrado');
-    nombres = vf.querySelector('#vfNombres').value;
-    apellidos = vf.querySelector('#vfApellidos').value;
-    cedula = vf.querySelector('#vfCedula').value;
-    contacto = vf.querySelector('#vfContacto').value;
-    rol = vf.querySelector('#vfRoles');
-    rol2 = rol.options[rol.selectedIndex].value;
-    tarjeta = `<div class="TarjetaInvolucrado" >
+    let vf = document.querySelector('#añadirInvolucrado');
+    let nombres = vf.querySelector('#vfNombres').value;
+    let apellidos = vf.querySelector('#vfApellidos').value;
+    let cedula = vf.querySelector('#vfCedula').value;
+    let contacto = vf.querySelector('#vfContacto').value;
+    let rol = vf.querySelector('#vfRoles');
+    let rol2 = rol.options[rol.selectedIndex].value;
+    let tarjeta = `<div class="TarjetaInvolucrado" >
     <h2 id="NombreInvolucrado">
     <span id="spanApellidoInvolucrado">${apellidos}</span> 
-    <span id="spanNombreInvolucrado ">${nombres}</span> 
+    <span id="spanNombreInvolucrado">${nombres}</span> 
     </h2>
     <h3 id="Contacto">Contacto <span id="spanContacto">${contacto}</span> </h3>
     <div class="TextoBajo">
@@ -39,48 +46,62 @@ function añadirInvolucrado() {
     vf.querySelector('#vfContacto').value = "";
 }
 
-function GuardarCaso() {
+const Guardar = document.querySelector('#Guardar');
+Guardar.addEventListener("click",GuardarCaso);
 
+function GuardarCaso() {
     var Audiencia = {};
+    let contador = 0;
     
 
+    let EstadoCasoB = document.querySelector('#cbEstadoProceso').checked;
+    let hora = document.querySelector('#Hora').value;
+    let minutos = document.querySelector('#Minutos').value;
+    let categoriaCaso = document.querySelector('#Categorias');
+    let tarjetas = document.querySelectorAll(".TarjetaInvolucrado");
+    
+
+    
+    //cambiar IdCasos, fechaCreacionCaso,fechaFinCaso,fechaCreacionAudiencia
+    //involucrados.contacto y idPersona 
+    Audiencia.IdCasos = -1;
     Audiencia.NombreCaso = document.querySelector('#NombreCaso').value;
-    EstadoCasoB = document.querySelector('#cbEstadoProceso').checked;
     Audiencia.EstadoCaso = (EstadoCasoB ? "Terminado":"En proceso");
-    Audiencia.CodigoCaso;
+    Audiencia.CodigoCaso = "001AB";
     Audiencia.fechaCreacionCaso = "casoLabel";
     Audiencia.fechaFinCaso = "casoLabel";
-
-    Audiencia.direccionAudiencia = document.querySelector('#NombreCaso').value;
-    Audiencia.lugarAudiencia = document.querySelector('#NombreCaso').value;
-    Audiencia.fechaAudiencia = document.querySelector('#NombreCaso').value;
-    Audiencia.fechaCreacionAudiencia = casoLabel;
-    hora = document.querySelector('#NombreCaso').value;
-    minutos = document.querySelector('#NombreCaso').value;
-    Audiencia.horaAudiencia = hora+minutos;
-    categoriaCaso = document.querySelector('#vfRoles');
     Audiencia.Categoria = categoriaCaso.options[categoriaCaso.selectedIndex].value;
-    Audiencia.descripcionAudiencia = document.querySelector('#NombreCaso').value;
-    
+    Audiencia.direccionAudiencia = document.querySelector('#Direcion').value;
+    Audiencia.lugarAudiencia = document.querySelector('#NombreLugar').value;
+    Audiencia.fechaAudiencia = document.querySelector('#FechaAudiencia').value;
+    Audiencia.fechaCreacionAudiencia = "casoLabel";
+    Audiencia.horaAudiencia = hora+minutos;
+    Audiencia.descripcionAudiencia = document.querySelector('#DescripcionAudiencia').value;
     Audiencia.estadoAudiencia = "guardado";
-    Audiencia.listaInvolucrados = casoLabel;
+    Audiencia.listaInvolucrados=[];
+    
 
 
-    tarjetas = document.querySelectorAll(".TarjetaInvolucrado");
-    tarjetas.forEach(element => {
-        apellidos = element.querySelector('#spanApellidosInvolucrado').value;
-        nombres = element.querySelector('#spanNombreInvolucrado').value;
-        contato = element.querySelector('#spanContacto').value;
-        cedula = element.querySelector('#spanCedula').value;
-        rol = element.querySelector('#ROL').value;
-    })
+    
+    if(tarjetas.length > 0){
+        tarjetas.forEach(element => {
+            let involucrados = {}; 
+            involucrados.IdPersona = 1
+            involucrados.RolPersona = element.querySelector('#ROL').innerHTML;
+            Audiencia.listaInvolucrados.push(involucrados);
+        })
+    }
 
-    console
+    GuardarCasoAPI(Audiencia);
 
 }
 
+
+const btnCerrar = document.querySelector('#btnCerrar');
+btnCerrar.addEventListener("click",ocultarRegsitro);
+
 function ocultarRegsitro() {
-    vf = document.querySelector('#añadirInvolucrado');
+    let vf = document.querySelector('#añadirInvolucrado');
     vf.querySelector('#vfNombres').value = "";
     vf.querySelector('#vfApellidos').value = "";
     vf.querySelector('#vfCedula').value = "";

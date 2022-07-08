@@ -8,7 +8,7 @@
     <title>Registro</title>
     <link rel="stylesheet" href="css/EstilosRegistro.css">
     <link rel="stylesheet" href="css/header.css">
-    <script defer src="js/resgistro.js" ></script>
+    <script defer src="js/resgistro.js" type="module"></script>
 
 </head>
 
@@ -43,6 +43,7 @@
         <section class="Involucrados">
             <h3 id="involucrados">Involucrados</h3>
             <div class="containerIzquierda" id="containerTarjetas">
+                <!-- 
                 <div class="TarjetaInvolucrado">
                     <h2 id="NombreInvolucrado">Marjan Atadir Celi Salinas  </h2>
                     <h3 id="Contacto">Contacto</h3>
@@ -51,7 +52,7 @@
                         <h3 id="ROL">ROL</h3>
                         <div id="DecoradorTarjeta"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </section>
         
@@ -60,7 +61,7 @@
                 <div class="ContainerCedula">
                     <form action="#">
                         <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="txtCedula">
-                        <input type="button" id="btnCedula"  value="+" onclick="registo:mostarRegsitro()">
+                        <input type="button" id="btnCedula"  value="+" >
                         
                     </form>
                 </div>
@@ -101,9 +102,9 @@
                         <textarea name="DescripcionAudiencia" id="DescripcionAudiencia" cols="50" rows="10"></textarea>
                     </div>
                     <div class="GuardarNotificar">
-                        <button id="Guardar" class="btnGN"><span>Guardar</span></button>
+                        <button type="button" id="Guardar" class="btnGN"><span>Guardar</span></button>
                         <h3>CODIGO DEL PROCESO</h3>
-                        <button id="Notificar" class="btnGN" onclick="registro:GuardarCaso()"><span>Notificar</span> </button>
+                        <button type="button" id="Notificar" class="btnGN" "><span>Notificar</span> </button>
                     </div>
                 </form>
 
@@ -111,7 +112,7 @@
             <div class="containerBtnBajos">
                 <div class="BotonesBajos">
                     <button id="ver" class="btnVA"><span>Ver audiencias</span></button>
-                    <button id="añadir" class="btnVA"><span>Añadir audiencias</span></button>
+                    <button  id="añadir" class="btnVA"><span>Añadir audiencias</span></button>
                 </div>
             </div>
         </div>
@@ -120,7 +121,7 @@
 
     <section class="vf" id="añadirInvolucrado">
         <form action="#">
-            <input type="button" value="X" id="btnCerrar" onclick="registros:ocultarRegsitro()">
+            <input type="button" value="X" id="btnCerrar" >
             <input type="text" name="" id="vfApellidos" class="añIn" placeholder="Apellidos">
             <input type="text" name="" id="vfNombres" class="añIn" placeholder="Nombres">
             <input type="text" name="" id="vfCedula" readonly="readonly" class="añIn" placeholder="Cedula">
@@ -130,7 +131,7 @@
                 <option value="abogado">abogado</option>
                 <option value="testigo">testigo</option>
             </select>
-            <input type="button" value="Añadir" class="añIn" id="btnAñadir" onclick="registros:añadirInvolucrado()">
+            <input type="button" value="Añadir" class="añIn" id="btnAñadir"">
         </form>
     </section>
 </body>

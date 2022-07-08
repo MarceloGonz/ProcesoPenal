@@ -2,14 +2,16 @@ from ast import If
 from conexionQuery import *
 
 def validarCredenciales (credenciales):
+    respuesta = {}
     usuario = buscarUsuarioCorreo(credenciales)
-    print(usuario[4])
-    print(credenciales['clave'])
-    if(usuario[4]==credenciales['clave']):
-        return True
-    else:
-        return False
-    
+    if(usuario != None):
+        if(usuario[4] == credenciales['clave']):
+            datosUsuario = buscarPersonId(usuario[1])
+            respuesta["nombres"] = datosUsuario[2]
+            respuesta["apellidos"] = datosUsuario[1]
+            respuesta["IdPersonas"] = datosUsuario[0]
+            return respuesta
+    return respuesta
 def ingresarInvolucradoAudiencia (involucrados):
     for inv in involucrados:
         pass

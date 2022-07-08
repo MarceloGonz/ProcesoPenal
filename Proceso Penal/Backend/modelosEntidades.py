@@ -25,6 +25,10 @@ class Involucrado(BaseModel):
     RolPersona : str
     contacto : List[Contacto]
 
+class InvolucradoDatos(BaseModel):
+    IdPersona : int
+    RolPersona : str
+
 class Caso(BaseModel):
        
     IdCasos : int
@@ -40,8 +44,7 @@ class Caso(BaseModel):
     fechaCreacionAudiencia : str
     horaAudiencia : str
     descripcionAudiencia : str
-    numeroAudiencia : int
     estadoAudiencia : str
-    listaInvolucrados : List[Involucrado]
+    listaInvolucrados : List[InvolucradoDatos]
 
     
