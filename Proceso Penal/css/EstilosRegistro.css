@@ -462,7 +462,7 @@ main {
     border-radius: 3px;
     height: 25px;
     border: var(--negro) solid 2px;
-    color: var(--fondo);
+    color: var(--negro);
 }
 
 input[type=number]::-webkit-inner-spin-button,
