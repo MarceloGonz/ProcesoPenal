@@ -59,7 +59,23 @@ def buscarInvolucrado (cedula):
     respuesta = lg.buscarInvolucrado(cedula)
     return respuesta
 
-@app.get("/traerCasos")
-def traerCasos ():
-    respuesta = lg.traerCasos()
+@app.get("/proximasAudiencias/{pagina}")
+def proximasAudiencias (pagina):
+    respuesta = lg.proximasAudiencias(pagina)
+    return respuesta
+
+@app.get("/casosTerminados/{pagina}")
+def casosTerminados (pagina):
+    respuesta = lg.CasosTerminados(pagina)
+    return respuesta
+
+@app.get("/casosProceso/{pagina}")
+def casosProceso (pagina):
+    respuesta = lg.CasosProceso(pagina)
+    return respuesta
+
+
+@app.get("/traerCasos/{pagina}")
+def traerCasos (pagina):
+    respuesta = lg.traerCasos(pagina)
     return respuesta

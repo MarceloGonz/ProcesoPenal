@@ -98,6 +98,9 @@ function GuardarCaso() {
     let tarjetas = document.querySelectorAll(".TarjetaInvolucrado");
     
 
+
+    
+
     
     //cambiar IdCasos, fechaCreacionCaso,fechaFinCaso,fechaCreacionAudiencia
     //involucrados.contacto y idPersona 
@@ -106,7 +109,12 @@ function GuardarCaso() {
     Audiencia.EstadoCaso = (EstadoCasoB ? "Terminado":"En proceso");
     Audiencia.CodigoCaso = "001AB";
     Audiencia.fechaCreacionCaso = hoy;
-    Audiencia.fechaFinCaso = "N/A";
+
+    if(EstadoCasoB){
+        Audiencia.fechaFinCaso = hoy;
+    }else{
+        Audiencia.fechaFinCaso = "";
+    }
     Audiencia.Categoria = categoriaCaso.options[categoriaCaso.selectedIndex].value;
     Audiencia.direccionAudiencia = document.querySelector('#Direcion').value;
     Audiencia.lugarAudiencia = document.querySelector('#NombreLugar').value;

@@ -16,9 +16,31 @@ export async  function buscarCedula(clave)  {
     return validador;
 }
 
+export async  function proximasAudiencias(pagina)  {
+    const respuesta = await fetch(urlBase+
+    `/proximasAudiencias/${pagina}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
+export async  function casosProceso(pagina)  {
+    const respuesta = await fetch(urlBase+
+    `/casosProceso/${pagina}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
+export async  function casosTerminados(pagina)  {
+    const respuesta = await fetch(urlBase+
+    `/casosTerminados/${pagina}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
 
 /* METODOS POST */ 
 export async function GuardarCasoAPI(audiencia)  {
+    console.log(audiencia);
     const respuesta = await fetch(urlBase+
     `/GuardarAudiencia`,
     {method:'POST',

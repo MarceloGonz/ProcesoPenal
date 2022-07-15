@@ -9,9 +9,13 @@ def ultimoInsert(tableName):
     #query = f'SELECT * FROM {tableName} ORDER BY {id} DESC LIMIT 1'
     cursor.execute(query)
     row = cursor.fetchone()
-
+    if(row==None):
+        respaldo = [0]
+        return respaldo
+    else:
+      return row
     # añadir verificacion se row es de tipo None
-    return row
+    
 
 
 def insertarPersonas(persona):
@@ -65,10 +69,17 @@ def insertarUsuario(usuario):
 def insertarCaso(caso):
     LastInsert = ultimoInsert("Casos")
     lastId = LastInsert[0]+1
-    query = """INSERT INTO public."Casos"(
+    if(caso["fechaFinCaso"]==""):
+        query = """INSERT INTO public."Casos"(
+	"IdCasos", "NombreCaso", "EstadoCaso", "Categoria", "FechaCreacion", "CodigoProceso")
+	VALUES (%s, %s, %s, %s, %s, %s);"""
+        cursor.execute(query, (lastId, caso["NombreCaso"], caso["EstadoCaso"], caso["Categoria"],
+                   caso["fechaCreacionCaso"], caso["CodigoCaso"]))
+    else:
+        query = """INSERT INTO public."Casos"(
 	"IdCasos", "NombreCaso", "EstadoCaso", "Categoria", "FechaCreacion", "FechaFin", "CodigoProceso")
 	VALUES (%s, %s, %s, %s, %s, %s, %s);"""
-    cursor.execute(query, (lastId, caso["NombreCaso"], caso["EstadoCaso"], caso["Categoria"],
+        cursor.execute(query, (lastId, caso["NombreCaso"], caso["EstadoCaso"], caso["Categoria"],
                    caso["fechaCreacionCaso"], caso["fechaFinCaso"], caso["CodigoCaso"]))
     con.commit()
     return lastId
@@ -143,13 +154,25 @@ def buscarCasoId(idCaso):
     return row
 
 
-def buscarCasos():
-    query = """SELECT "IdCasos","NombreCaso","EstadoCaso","Categoria","CodigoProceso"
+def buscarCasosPaginas(offset):
+    query = f"""SELECT *
     FROM public."Casos"
-	LIMIT 10"""
+    ORDER BY "FechaCreacion"  DESC
+	LIMIT 20 OFFSET {offset}"""
     cursor.execute(query)
     lista = cursor.fetchall()
     return lista
+
+def buscarCasosEstado(offset,estado):
+    query = f"""SELECT *
+    FROM public."Casos"
+    WHERE "EstadoCaso" = '{estado}'
+    ORDER BY "IdCasos"  DESC
+	LIMIT 20 OFFSET {offset}"""
+    cursor.execute(query)
+    lista = cursor.fetchall()
+    return lista
+
 
 def buscarUltimaAudienciaIdCaso (IdCaso):
     query = f"""SELECT "NumeroAudiencia" 
@@ -159,6 +182,26 @@ def buscarUltimaAudienciaIdCaso (IdCaso):
     DESC LIMIT 1"""
     cursor.execute(query)
     row = cursor.fetchone()
+    return row
+
+def buscarAudienciasIdCaso (IdCaso):
+    query = f"""SELECT *
+    FROM "Audiencias"  
+    WHERE "IdCasos" = {IdCaso} 
+    ORDER BY "NumeroAudiencia" 
+    ASC """
+    cursor.execute(query)
+    row = cursor.fetchall()
+    return row
+
+def buscarAudienciasProximas (offset):
+    query = f"""SELECT *
+    FROM "Audiencias"  
+    WHERE "EstadoAudiencia" = 'proxima' ORDER BY 
+    "FechaAudiencia" DESC 
+    LIMIT 20 OFFSET {offset}"""
+    cursor.execute(query)
+    row = cursor.fetchall()
     return row
 
 def cerrarConexion():

@@ -12,7 +12,13 @@
   --amarillo: #C9932C;
   --azul: #3d405b;
 }
+.oculto {
+  display: none;
+}
 
+::-webkit-scrollbar {
+  display: none;
+}
 .containerMain {
   width: 100vw;
   height: 91vh;
@@ -93,6 +99,13 @@
   padding-top: 5px;
 }
 
+.tarjetasTerminados{
+  height: 160px;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content:  space-between ,flex-start;
+}
+
 .tarjetas {
   display: flex;
   flex-wrap: wrap;
@@ -170,10 +183,15 @@
 }
 
 .casosTer .terminados{
+  overflow: hidden;
+  min-width: 240px;
   border-right: #3F846D solid 2px;
   border-bottom: #3F846D solid 2px;
   border-top: #3F846D solid 1px;
   border-left: #3F846D solid 1px;
+  margin-bottom: 4px;
+  
+
 }
 
 .headerTerminados{
