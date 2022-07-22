@@ -145,6 +145,46 @@ main {
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
 }
+.Abogado {
+    padding: 0;
+    border-radius: 3px;
+    height: 120px;
+    width: 220px;
+    background-color: var(--fondo);
+    color: var(--negro);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    cursor: hand;
+    transition: all 400ms ease;
+    border-right: #42a28f solid 2px;
+    border-bottom: #42a28f solid 2px;
+    border-top: #42a28f solid 1px;
+    border-left: #42a28f solid 1px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+.Juez  {
+    padding: 0;
+    border-radius: 3px;
+    height: 120px;
+    width: 220px;
+    background-color: var(--fondo);
+    color: var(--negro);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    cursor: hand;
+    transition: all 400ms ease;
+    border-right: #8542a2 solid 2px;
+    border-bottom: #8542a2 solid 2px;
+    border-top: #8542a2 solid 1px;
+    border-left: #8542a2 solid 1px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
 
 .TarjetaInvolucrado:hover {
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
@@ -210,6 +250,28 @@ main {
 
 .TarjetaInvolucrado #DecoradorTarjeta {
     background: linear-gradient(30deg, transparent 30%, rgba(162, 66, 71, 0.5) 10%, rgba(113, 23, 23, 0.5) 50%, #A24247 50%);
+    /*#711717
+    rgba(113, 23, 23, 0.5)*/
+    height: 15px;
+    width: 218px;
+    margin-bottom: 4px;
+    margin-top: 3px;
+    
+
+}
+.TarjetaInvolucrado #DecoradorTarjetaAbogado {
+    background: linear-gradient(30deg, transparent 30%, rgba(66, 160, 162, 0.5) 10%, rgba(66, 160, 162, 0.5) 50%, #42a28f 50%);
+    /*#711717
+    rgba(113, 23, 23, 0.5)*/
+    height: 15px;
+    width: 218px;
+    margin-bottom: 4px;
+    margin-top: 3px;
+    
+
+}
+.TarjetaInvolucrado #DecoradorTarjetaJuez {
+    background: linear-gradient(30deg, transparent 30%, rgba(162, 66, 144, 0.5) 10%, rgba(162, 66, 144, 0.5) 50%, #8542a2 50%);
     /*#711717
     rgba(113, 23, 23, 0.5)*/
     height: 15px;

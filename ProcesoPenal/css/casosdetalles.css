@@ -9,7 +9,7 @@
     --fondoGris: #FAFAFA;
     --verde: #7FFF00;
     --azul: #010433;
-    --amarillo: #FFD700;
+    --amarillo: #D8C50A;
     --rojo: #8B0000;
     --size: 1.9rem;
 }
@@ -23,6 +23,7 @@ main{
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  background-color: var(--negro);
 }
 
 .DetalleAudiencia{
@@ -154,6 +155,7 @@ main{
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color: transparent;
     
 
 }
@@ -169,6 +171,7 @@ main{
     border-radius: 5px;
     width: 400px;
     height: 100px;
+    background-color: transparent;
 }
 
 .BotonesBajos .btnVA {
@@ -179,7 +182,7 @@ main{
     border-radius: 5px;
     transition: all 400ms ease;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
-    background-color: var(--negro);
+    background-color: var(--amarillo);
     color: var(--fondo);
     display: inline-block;
     cursor: pointer;
@@ -190,6 +193,7 @@ main{
     position: relative;
     display: inline-block;
     transition: 0.4s;
+    font-weight: bold;
 }
 
 .BotonesBajos span::after {
