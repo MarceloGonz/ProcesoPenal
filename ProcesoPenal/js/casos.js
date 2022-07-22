@@ -13,16 +13,14 @@ if(audiencias != undefined){
         let FechaAudiencia = caso.FechaAudiencia;
         let NumeroAudiencia = caso.NumeroAudiencia;
 
-        let tarjeta = `<div class="tarjetas proximas">
-        <div class="headerTargeta">
-        <span id="spanIdCasoAu" class="oculto">${idCaso}</span>
-        <span id="spanIdAudienciaAu" class="oculto">${IdAudiencias}</span>
+        let tarjeta = `<a href="Registro.html?idCa=${idCaso},idAu=${IdAudiencias}" class="tarjetas proximas">
+        <div class="headerTargeta headerAudiencia">
         <h3 id="nombreCaso">Caso: ${Nombrecaso}</h3>
         </div>
         <h3>Audiencia ${NumeroAudiencia} </h3>
         <h3>Fecha: ${FechaAudiencia}</h3>
         <h3>Codigo del caso: ${CodigoCaso}</h3>
-        </div>`;
+        </a>`;
 
         document.querySelector('.tarjetasProximas').innerHTML += tarjeta;
     })
@@ -36,14 +34,14 @@ if(casosPro != undefined){
         let CodigoCaso = caso.CodigoCaso;
         let FechaCreacion = caso.FechaCreacion;
 
-        let tarjeta = `<div class="tarjetas proceso">
-        <div class="headerTargeta">
-        <span id="spanIdCasoPro" class="oculto">${idCaso}</span>
+        let tarjeta = `<a href="CasosDetalle.html?idCa=${idCaso}" class="tarjetas proceso">
+        <div class="headerTargeta headerProceso">
+
         <h3 id="nombreCaso">Caso: ${Nombrecaso}</h3>
         </div>
         <h3>Creado: ${FechaCreacion}</h3>
         <h3>Codigo del caso: ${CodigoCaso}</h3>
-        </div>`;
+        </a>`;
 
         document.querySelector('.tarjetasProceso').innerHTML += tarjeta;
     })
@@ -58,16 +56,33 @@ if(casosTer != undefined){
         let FechaCreacion = caso.FechaCreacion;
         let Fechafin = caso.Fechafin;
 
-        let tarjeta = `<div class="tarjetas terminados ">
+        let tarjeta = `<a href="CasosDetalle.html?idCa=${idCaso}" class="tarjetas terminados ">
         <div class="headerTargeta headerTerminados">
-        <span id="spanIdCasoTer" class="oculto">${idCaso}</span>
+
         <h3 id="nombreCaso">Caso: ${Nombrecaso}</h3>
         </div>
         <h3>Creado: ${FechaCreacion}</h3>
         <h3>Finalizado: ${Fechafin}</h3>
         <h3>Codigo del caso: ${CodigoCaso}</h3>
-        </div>`;
+        </a>`;
 
         document.querySelector('.tarjetasTerminados').innerHTML += tarjeta;
     })
 }
+/*
+const TargetasCaso = document.querySelectorAll('.tarjetas');
+
+TargetasCaso.forEach(TargetaCaso =>{
+    let element = TargetaCaso;
+    TargetaCaso.addEventListener("click",AbrirCaso);
+})
+
+
+function AbrirCaso(){
+    console.log("hola");
+    //let idTargeta = element.querySelector('#spanIdCaso');
+    //console.log(idTargeta);
+    
+
+}
+*/

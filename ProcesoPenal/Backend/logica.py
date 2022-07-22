@@ -58,12 +58,13 @@ def guardarAudiencia (audiencia):
         audiencia["IdCasos"]=insertarCaso(audiencia)
         
     numeroAudiencia = buscarUltimaAudienciaIdCaso(audiencia["IdCasos"])
-    
+    print(numeroAudiencia)
 
     if (numeroAudiencia==None):
         audiencia["numeroAudiencia"] = 1
     else:
-        audiencia["numeroAudiencia"] = (numeroAudiencia[9]+1)
+        print(numeroAudiencia)
+        audiencia["numeroAudiencia"] = (numeroAudiencia[0]+1)
 
     audiencia['fechaCreacionAudiencia'] = darmatoFecha(audiencia['fechaCreacionAudiencia'])
     
@@ -138,28 +139,79 @@ def CasosTerminados (pagina):
     return listaCasos;
 
 
-def traerCasos (pagina): 
-    offset = 20*pagina
-    listaCasos = []
-    respuesta = buscarCasosPaginas()
-    if(respuesta==None):
+def traerCaso (idCaso): 
+    respuestaCaso = buscarCasoId(idCaso)
+    caso = {}
+    listaAu = []
+    if(respuestaCaso==None):
         pass
     else:
-        for row in respuesta:
-            caso = {}
-            caso["IdCasos"] = row[0]
-            caso["Nombrecaso"] = row[1]
-            caso["EstadoCaso"] = row[2]
-            caso["Categoria"] = row[3]
-            caso["CodigoCaso"] = row[4]
-            caso["numeroAudiencia"] = buscarUltimaAudienciaIdCaso(row[0])
-            listaCasos.append(caso)
-    
-    return listaCasos;
+        respuestaAudiencias = buscarAudienciasIdCaso(respuestaCaso[0])
+        caso["IdCasos"] = respuestaCaso[0]
+        caso["NombreCaso"] = respuestaCaso[1]
+        caso["Estado"] = respuestaCaso[2]
+        if(respuestaAudiencias != None):
+            for row in respuestaAudiencias:
+                RespuestaInvolucrados = buscarInvolucradosIdAudiencia(row[0])
+                au = {}
+
+                if(RespuestaInvolucrados != None):
+                    au["IdAudiencias"] = row[0]
+                    au["numeroAu"] = row[9]
+                    au["involucrados"] = len(RespuestaInvolucrados)
+                    au["fecha"] = quitarFormatoFecha(row[4])
+                    au["estado"] = row[8]
+                    
+                else:
+                    au["involucrados"] = 0
+
+                listaAu.append(au)
+
+            caso["Audiencias"] = listaAu
+    return caso;
+
+def buscarCaso (idCaso,idAu): 
+    respuestaCaso = buscarCasoId(idCaso)
+    caso = {}
+    listaAu = []
+    if(respuestaCaso==None):
+        pass
+    else:
+        respuestaAudiencias = buscarAudienciasIdAu(idAu)
+        caso["IdCasos"] = respuestaCaso[0]
+        caso["NombreCaso"] = respuestaCaso[1]
+        caso["Estado"] = respuestaCaso[2]
+        caso["Categoria"] = respuestaCaso[3]
+        caso["CodigoProceso"] = respuestaCaso[6]
+        if(respuestaAudiencias != None):
+            au = {}
+            au["IdAudiencias"] = respuestaAudiencias[0]
+            au["DireccionLugar"] = respuestaAudiencias[2]
+            au["NombreLugar"] = respuestaAudiencias[3]
+            au["FechaAudiencia"] = respuestaAudiencias[4]
+            au["HoraAudiencia"] = respuestaAudiencias[6]
+            au["DescripcionAudiencia"] = respuestaAudiencias[7]
+            au["Involucrados"] = []
+
+            involucrados = buscarInvolucradosIdAudiencia(respuestaAudiencias[0])
+            if(involucrados != None):
+                for row in involucrados:
+                    #mejorar esta parte creando una sentencia que conbine personasAudiencia y personas
+                    respuestaPersona = buscarPersonId(row[0])
+                    involucrado = buscarInvolucrado(respuestaPersona[3])
+                    involucrado['rol']=row[2]
+                    au["Involucrados"].append(involucrado)
+
+            listaAu.append(au)
+            caso["Audiencias"] = listaAu
+    return caso;
         
 def addContacto(contacto):
-    insertarContacto(contacto,contacto['idPersona'])
-    return True
+    validar = buscarPersonId(contacto['idPersona'])
+    if(validar!=None):
+        insertarContacto(contacto,contacto['idPersona'])
+        return True
+    return False
 
 
 def darmatoFecha (fecha):
@@ -169,7 +221,6 @@ def darmatoFecha (fecha):
     return fechaFomat;
 
 def quitarFormatoFecha (fecha):
-
     fechaFomat = datetime.strftime(fecha, '%d/%m/%Y' )
     return fechaFomat;
 

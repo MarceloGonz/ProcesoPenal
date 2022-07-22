@@ -75,7 +75,14 @@ def casosProceso (pagina):
     return respuesta
 
 
-@app.get("/traerCasos/{pagina}")
-def traerCasos (pagina):
-    respuesta = lg.traerCasos(pagina)
+@app.get("/BuscarAudienciasCaso/{idCaso}")
+def traerAudienciasCaso (idCaso):
+    respuesta = lg.traerCaso(idCaso)
     return respuesta
+
+@app.get("/BuscarCaso/{idCaso},{idAu}")
+def BuscarCaso (idCaso,idAu):
+    respuesta = lg.buscarCaso(idCaso,idAu)
+    return respuesta
+
+

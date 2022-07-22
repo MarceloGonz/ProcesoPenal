@@ -33,11 +33,23 @@ def insertarPersonas(persona):
 def insertarContacto(contactoPersona, idPersona):
     LastInsert = ultimoInsert("Contactos")
     lastId = LastInsert[0]+1
-    query = """INSERT INTO public."Contactos"
+    query = """INSERT INTO "Contactos"
     ("IdContactos", "IdPersona", "TipoContacto", 
     "ValorContacto") VALUES (%s, %s, %s, %s);"""
     cursor.execute(
         query, (lastId, idPersona, contactoPersona["tipoContacto"], contactoPersona["ValorContacto"]))
+    con.commit()
+    return True
+
+
+def ActulizarContacto(contactoPersona, idPersona):
+    LastInsert = ultimoInsert("Contactos")
+    lastId = LastInsert[0]+1
+    query = f"""UPDATE "Contactos"
+	SET "TipoContacto"='{contactoPersona["tipoContacto"]}', "ValorContacto"='{contactoPersona["ValorContacto"]}'
+	WHERE "IdPersona"={idPersona};
+    """
+    cursor.execute(query)
     con.commit()
     return True
 
@@ -190,6 +202,24 @@ def buscarAudienciasIdCaso (IdCaso):
     WHERE "IdCasos" = {IdCaso} 
     ORDER BY "NumeroAudiencia" 
     ASC """
+    cursor.execute(query)
+    row = cursor.fetchall()
+    return row
+def buscarAudienciasIdAu (IdAu):
+    query = f"""SELECT *
+    FROM "Audiencias"  
+    WHERE "IdAudiencias" = {IdAu}  
+    """
+    cursor.execute(query)
+    row = cursor.fetchone()
+    return row
+
+def buscarInvolucradosIdAudiencia (IdAudiencia):
+    query = f"""SELECT *
+    FROM "PersonasAudiencia"  
+    WHERE "IdAudiencias" = {IdAudiencia}
+    ORDER BY "IdAudiencias"
+    """
     cursor.execute(query)
     row = cursor.fetchall()
     return row

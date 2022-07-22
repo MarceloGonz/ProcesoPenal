@@ -6,7 +6,7 @@
   font-size: 16px;
   --negro: #1E1F28;
   --fondo: #ffffff;
-  --fondoGris: #c7c1c1;
+  --fondoGris: #f5f5f5;
   --fondoBlanco:#ffffff;
   /*#B4BBEE  FAFAFA*/
   --amarillo: #C9932C;
@@ -19,13 +19,18 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+a{
+  text-decoration: none;
+  color: var(--negro);
+}
 .containerMain {
   width: 100vw;
   height: 91vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 4fr 1fr;
-  background-color: var(--fondo);
+  background-color: var(--negro);
 }
 
 .proximasAu {
@@ -111,15 +116,26 @@
   flex-wrap: wrap;
   height: 135px;
   width: 240px;
-  border-right: #A24247 solid 2px;
-  border-bottom: #A24247 solid 2px;
-  border-top: #A24247 solid 1px;
-  border-left: #A24247 solid 1px;
   border-radius: 3px;
   margin: 5px;
   padding: 5px;
   align-items: flex-start;
   transition: all 0.4s;
+}
+.proceso {
+  border-right: #A24247 solid 2px;
+  border-bottom: #A24247 solid 2px;
+  border-top: #A24247 solid 1px;
+  border-left: #A24247 solid 1px;
+
+}
+
+.proximas {
+  border-right: #010433 solid 2px;
+  border-bottom: #010433 solid 2px;
+  border-top: #010433 solid 1px;
+  border-left: #010433 solid 1px;
+
 }
 
 .headerTargeta {
@@ -130,15 +146,18 @@
   color: var(--fondo);
   border-radius: 2px;
   padding: 5px;
-  background: linear-gradient(-70deg ,transparent 8%,
-  rgba(162, 66, 71, 0.5) 5%,
-  rgba(113, 23, 23, 0.5) 12%,
-  #A24247 12%);
+
   max-height: 44%;
   overflow: hidden;
   align-items: center;
 }
 
+.headerAudiencia{
+  background: linear-gradient(-70deg ,transparent 8%,
+  rgba(4, 5, 51, 0.5) 5%,
+  rgba(4, 5, 51, 0.5) 12%,
+  #010433 12%);
+}
 .tarjetas h3{
   font-weight: normal;
   width: 90%;

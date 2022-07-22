@@ -1,10 +1,91 @@
 import { GuardarCasoAPI } from "./conexionAPI.js"; 
 import { buscarCedula } from "./conexionAPI.js";
 import {addInvolucradoAPI} from "./conexionAPI.js";
+import {addContactoAPI} from "./conexionAPI.js";
+import {BuscarAudienciasCaso} from "./conexionAPI.js";
+import {BuscarCasoAudiencia} from "./conexionAPI.js";
 
 
 let datosInvolucrado ;
 let listaInvolucradosAudiencia = []; 
+
+var url = window.location.href;
+let valitatorIdAu = url.indexOf("idAu");
+let valitatorIdCa = url.indexOf("idCa");
+let idCaso = -1;
+let idAu = -1;
+
+
+if(valitatorIdCa != -1 && valitatorIdAu == -1){
+    idCaso = url.slice(valitatorIdCa+5, url.length);
+    idCaso = parseInt(idCaso);
+    let caso = await BuscarAudienciasCaso(idCaso);
+    mostrarCaso(caso);
+}else if (valitatorIdCa != -1 && valitatorIdAu != -1){
+    let valitatorComa = url.indexOf(",");
+    idCaso = url.slice(valitatorIdCa+5, valitatorComa);
+    idAu = url.slice(valitatorIdAu+5, url.length);
+    let caso = await BuscarCasoAudiencia(idCaso,idAu);
+    mostrarCaso(caso);
+    mostrarAudiencia(caso.Audiencias[0]);
+    mostrarInvolucrados (caso.Audiencias[0].Involucrados);
+
+
+    BuscarCasoAudiencia
+}
+
+
+function mostrarCaso (caso){
+    if(caso.NombreCaso!= undefined){
+        document.querySelector('#NombreCaso').value = caso.NombreCaso;
+        document.querySelector('#NombreCaso').disabled = true;
+        if(caso.Estado == "Terminado"){
+            document.querySelector('#cbEstadoProceso').click();
+        }
+        document.querySelector('#Categorias').value = caso.Categoria;
+    }
+}
+
+function mostrarAudiencia (audiencia){
+    if(audiencia.IdAudiencias!= undefined){
+        document.querySelector('#Direcion').value = audiencia.DireccionLugar;
+        document.querySelector('#NombreLugar').value = audiencia.NombreLugar;
+        document.querySelector('#FechaAudiencia').value = audiencia.FechaAudiencia;
+        document.querySelector('#Hora').value = audiencia.HoraAudiencia.slice(0, 2);
+        document.querySelector('#Minutos').value = audiencia.HoraAudiencia.slice(2, 4);
+        document.querySelector('#DescripcionAudiencia').value = audiencia.DescripcionAudiencia;
+        
+    }
+}
+
+function mostrarInvolucrados (involucrados){
+    if(involucrados.length > 0){
+        involucrados.forEach(element => {
+            let tarjeta = `<div class="TarjetaInvolucrado" >
+            <h2 id="NombreInvolucrado">
+            <span id="spanApellidoInvolucrado">${element.apellidos}</span> 
+            <span id="spanNombreInvolucrado">${element.nombres}</span> 
+            </h2>
+            <h3 id="Contacto">Contacto <span id="spanContacto">${element.contactos[0].valorContacto}</span> </h3>
+            <div class="TextoBajo">
+                <h3 id="Cedula">Cedula <span id="spanCedula">${element.cedula}</span> </h3>
+                <h3 id="ROL">${element.rol}</h3>
+                <div id="DecoradorTarjeta"></div>
+            </div>
+            </div>`;
+            document.getElementById('containerTarjetas').innerHTML += tarjeta;
+        })
+        
+        
+    }
+}
+
+
+
+
+
+
+
 
 const btnCedula = document.querySelector('#btnCedula');
 btnCedula.addEventListener("click",mostarRegsitro);
@@ -49,7 +130,19 @@ async function añadirInvolucrado() {
     let rol2 = rol.options[rol.selectedIndex].value;
     
     if (datosInvolucrado != undefined) {
-        listaInvolucradosAudiencia.push(datosInvolucrado.IdPersona);
+        if(datosInvolucrado.contactos.length > 0){
+            listaInvolucradosAudiencia.push(datosInvolucrado.IdPersona);
+        }else{
+            listaInvolucradosAudiencia.push(datosInvolucrado.IdPersona);
+            let Contacto = {};
+            Contacto.idPersona = datosInvolucrado.IdPersona;
+            Contacto.tipoContacto = "whatsapp";
+            Contacto.ValorContacto = contacto;
+            let respuesta = await addContactoAPI(Contacto);
+            console.log("añadir involucrado:")
+            console.log(respuesta)
+        }
+        
     }else{
         var datIn = {};
         datIn.apellidos = apellidos;
@@ -96,15 +189,11 @@ function GuardarCaso() {
     let minutos = document.querySelector('#Minutos').value;
     let categoriaCaso = document.querySelector('#Categorias');
     let tarjetas = document.querySelectorAll(".TarjetaInvolucrado");
-    
-
 
     
-
-    
-    //cambiar IdCasos, fechaCreacionCaso,fechaFinCaso,fechaCreacionAudiencia
+    //cambiar fechaCreacionCaso,fechaFinCaso
     //involucrados.contacto y idPersona 
-    Audiencia.IdCasos = -1;
+    Audiencia.IdCasos = idCaso;
     Audiencia.NombreCaso = document.querySelector('#NombreCaso').value;
     Audiencia.EstadoCaso = (EstadoCasoB ? "Terminado":"En proceso");
     Audiencia.CodigoCaso = "001AB";

@@ -35,7 +35,7 @@ main {
 .Container_Derecha {
     grid-column: 2/3;
     display: grid;
-    grid-template-rows: 0.6fr 0.8fr 3fr 0.6fr;
+    grid-template-rows: 0.6fr 0.8fr 2.5fr 0.6fr;
     margin: 0 7% 0 1%;
 
 }
@@ -229,13 +229,19 @@ main {
     margin: 5px 0;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-    padding: 15px 50px;
+    padding: 5px 50px 5px 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-
-
+}
+.labelTitutlo{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--negro);
+    text-align: center;
+    width: 100%;
+    height: 1.3rem;
 }
 
 .RegistroCaso #NombreCaso {
@@ -394,6 +400,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-content: flex-start;
 }
 
 .RegistroAudiencia #Direcion {
@@ -404,7 +411,7 @@ main {
     background: var(--negro);
     padding: 0 10px;
     font-size: 1rem;
-    margin-top: 10px;
+    margin: 10px 0;
     font-weight: normal;
     color: var(--fondo);
 }
@@ -418,6 +425,7 @@ main {
     font-size: 1rem;
     color: var(--fondo);
     border: var(--negro) solid 2px;
+    margin: 10px 0;
 }
 
 .RegistroAudiencia #FechaAudiencia {
@@ -426,7 +434,7 @@ main {
     border-radius: 3px;
     padding: 0 10px;
     font-size: 1em;
-
+    margin: 10px 0;
     font-weight: normal;
     border: var(--negro) solid 1px;
 }
@@ -438,6 +446,7 @@ main {
     width: 250px;
     justify-content: center;
     align-items: center;
+    margin: 5px 0;
 }
 
 .RegistroAudiencia .HoraAudiencia h3 {
@@ -473,7 +482,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 1.8rem;
     border-radius: 3px;
     text-align: center;
-
+    margin: 10px 0;
     border: var(--negro) solid 1px;
 }
 
@@ -486,6 +495,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: auto;
     display: flex;
     flex-wrap: wrap;
+    margin: 10px 0;
 }
 
 .RegistroAudiencia .containerDescripcion h3 {
@@ -501,6 +511,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     padding: 5px;
     height: 125px;
+    margin-bottom: 3px;
 }
 
 .RegistroAudiencia .GuardarNotificar {
@@ -508,6 +519,7 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    margin-top: 10px;
 }
 
 .RegistroAudiencia .GuardarNotificar h3 {
