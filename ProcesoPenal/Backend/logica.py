@@ -51,12 +51,15 @@ def ingresarInvolucrado (involucrado):
 
 def guardarAudiencia (audiencia):
     respuesta = buscarCasoId(audiencia["IdCasos"])
+
     if (respuesta == None):
         audiencia['fechaCreacionCaso'] = darmatoFecha(audiencia['fechaCreacionCaso'])
         if(audiencia['fechaFinCaso']!= ""):
             audiencia['fechaFinCaso'] = darmatoFecha(audiencia['fechaFinCaso'])
         audiencia["IdCasos"]=insertarCaso(audiencia)
-        
+    else:
+        actualizarCaso(audiencia)
+
     numeroAudiencia = buscarUltimaAudienciaIdCaso(audiencia["IdCasos"])
     print(numeroAudiencia)
 

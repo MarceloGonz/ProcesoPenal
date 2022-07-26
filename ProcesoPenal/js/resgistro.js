@@ -29,9 +29,6 @@ if(valitatorIdCa != -1 && valitatorIdAu == -1){
     mostrarCaso(caso);
     mostrarAudiencia(caso.Audiencias[0]);
     mostrarInvolucrados (caso.Audiencias[0].Involucrados);
-
-
-    BuscarCasoAudiencia
 }
 
 
@@ -324,6 +321,27 @@ function GuardarCaso() {
 
 }
 
+const btnVerAudiencias = document.querySelector('#ver');
+btnVerAudiencias.addEventListener("click",mostrarAudiencias);
+function mostrarAudiencias(){
+    if(idCaso!=-1){
+        window.location = `casosDetalle.html?idCa=${idCaso}`;
+    }else{
+        alert("No existen audiencias")
+    }
+    
+}
+
+const btnAddAudiencia = document.querySelector('#añadir');
+btnAddAudiencia.addEventListener("click",crearAudiencia);
+function crearAudiencia(){
+    if(idCaso!=-1){
+        window.location = `registro.html?idCa=${idCaso}`;
+    }else{
+        alert("No existen audiencias")
+    }
+    
+}
 
 const btnCerrar = document.querySelector('#btnCerrar');
 btnCerrar.addEventListener("click",ocultarRegsitro);
@@ -340,11 +358,8 @@ function ocultarRegsitro() {
 
 }
 
-var notificar = document.getElementById("notificar");
-
-notificar.addEventListener('click',function(){
-    notify();   
-});
+var notificar = document.getElementById("Notificar");
+notificar.addEventListener('click',notify);
 
 function notify(){
     // verificacion de que el navegador soporta notificaciones

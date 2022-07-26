@@ -16,6 +16,14 @@ def ultimoInsert(tableName):
       return row
     # añadir verificacion se row es de tipo None
     
+def actualizarCaso(caso):
+    query = f"""UPDATE "Casos"
+	SET "EstadoCaso"='{caso["EstadoCaso"]}', "Categoria"='{caso["Categoria"]}', "FechaFin"='{caso["fechaFinCaso"]}'
+	WHERE "IdPersona"={caso["IdCasos"]};
+    """
+    cursor.execute(query)
+    con.commit()
+    return True
 
 
 def insertarPersonas(persona):
@@ -43,8 +51,6 @@ def insertarContacto(contactoPersona, idPersona):
 
 
 def ActulizarContacto(contactoPersona, idPersona):
-    LastInsert = ultimoInsert("Contactos")
-    lastId = LastInsert[0]+1
     query = f"""UPDATE "Contactos"
 	SET "TipoContacto"='{contactoPersona["tipoContacto"]}', "ValorContacto"='{contactoPersona["ValorContacto"]}'
 	WHERE "IdPersona"={idPersona};
