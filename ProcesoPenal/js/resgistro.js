@@ -57,80 +57,21 @@ function mostrarAudiencia (audiencia){
 
 function mostrarInvolucrados (involucrados){
     if(involucrados.length > 0){
-        involucrados.forEach(element => {
-            if(element.rol=="juez"){
-                let tarjeta = `<div class="TarjetaInvolucrado Juez" >
-                <h2 id="NombreInvolucrado">
-                <span id="spanApellidoInvolucrado">${element.apellidos}</span> 
-                <span id="spanNombreInvolucrado">${element.nombres}</span> 
-                </h2>
-                <h3 id="Contacto">Contacto <span id="spanContacto">${element.contactos[0].valorContacto}</span> </h3>
-                <div class="TextoBajo">
-                    <h3 id="Cedula">Cedula <span id="spanCedula">${element.cedula}</span> </h3>
-                    <h3 id="ROL">${element.rol}</h3>
-                    <div id="DecoradorTarjetaJuez"></div>
-                </div>
-                </div>`;
-                document.getElementById('containerTarjetas').innerHTML += tarjeta;
-            
-            }else if(element.rol=="abogado"){
-                let tarjeta = `<div class="TarjetaInvolucrado Abogado" >
-                <h2 id="NombreInvolucrado">
-                <span id="spanApellidoInvolucrado">${element.apellidos}</span> 
-                <span id="spanNombreInvolucrado">${element.nombres}</span> 
-                </h2>
-                <h3 id="Contacto">Contacto <span id="spanContacto">${element.contactos[0].valorContacto}</span> </h3>
-                <div class="TextoBajo">
-                    <h3 id="Cedula">Cedula <span id="spanCedula">${element.cedula}</span> </h3>
-                    <h3 id="ROL">${element.rol}</h3>
-                    <div id="DecoradorTarjetaAbogado"></div>
-                </div>
-                </div>`;
-                document.getElementById('containerTarjetas').innerHTML += tarjeta;
-            
-            }else if(element.rol=="testigo"){
-                let tarjeta = `<div class="TarjetaInvolucrado" >
-                <h2 id="NombreInvolucrado">
-                <span id="spanApellidoInvolucrado">${element.apellidos}</span> 
-                <span id="spanNombreInvolucrado">${element.nombres}</span> 
-                </h2>
-                <h3 id="Contacto">Contacto <span id="spanContacto">${element.contactos[0].valorContacto}</span> </h3>
-                <div class="TextoBajo">
-                    <h3 id="Cedula">Cedula <span id="spanCedula">${element.cedula}</span> </h3>
-                    <h3 id="ROL">${element.rol}</h3>
-                    <div id="DecoradorTarjeta"></div>
-                </div>
-                </div>`;
-                document.getElementById('containerTarjetas').innerHTML += tarjeta;
-            
-            }
-/*
-            let tarjeta = `<div class="TarjetaInvolucrado" >
-            <h2 id="NombreInvolucrado">
-            <span id="spanApellidoInvolucrado">${element.apellidos}</span> 
-            <span id="spanNombreInvolucrado">${element.nombres}</span> 
-            </h2>
-            <h3 id="Contacto">Contacto <span id="spanContacto">${element.contactos[0].valorContacto}</span> </h3>
-            <div class="TextoBajo">
-                <h3 id="Cedula">Cedula <span id="spanCedula">${element.cedula}</span> </h3>
-                <h3 id="ROL">${element.rol}</h3>
-                <div id="DecoradorTarjeta"></div>
-            </div>
-            </div>`;
-            document.getElementById('containerTarjetas').innerHTML += tarjeta;
-        */
+        involucrados.forEach(element => 
+            {
+            let datosInvolucrado={};
+            datosInvolucrado.apellidos = element.apellidos;
+            datosInvolucrado.nombres = element.nombres;
+            datosInvolucrado.contacto = element.contactos[0].valorContacto;
+            datosInvolucrado.cedula = element.cedula;
+            datosInvolucrado.rol = element.rol;
+            dibujarTarjetasRol(datosInvolucrado);
+            listaInvolucradosAudiencia.push(element.IdPersona);
             })
         
         
     }
 }
-
-
-
-
-
-
-
 
 const btnCedula = document.querySelector('#btnCedula');
 btnCedula.addEventListener("click",mostarRegsitro);
@@ -165,14 +106,14 @@ const btnAñadir = document.querySelector('#btnAñadir');
 btnAñadir.addEventListener("click",añadirInvolucrado);
 
 async function añadirInvolucrado() { 
-
+    let datosTarjeta = {};
     let vf = document.querySelector('#añadirInvolucrado');
-    let nombres = vf.querySelector('#vfNombres').value;
-    let apellidos = vf.querySelector('#vfApellidos').value;
-    let cedula = vf.querySelector('#vfCedula').value;
-    let contacto = vf.querySelector('#vfContacto').value;
+    datosTarjeta.nombres = vf.querySelector('#vfNombres').value;
+    datosTarjeta.apellidos = vf.querySelector('#vfApellidos').value;
+    datosTarjeta.cedula = vf.querySelector('#vfCedula').value;
+    datosTarjeta.contacto = vf.querySelector('#vfContacto').value;
     let rol = vf.querySelector('#vfRoles');
-    let rol2 = rol.options[rol.selectedIndex].value;
+    datosTarjeta.rol = rol.options[rol.selectedIndex].value;
     
     if (datosInvolucrado != undefined) {
         if(datosInvolucrado.contactos.length > 0){
@@ -184,85 +125,26 @@ async function añadirInvolucrado() {
             Contacto.tipoContacto = "whatsapp";
             Contacto.ValorContacto = contacto;
             let respuesta = await addContactoAPI(Contacto);
+            
             console.log("añadir involucrado:")
             console.log(respuesta)
         }
         
     }else{
         var datIn = {};
-        datIn.apellidos = apellidos;
-        datIn.nombres = nombres;
-        datIn.cedula = cedula;
+        datIn.apellidos = datosTarjeta.apellidos;
+        datIn.nombres = datosTarjeta.nombres;
+        datIn.cedula = datosTarjeta.cedula;
         datIn.contacto = [];
         let inContacto = {};
         inContacto.tipoContacto = "whatsapp";
-        inContacto.ValorContacto = contacto;
+        inContacto.ValorContacto = datosTarjeta.contacto;
         datIn.contacto.push(inContacto);
         let respuesta = await addInvolucradoAPI(datIn);
         listaInvolucradosAudiencia.push(respuesta);
     }
-    /*
-    let tarjeta = `<div class="TarjetaInvolucrado" >
-    <h2 id="NombreInvolucrado">
-    <span id="spanApellidoInvolucrado">${apellidos}</span> 
-    <span id="spanNombreInvolucrado">${nombres}</span> 
-    </h2>
-    <h3 id="Contacto">Contacto <span id="spanContacto">${contacto}</span> </h3>
-    <div class="TextoBajo">
-        <h3 id="Cedula">Cedula <span id="spanCedula">${cedula}</span> </h3>
-        <h3 id="ROL">${rol2}</h3>
-        <div id="DecoradorTarjeta"></div>
-    </div>
-    </div>`;
-
-    document.getElementById('containerTarjetas').innerHTML += tarjeta;
-    */
-    if(rol2=="juez"){
-        let tarjeta = `<div class="TarjetaInvolucrado Juez" >
-        <h2 id="NombreInvolucrado">
-        <span id="spanApellidoInvolucrado">${apellidos}</span> 
-        <span id="spanNombreInvolucrado">${nombres}</span> 
-        </h2>
-        <h3 id="Contacto">Contacto <span id="spanContacto">${contacto}</span> </h3>
-        <div class="TextoBajo">
-            <h3 id="Cedula">Cedula <span id="spanCedula">${cedula}</span> </h3>
-            <h3 id="ROL">${rol2}</h3>
-            <div id="DecoradorTarjetaJuez"></div>
-        </div>
-        </div>`;
-        document.getElementById('containerTarjetas').innerHTML += tarjeta;
     
-    }else if(rol2=="abogado"){
-        let tarjeta = `<div class="TarjetaInvolucrado Abogado" >
-        <h2 id="NombreInvolucrado">
-        <span id="spanApellidoInvolucrado">${apellidos}</span> 
-        <span id="spanNombreInvolucrado">${nombres}</span> 
-        </h2>
-        <h3 id="Contacto">Contacto <span id="spanContacto">${contacto}</span> </h3>
-        <div class="TextoBajo">
-            <h3 id="Cedula">Cedula <span id="spanCedula">${cedula}</span> </h3>
-            <h3 id="ROL">${rol2}</h3>
-            <div id="DecoradorTarjetaAbogado"></div>
-        </div>
-        </div>`;
-        document.getElementById('containerTarjetas').innerHTML += tarjeta;
-    
-    }else if(rol2=="testigo"){
-        let tarjeta = `<div class="TarjetaInvolucrado" >
-        <h2 id="NombreInvolucrado">
-        <span id="spanApellidoInvolucrado">${apellidos}</span> 
-        <span id="spanNombreInvolucrado">${nombres}</span> 
-        </h2>
-        <h3 id="Contacto">Contacto <span id="spanContacto">${contacto}</span> </h3>
-        <div class="TextoBajo">
-            <h3 id="Cedula">Cedula <span id="spanCedula">${cedula}</span> </h3>
-            <h3 id="ROL">${rol2}</h3>
-            <div id="DecoradorTarjeta"></div>
-        </div>
-        </div>`;
-        document.getElementById('containerTarjetas').innerHTML += tarjeta;
-    
-    }
+    dibujarTarjetasRol(datosTarjeta);
     ocultarRegsitro();
 }
 
@@ -296,6 +178,7 @@ function GuardarCaso() {
         Audiencia.fechaFinCaso = "";
     }
     Audiencia.Categoria = categoriaCaso.options[categoriaCaso.selectedIndex].value;
+    Audiencia.IdAudiencias=idAu;
     Audiencia.direccionAudiencia = document.querySelector('#Direcion').value;
     Audiencia.lugarAudiencia = document.querySelector('#NombreLugar').value;
     Audiencia.fechaAudiencia = document.querySelector('#FechaAudiencia').value;
@@ -338,7 +221,7 @@ function crearAudiencia(){
     if(idCaso!=-1){
         window.location = `registro.html?idCa=${idCaso}`;
     }else{
-        alert("No existen audiencias")
+        window.location = `registro.html`;
     }
     
 }
@@ -375,5 +258,53 @@ function notify(){
                 var notificacion = new notificacion("Notificacion Enviada A Los Involucrados") 
             }
         });
+    }
+}
+
+function dibujarTarjetasRol (datosTarjeta){
+    if(datosTarjeta.rol=="juez"){
+        let tarjeta = `<div class="TarjetaInvolucrado Juez" >
+        <h2 id="NombreInvolucrado">
+        <span id="spanApellidoInvolucrado">${datosTarjeta.apellidos}</span> 
+        <span id="spanNombreInvolucrado">${datosTarjeta.nombres}</span> 
+        </h2>
+        <h3 id="Contacto">Contacto <span id="spanContacto">${datosTarjeta.contacto}</span> </h3>
+        <div class="TextoBajo">
+            <h3 id="Cedula">Cedula <span id="spanCedula">${datosTarjeta.cedula}</span> </h3>
+            <h3 id="ROL">${datosTarjeta.rol}</h3>
+            <div id="DecoradorTarjetaJuez"></div>
+        </div>
+        </div>`;
+        document.getElementById('containerTarjetas').innerHTML += tarjeta;
+    
+    }else if(datosTarjeta.rol=="abogado"){
+        let tarjeta = `<div class="TarjetaInvolucrado Abogado" >
+        <h2 id="NombreInvolucrado">
+        <span id="spanApellidoInvolucrado">${datosTarjeta.apellidos}</span> 
+        <span id="spanNombreInvolucrado">${datosTarjeta.nombres}</span> 
+        </h2>
+        <h3 id="Contacto">Contacto <span id="spanContacto">${datosTarjeta.contacto}</span> </h3>
+        <div class="TextoBajo">
+            <h3 id="Cedula">Cedula <span id="spanCedula">${datosTarjeta.cedula}</span> </h3>
+            <h3 id="ROL">${datosTarjeta.rol}</h3>
+            <div id="DecoradorTarjetaAbogado"></div>
+        </div>
+        </div>`;
+        document.getElementById('containerTarjetas').innerHTML += tarjeta;
+    
+    }else if(datosTarjeta.rol=="testigo"){
+        let tarjeta = `<div class="TarjetaInvolucrado" >
+        <h2 id="NombreInvolucrado">
+        <span id="spanApellidoInvolucrado">${datosTarjeta.apellidos}</span> 
+        <span id="spanNombreInvolucrado">${datosTarjeta.nombres}</span> 
+        </h2>
+        <h3 id="Contacto">Contacto <span id="spanContacto">${datosTarjeta.contacto}</span> </h3>
+        <div class="TextoBajo">
+            <h3 id="Cedula">Cedula <span id="spanCedula">${datosTarjeta.cedula}</span> </h3>
+            <h3 id="ROL">${datosTarjeta.rol}</h3>
+            <div id="DecoradorTarjeta"></div>
+        </div>
+        </div>`;
+        document.getElementById('containerTarjetas').innerHTML += tarjeta;
     }
 }

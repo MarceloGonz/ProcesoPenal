@@ -51,30 +51,36 @@ def ingresarInvolucrado (involucrado):
 
 def guardarAudiencia (audiencia):
     respuesta = buscarCasoId(audiencia["IdCasos"])
-
+    
+    #comprobacion casos
     if (respuesta == None):
         audiencia['fechaCreacionCaso'] = darmatoFecha(audiencia['fechaCreacionCaso'])
         if(audiencia['fechaFinCaso']!= ""):
             audiencia['fechaFinCaso'] = darmatoFecha(audiencia['fechaFinCaso'])
         audiencia["IdCasos"]=insertarCaso(audiencia)
     else:
+        audiencia['fechaFinCaso'] = darmatoFecha(audiencia['fechaFinCaso'])
         actualizarCaso(audiencia)
+    #comprobacion audiencias
+    resAu = buscarAudienciasIdAu(audiencia["IdAudiencias"])
+    if(resAu == None):
+        numeroAudiencia = buscarUltimaAudienciaIdCaso(audiencia["IdCasos"])
+        if (numeroAudiencia==None):
+            audiencia["numeroAudiencia"] = 1
+        else:
+            audiencia["numeroAudiencia"] = (numeroAudiencia[0]+1)
 
-    numeroAudiencia = buscarUltimaAudienciaIdCaso(audiencia["IdCasos"])
-    print(numeroAudiencia)
+        audiencia['fechaCreacionAudiencia'] = darmatoFecha(audiencia['fechaCreacionAudiencia'])
 
-    if (numeroAudiencia==None):
-        audiencia["numeroAudiencia"] = 1
+        resId = insertarAudiencia(audiencia)
+        audiencia["IdAudiencias"] = resId
     else:
-        print(numeroAudiencia)
-        audiencia["numeroAudiencia"] = (numeroAudiencia[0]+1)
+        actualizarAudiencia(audiencia)
+        EliminarPersonasAudienciaIdAu(audiencia["IdAudiencias"])
 
-    audiencia['fechaCreacionAudiencia'] = darmatoFecha(audiencia['fechaCreacionAudiencia'])
-    
-    idAudiencia = insertarAudiencia(audiencia)
 
     for per in audiencia["listaInvolucrados"]:
-        insertarPersonasAudiencia(per,idAudiencia)
+        insertarPersonasAudiencia(per,audiencia["IdAudiencias"])
 
 def proximasAudiencias (pagina):
     offset = 20*pagina 

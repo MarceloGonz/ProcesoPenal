@@ -17,14 +17,38 @@ def ultimoInsert(tableName):
     # añadir verificacion se row es de tipo None
     
 def actualizarCaso(caso):
-    query = f"""UPDATE "Casos"
-	SET "EstadoCaso"='{caso["EstadoCaso"]}', "Categoria"='{caso["Categoria"]}', "FechaFin"='{caso["fechaFinCaso"]}'
-	WHERE "IdPersona"={caso["IdCasos"]};
+    query = ""
+    if(caso["fechaFinCaso"]!=""):
+        query = f"""UPDATE "Casos"
+        SET "EstadoCaso"='{caso["EstadoCaso"]}', "Categoria"='{caso["Categoria"]}', "FechaFin"='{caso["fechaFinCaso"]}'
+        WHERE "IdCasos"={caso["IdCasos"]};
+        """
+    else:
+        query = f"""UPDATE "Casos"
+        SET "EstadoCaso"='{caso["EstadoCaso"]}', "Categoria"='{caso["Categoria"]}'
+        WHERE "IdCasos"={caso["IdCasos"]};
+        """
+    cursor.execute(query)
+    con.commit()
+    return True
+
+def actualizarAudiencia(audiencia):
+
+    query = f"""UPDATE "Audiencias"
+    SET "DireccionLugar"='{audiencia["direccionAudiencia"]}', "NombreLugar"='{audiencia["lugarAudiencia"]}', "FechaAudiencia"='{audiencia["fechaAudiencia"]}'
+    , "HoraAudiencia"='{audiencia["horaAudiencia"]}', "DescripcionAudiencia"='{audiencia["descripcionAudiencia"]}'
+    WHERE "IdAudiencias"={audiencia["IdAudiencias"]};
     """
     cursor.execute(query)
     con.commit()
     return True
 
+def EliminarPersonasAudienciaIdAu(idAudiencia):
+    query = f"""DELETE FROM  "PersonasAudiencia"
+    WHERE "IdAudiencias" = {idAudiencia}
+    """
+    cursor.execute(query)
+    con.commit()
 
 def insertarPersonas(persona):
     LastInsert = ultimoInsert("Personas")
@@ -101,7 +125,6 @@ def insertarCaso(caso):
                    caso["fechaCreacionCaso"], caso["fechaFinCaso"], caso["CodigoCaso"]))
     con.commit()
     return lastId
-
 
 def insertarAudiencia(audiencia):
     LastInsert = ultimoInsert("Audiencias")
@@ -239,6 +262,13 @@ def buscarAudienciasProximas (offset):
     cursor.execute(query)
     row = cursor.fetchall()
     return row
+
+def EliminarPersonasAudienciaIdAu(idAudiencia):
+    query = f"""DELETE FROM  "PersonasAudiencia"
+    WHERE "IdAudiencias" = {idAudiencia}
+    """
+    cursor.execute(query)
+    con.commit()
 
 def cerrarConexion():
     con.close()

@@ -41,6 +41,7 @@ class Caso(BaseModel):
     fechaCreacionCaso : str
     fechaFinCaso : str
     Categoria : str
+    IdAudiencias : int
     direccionAudiencia : str
     lugarAudiencia : str
     fechaAudiencia : str
