@@ -23,7 +23,12 @@ main{
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  background-color: var(--negro);
+  margin: 0;
+  padding: 0;
+  background: url(../images/fondo.jpg) no-repeat center top;
+  background-size: cover;
+  font-family: sans-serif;
+  height: 91vh;
 }
 
 .DetalleAudiencia{
@@ -163,7 +168,6 @@ main{
 .BotonesBajos {
     display: flex;
     flex-wrap: wrap;
-    height: min-content;
     padding: 10px 0;
     justify-content: space-around;
     align-items: center;
@@ -182,11 +186,12 @@ main{
     border-radius: 5px;
     transition: all 400ms ease;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
-    background-color: var(--amarillo);
+    background-color: #b9a703c8;
     color: var(--fondo);
     display: inline-block;
     cursor: pointer;
     width: 163px;
+
 }
 
 .BotonesBajos span {

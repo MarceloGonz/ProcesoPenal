@@ -20,7 +20,11 @@
 body {
     width: 100%;
     height: 100vh;
+    
 }
+
+
+
 
 main {
     width: 100%;
@@ -109,21 +113,23 @@ main {
 aside .btnAnimado  {
     padding: 0.8rem 1rem;
     border: none;
-    background: #1f202b;
+    background: #fff;
     cursor: pointer;
-    color: var(--fondo);
+    color: var(--azul);
     border-radius: 5px;
     transition: all 400ms ease;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
     display: inline-block;
     text-align: center;
-    margin: 5px;
-    width: 100%;
+    margin: 10px;
+    width: 95%;
+    font-weight: bold;
 }
 
 aside .btnAnimado span {
     position: relative;
     transition: 0.4s;
+    font-size: 18px;
 }
 
 aside .btnAnimado  span:after {
@@ -145,7 +151,7 @@ aside .btnAnimado:hover span:after {
 }
 
 aside .btnAnimado:hover {
-    background: var(--azul);
+    background: var(--amarillo);
 }
 
 
@@ -370,7 +376,7 @@ aside .btnAnimado:hover {
     font-size: 1rem;
     color: var(--fondo);
     padding: 0 10px;
-    font-weight: normal;
+    font-weight: bold;
     border: var(--negro) solid 2px;
 }
 
@@ -391,12 +397,14 @@ aside .btnAnimado:hover {
 }
 
 .RegistroCaso #enProceso {
-    color: #A24247;
+    color: #fff;
+    background-color: #A24247;
 
 }
 
 .RegistroCaso #terminado {
-    color: #548273;
+    color: #fff;
+    background-color: #548273;
 
 
 }
@@ -491,7 +499,7 @@ aside .btnAnimado:hover {
     padding: 0 10px;
     font-size: 1rem;
     margin: 10px 0;
-    font-weight: normal;
+    font-weight: bold;
     color: var(--fondo);
 }
 
@@ -505,6 +513,7 @@ aside .btnAnimado:hover {
     color: var(--fondo);
     border: var(--negro) solid 2px;
     margin: 10px 0;
+    font-weight: bolder;
 }
 
 .RegistroAudiencia #FechaAudiencia {
@@ -566,7 +575,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .RegistroAudiencia .containerDescripcion {
-    padding: 0 8px;
+    padding: 0 15px;
     background: var(--negro);
     border-radius: 3px;
     width: 100%;
@@ -579,9 +588,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .RegistroAudiencia .containerDescripcion h3 {
     color: var(--fondo);
-    font-size: 1rem;
-    margin: 10px 5px 0 5px;
-    font-weight: normal;
+    margin: 10px 5px 10px 5px;
+    font-weight: bold;
+    font-size: 15px;
 
 }
 
@@ -590,7 +599,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     padding: 5px;
     height: 125px;
-    margin-bottom: 3px;
+    margin-bottom: 13px;
 }
 
 .RegistroAudiencia .GuardarNotificar {

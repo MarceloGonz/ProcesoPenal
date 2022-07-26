@@ -61,7 +61,7 @@
             <section class="Cedula">
                 <div class="ContainerCedula">
                     <form action="#">
-                        <input type="text" name="Cedula" placeholder="Ingrese Cedula" id="txtCedula">
+                        <input type="text" name="Cedula" placeholder="Ingrese su Nro. de Cedula" id="txtCedula">
                         <input type="button" id="btnCedula" value="+">
 
                     </form>
@@ -75,8 +75,8 @@
 
             </aside>
             <section class="RegistroCaso">
-                <h3 class="labelTitutlo">Registro caso</h3>
-                <input type="text" name="NombreCaso" id="NombreCaso" placeholder="Nombre del caso">
+                <h3 class="labelTitutlo">Registro de Caso</h3>
+                <input type="text" name="NombreCaso" id="NombreCaso" placeholder="Escriba el Nombre del Caso">
                 <div class="cotainerSwitch">
                     <h3 class="etiquetaSwitch" id="enProceso">En proceso</h3>
                     <label class="switch">
@@ -88,9 +88,9 @@
             </section>
             <section class="RegistroAudiencia">
                 <form action="#">
-                    <h3 class="labelTitutlo">Registro audiencia</h3>
-                    <input type="text" name="Direcion" id="Direcion" placeholder="Direccion de la audiencia">
-                    <input type="text" name="NombreLugar" id="NombreLugar" placeholder="Lugar de la audiencia">
+                    <h3 class="labelTitutlo">Registro de la Audiencia</h3>
+                    <input type="text" name="Direcion" id="Direcion" placeholder="Escriba la direccion de la Audiencia">
+                    <input type="text" name="NombreLugar" id="NombreLugar" placeholder="Escriba el lugar de la Audiencia">
                     <input type="date" name="FechaAudiencia" id="FechaAudiencia" placeholder="mm/dd/aa">
                     <div class="HoraAudiencia">
                         <label id="hora">Hora de la audiencia</label>
@@ -99,9 +99,10 @@
                         <input type="number" name="Minutos" id="Minutos" max="59" min="0" class="Horas" placeholder="m">
                     </div>
                     <select name="Categorias" id="Categorias">
-                        <option value="1">Judicial</option>
+                        <option value="1">Civil</option>
                         <option value="2">Penal</option>
-                        <option value="3">Proceso</option>
+                        <option value="3">Contencioso - Administrativo</option>
+                        <option value="3">Laboral</option>
                     </select>
                     <div class="containerDescripcion">
                         <h3>Descripcion de la audiencia</h3>
@@ -124,9 +125,9 @@
             <input type="text" name="" id="vfCedula" readonly="readonly" class="añIn" placeholder="Cedula">
             <input type="text" name="" id="vfContacto" class="añIn" placeholder="Contacto">
             <select name="roles" id="vfRoles" class="añIn">
-                <option value="juez">juez</option>
-                <option value="abogado">abogado</option>
-                <option value="testigo">testigo</option>
+                <option value="juez">Juez</option>
+                <option value="abogado">Abogado</option>
+                <option value="testigo">Testigo</option>
             </select>
             <input type="button" value="Añadir" class="añIn" id="btnAñadir"">
         </form>
