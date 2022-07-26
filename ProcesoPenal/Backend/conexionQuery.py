@@ -214,6 +214,15 @@ def buscarCasosEstado(offset,estado):
     lista = cursor.fetchall()
     return lista
 
+def buscarAudienciasProximas (offset):
+    query = f"""SELECT *
+    FROM "Audiencias"  
+    WHERE "EstadoAudiencia" = 'proxima' ORDER BY 
+    "FechaAudiencia" DESC 
+    LIMIT 20 OFFSET {offset}"""
+    cursor.execute(query)
+    row = cursor.fetchall()
+    return row
 
 def buscarUltimaAudienciaIdCaso (IdCaso):
     query = f"""SELECT "NumeroAudiencia" 
@@ -253,15 +262,7 @@ def buscarInvolucradosIdAudiencia (IdAudiencia):
     row = cursor.fetchall()
     return row
 
-def buscarAudienciasProximas (offset):
-    query = f"""SELECT *
-    FROM "Audiencias"  
-    WHERE "EstadoAudiencia" = 'proxima' ORDER BY 
-    "FechaAudiencia" DESC 
-    LIMIT 20 OFFSET {offset}"""
-    cursor.execute(query)
-    row = cursor.fetchall()
-    return row
+
 
 def EliminarPersonasAudienciaIdAu(idAudiencia):
     query = f"""DELETE FROM  "PersonasAudiencia"

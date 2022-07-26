@@ -113,9 +113,9 @@ main {
 aside .btnAnimado  {
     padding: 0.8rem 1rem;
     border: none;
-    background: #fff;
+    background: var(--negro);
     cursor: pointer;
-    color: var(--azul);
+    color: var(--fondo);
     border-radius: 5px;
     transition: all 400ms ease;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);

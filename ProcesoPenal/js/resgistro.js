@@ -4,6 +4,7 @@ import {addInvolucradoAPI} from "./conexionAPI.js";
 import {addContactoAPI} from "./conexionAPI.js";
 import {BuscarAudienciasCaso} from "./conexionAPI.js";
 import {BuscarCasoAudiencia} from "./conexionAPI.js";
+import {notificar} from "./conexionAPI.js";
 
 
 let datosInvolucrado ;
@@ -201,6 +202,12 @@ function GuardarCaso() {
 
     let validator = GuardarCasoAPI(Audiencia);
     alert("caso guardado");
+    if(idCaso!=-1){
+        window.location = `casosDetalle.html?idCa=${idCaso}`;
+    }else{
+        window.location = `casos.html`;
+    }
+    
 
 }
 
@@ -241,24 +248,21 @@ function ocultarRegsitro() {
 
 }
 
-var notificar = document.getElementById("Notificar");
-notificar.addEventListener('click',notify);
+var Notifi = document.getElementById("Notificar");
+Notifi.addEventListener('click',notify);
 
-function notify(){
-    // verificacion de que el navegador soporta notificaciones
-    if(("Notification" in window)){
-        alert("El navegador no soporta notificaciones")
-
-    }else if(Notification.permission = "granted"){
-        var notificacion = new notificacion("Notificacion Enviada A Los Involucrados")
-
-    }else if(Notification.permission = "denied"){
-        Notification.requestPermission(function(permission){
-            if(Notification.permission === "granted"){
-                var notificacion = new notificacion("Notificacion Enviada A Los Involucrados") 
-            }
-        });
+async function notify(){
+    if(idAu!=-1){
+        let respuesta = await notificar(idAu)
+        if(respuesta){
+            alert("Audiencia Notificada")
+        }else{
+            alert("algo salio mal")
+        }
+    }else{
+        alert("Primero debe guardar la audiencia")
     }
+    
 }
 
 function dibujarTarjetasRol (datosTarjeta){

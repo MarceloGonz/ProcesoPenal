@@ -7,6 +7,13 @@ export async  function validarCredenciales(usuario,clave)  {
     return validador;
 }
 
+export async  function notificar(idAu)  {
+    const respuesta = await fetch(urlBase+
+    `/Notificar/${idAu}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
 export async  function BuscarCasoAudiencia(idCaso,idAu)  {
     const respuesta = await fetch(urlBase+
     `/BuscarCaso/${idCaso},${idAu}`);

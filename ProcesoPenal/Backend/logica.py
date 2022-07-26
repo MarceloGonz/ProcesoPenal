@@ -1,7 +1,6 @@
 from datetime import datetime
-
-
 from conexionQuery import *
+from notificar import NotificarAhora
 
 def validarCredenciales (credenciales):
     respuesta = {}
@@ -88,10 +87,10 @@ def proximasAudiencias (pagina):
     listaCasosID = []
     respuesta = buscarAudienciasProximas(offset)
     if(respuesta==None):
-        pass
+        return listaCasos
     else:
         for ids in respuesta:
-            listaCasosID.append(buscarCasoId(ids[1]))
+            listaCasosID.append(buscarCasoId(ids[0]))
 
         for i in range(len(respuesta)):
             casoAu = listaCasosID[i]
@@ -232,6 +231,25 @@ def darmatoFecha (fecha):
 def quitarFormatoFecha (fecha):
     fechaFomat = datetime.strftime(fecha, '%d/%m/%Y' )
     return fechaFomat;
+
+def crearMensaje (audiencia):
+    mensaje = f"Ah sido convocado a una audiencia el dia {audiencia[4]} a las {audiencia[6]} en {audiencia[3]} direccion: {audiencia[2]} ------ *informacion adicional* {audiencia[7]}  "
+    return mensaje
+
+def NotificarAudiencia (idAu):
+    respuestaAu = buscarAudienciasIdAu(idAu)
+
+    if(respuestaAu!=None):
+        respuesta = buscarInvolucradosIdAudiencia(idAu)
+        for inv in respuesta:
+            contactos = buscarContactosPersona(inv[0])
+            print(contactos)
+            celNumber = contactos[0][3]
+            mensaje = crearMensaje(respuestaAu)
+            NotificarAhora(celNumber[1:],mensaje)
+        return True
+    return False
+
 
 
 

@@ -53,7 +53,6 @@ def validarUsuario (usuario, clave):
     respuesta = lg.validarCredenciales(credenciales)
     return respuesta
 
-
 @app.get("/buscarInvolucrado/{cedula}")
 def buscarInvolucrado (cedula):
     respuesta = lg.buscarInvolucrado(cedula)
@@ -74,7 +73,6 @@ def casosProceso (pagina):
     respuesta = lg.CasosProceso(pagina)
     return respuesta
 
-
 @app.get("/BuscarAudienciasCaso/{idCaso}")
 def traerAudienciasCaso (idCaso):
     respuesta = lg.traerCaso(idCaso)
@@ -85,4 +83,8 @@ def BuscarCaso (idCaso,idAu):
     respuesta = lg.buscarCaso(idCaso,idAu)
     return respuesta
 
+@app.get("/Notificar/{IdAu}")
+def NotificarWhatsapp (IdAu):
+    respuesta = lg.NotificarAudiencia(IdAu)
+    return respuesta
 
