@@ -88,3 +88,7 @@ def NotificarWhatsapp (IdAu):
     respuesta = lg.NotificarAudiencia(IdAu)
     return respuesta
 
+@app.get("/BorrarInvolucrado/{IdAu},{idIn}")
+def borrarInvolucrado (IdAu,idIn):
+    respuesta = lg.BorrarInvolucradoAudiencia(IdAu,idIn)
+    return respuesta

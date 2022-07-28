@@ -1,6 +1,7 @@
 from datetime import datetime
 from conexionQuery import *
 from notificar import NotificarAhora
+from notificarCorreos import EnvairCorreo
 
 def validarCredenciales (credenciales):
     respuesta = {}
@@ -58,7 +59,7 @@ def guardarAudiencia (audiencia):
             audiencia['fechaFinCaso'] = darmatoFecha(audiencia['fechaFinCaso'])
         audiencia["IdCasos"]=insertarCaso(audiencia)
     else:
-        audiencia['fechaFinCaso'] = darmatoFecha(audiencia['fechaFinCaso'])
+        audiencia['fechaFinCaso'] = audiencia['fechaFinCaso']
         actualizarCaso(audiencia)
     #comprobacion audiencias
     resAu = buscarAudienciasIdAu(audiencia["IdAudiencias"])
@@ -90,7 +91,7 @@ def proximasAudiencias (pagina):
         return listaCasos
     else:
         for ids in respuesta:
-            listaCasosID.append(buscarCasoId(ids[0]))
+            listaCasosID.append(buscarCasoId(ids[1]))
 
         for i in range(len(respuesta)):
             casoAu = listaCasosID[i]
@@ -223,7 +224,6 @@ def addContacto(contacto):
 
 
 def darmatoFecha (fecha):
-    
     fecha_dt = datetime.strptime(fecha, '%d/%m/%Y')
     fechaFomat = datetime.strftime(fecha_dt,'%Y-%m-%d')
     return fechaFomat;
@@ -247,9 +247,27 @@ def NotificarAudiencia (idAu):
             celNumber = contactos[0][3]
             mensaje = crearMensaje(respuestaAu)
             NotificarAhora(celNumber[1:],mensaje)
+            if(len(contactos)>1):
+                subject = "Notificacion Audiencia"
+                sender_email = "marcelolatino.mx@gmail.com"
+                receiver_email= contactos[1][3]
+                content = crearMensaje(respuestaAu)
+                password = "semjjhtbjumcdccn"
+                EnvairCorreo(subject,sender_email,receiver_email,content,password)
         return True
     return False
 
 
 
+def NotificarAudienciaCorreo (idAu):
+    respuestaAu = buscarAudienciasIdAu(idAu)
+
+    if(respuestaAu!=None):
+        respuesta = buscarInvolucradosIdAudiencia(idAu)
+        for inv in respuesta:
+            contactos = buscarContactosPersona(inv[0])
+            print(contactos)
+            
+        return True
+    return False
 

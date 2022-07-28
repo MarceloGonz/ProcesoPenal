@@ -271,6 +271,13 @@ def EliminarPersonasAudienciaIdAu(idAudiencia):
     cursor.execute(query)
     con.commit()
 
+def EliminarPersonaAudienciaidPe(idAudiencia, idPersona):
+    query = f"""DELETE FROM  "PersonasAudiencia"
+    WHERE "IdAudiencias" = {idAudiencia} AND "IdPersonas" = {idPersona}
+    """
+    cursor.execute(query)
+    con.commit()
+
 def cerrarConexion():
     con.close()
 

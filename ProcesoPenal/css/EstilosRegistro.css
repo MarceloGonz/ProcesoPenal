@@ -23,7 +23,9 @@ body {
     
 }
 
-
+.oculto{
+    display: none;
+}
 
 
 main {

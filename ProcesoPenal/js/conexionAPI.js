@@ -56,6 +56,12 @@ export async  function casosTerminados(pagina)  {
     return validador;
 }
 
+export async  function borrarInvolucrado(IdAu,idIn)  {
+    const respuesta = await fetch(urlBase+
+    `/BorrarInvolucrado/${IdAu},${idIn}`);
+    let validador = await respuesta.json();
+    return validador;
+}
 
 /* METODOS POST */ 
 export async function GuardarCasoAPI(audiencia)  {
@@ -94,3 +100,5 @@ export async function addInvolucradoAPI(involucrado)  {
     let validador = await respuesta.json();
     return validador;
 }
+
+
