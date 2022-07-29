@@ -248,12 +248,14 @@ def NotificarAudiencia (idAu):
             mensaje = crearMensaje(respuestaAu)
             NotificarAhora(celNumber[1:],mensaje)
             if(len(contactos)>1):
-                subject = "Notificacion Audiencia"
-                sender_email = "marcelolatino.mx@gmail.com"
-                receiver_email= contactos[1][3]
-                content = crearMensaje(respuestaAu)
-                password = "semjjhtbjumcdccn"
-                EnvairCorreo(subject,sender_email,receiver_email,content,password)
+                for row in contactos:   
+                    if(row[3]=="correo"):
+                        subject = "Notificacion Audiencia"
+                        sender_email = "marcelolatino.mx@gmail.com"
+                        receiver_email= contactos[1][3]
+                        content = crearMensaje(respuestaAu)
+                        password = "semjjhtbjumcdccn"
+                        EnvairCorreo(subject,sender_email,receiver_email,content,password)
         return True
     return False
 
