@@ -11,7 +11,7 @@ import { borrarInvolucrado } from "./conexionAPI.js";
 
 let datosInvolucrado;
 let listaInvolucradosAudiencia = [];
-
+let listaBorar = [];
 var url = window.location.href;
 let valitatorIdAu = url.indexOf("idAu");
 let valitatorIdCa = url.indexOf("idCa");
@@ -293,7 +293,9 @@ async function borrarIn() {
         element.addEventListener('click', e => {
             const id = element.querySelector(".idIn").innerHTML;
             element.outerHTML="";
-            borrarInvolucrado(idAu,id);
+            if(idCaso!=-1&&idAu!=-1){
+                borrarInvolucrado(idAu,id);
+            } 
         }
         );
     })
