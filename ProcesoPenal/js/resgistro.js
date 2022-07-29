@@ -122,11 +122,13 @@ async function añadirInvolucrado() {
     let rol = vf.querySelector('#vfRoles');
     datosTarjeta.rol = rol.options[rol.selectedIndex].value;
     if (datosInvolucrado != undefined) {
+        datosTarjeta.id = datosInvolucrado.IdPersona;
+        console.log (datosTarjeta.id);
         if (datosInvolucrado.contactos.length > 2) {
             listaInvolucradosAudiencia.push(datosInvolucrado.IdPersona);
         } else{
-            if(datosInvolucrado.contactos.length < 1){
             listaInvolucradosAudiencia.push(datosInvolucrado.IdPersona);
+            if(datosInvolucrado.contactos.length < 1){
             let Contacto = {};
             Contacto.idPersona = datosInvolucrado.IdPersona;
             Contacto.tipoContacto = "whatsapp";
@@ -143,7 +145,7 @@ async function añadirInvolucrado() {
                 await addContactoAPI(ContactoCorreo);
             }
         }
-        datosTarjeta.id = datosInvolucrado.IdPersona;
+        
     } else {
         var datIn = {};
         datIn.apellidos = datosTarjeta.apellidos;

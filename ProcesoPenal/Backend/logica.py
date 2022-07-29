@@ -233,7 +233,7 @@ def quitarFormatoFecha (fecha):
     return fechaFomat;
 
 def crearMensaje (audiencia):
-    mensaje = f"Ah sido convocado a una audiencia el dia {audiencia[4]} a las {audiencia[6]} en {audiencia[3]} direccion: {audiencia[2]} ------ *informacion adicional* {audiencia[7]}  "
+    mensaje = f"Se notifica a Usted. que ha sido convocado a la audiencia del dia {audiencia[4]} a partir de las {audiencia[6]} en el lugar:  {audiencia[3]} en la direccion:  {audiencia[2]} ------ *informacion adicional* {audiencia[7]}  "
     return mensaje
 
 def NotificarAudiencia (idAu):

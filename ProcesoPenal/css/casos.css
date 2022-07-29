@@ -99,8 +99,8 @@ a{
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content:flex-start;
+  align-content: flex-start;
   padding-top: 5px;
 }
 
