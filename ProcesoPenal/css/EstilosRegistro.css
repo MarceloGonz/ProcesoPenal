@@ -257,6 +257,12 @@ aside .btnAnimado:hover {
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
     transform: translate(-0.4%);
     background-color: #f5f5f5;
+    background: url(../images/eliminar2.png) no-repeat center top;
+    background-size: 90px 90px;
+}
+.TarjetaInvolucrado:hover {
+    background-color: #f5f5f5;
+   
 }
 
 .TarjetaInvolucrado * {

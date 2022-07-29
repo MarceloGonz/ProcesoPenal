@@ -233,7 +233,7 @@ def quitarFormatoFecha (fecha):
     return fechaFomat;
 
 def crearMensaje (audiencia):
-    mensaje = f"Se notifica a Usted. que ha sido convocado a la audiencia del dia {audiencia[4]} a partir de las {audiencia[6]} en el lugar:  {audiencia[3]} en la direccion:  {audiencia[2]} ------ *informacion adicional* {audiencia[7]}  "
+    mensaje = f"Se notifica a Usted. que ha sido convocado a la audiencia del dia {audiencia[4]} a partir de las {audiencia[6][0]}{audiencia[6][1]}:{audiencia[6][2]}{audiencia[6][3]} en el lugar:  {audiencia[3]} en la direccion:  {audiencia[2]} ------ El motivo por el cual se le notifica es:  {audiencia[7]}  "
     return mensaje
 
 def NotificarAudiencia (idAu):
@@ -249,7 +249,7 @@ def NotificarAudiencia (idAu):
             NotificarAhora(celNumber[1:],mensaje)
             if(len(contactos)>1):
                 for row in contactos:   
-                    if(row[3]=="correo"):
+                    if(row[2]=="correo"):
                         subject = "Notificacion Audiencia"
                         sender_email = "marcelolatino.mx@gmail.com"
                         receiver_email= contactos[1][3]
@@ -273,3 +273,6 @@ def NotificarAudienciaCorreo (idAu):
         return True
     return False
 
+def BorrarInvolucradoAudiencia(IdAu,idIn):
+    respuesta = EliminarPersonaAudienciaidPe(IdAu,idIn)
+    return respuesta;
