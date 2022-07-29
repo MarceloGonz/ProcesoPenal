@@ -66,7 +66,9 @@ function mostrarInvolucrados(involucrados) {
             datosInvolucrado.id = element.IdPersona;
             datosInvolucrado.apellidos = element.apellidos;
             datosInvolucrado.nombres = element.nombres;
+            if(element.contactos.length>0){
             datosInvolucrado.contacto = element.contactos[0].valorContacto;
+            }
             datosInvolucrado.cedula = element.cedula;
             datosInvolucrado.rol = element.rol;
             dibujarTarjetasRol(datosInvolucrado);
