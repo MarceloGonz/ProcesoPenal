@@ -43,6 +43,16 @@ def actualizarAudiencia(audiencia):
     con.commit()
     return True
 
+def actualizarEstadoAudienciaPrxima(idAu,estado):
+
+    query = f"""UPDATE "Audiencias"
+    SET "EstadoAudiencia"='{estado}'
+    WHERE "IdAudiencias"={idAu};
+    """
+    cursor.execute(query)
+    con.commit()
+    return True
+
 def EliminarPersonasAudienciaIdAu(idAudiencia):
     query = f"""DELETE FROM  "PersonasAudiencia"
     WHERE "IdAudiencias" = {idAudiencia}

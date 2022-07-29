@@ -6,6 +6,7 @@ import { BuscarAudienciasCaso } from "./conexionAPI.js";
 import { BuscarCasoAudiencia } from "./conexionAPI.js";
 import { notificar } from "./conexionAPI.js";
 import { borrarInvolucrado } from "./conexionAPI.js";
+import { ActualizarProximasAudiecias } from "./conexionAPI.js";
 
 
 
@@ -229,6 +230,7 @@ function GuardarCaso() {
     console.log(Audiencia);
     let validator = GuardarCasoAPI(Audiencia);
     alert("caso guardado");
+    window.location = `casosDetalle.html?idCa=${idCaso}`;
 }
 
 const btnVerAudiencias = document.querySelector('#ver');
@@ -274,14 +276,17 @@ Notifi.addEventListener('click', notify);
 
 async function notify() {
     if (idAu != -1) {
-        let respuesta = await notificar(idAu)
+        let respuesta = await notificar(idAu);
         if (respuesta) {
-            alert("Audiencia Notificada")
+            
+            await ActualizarProximasAudiecias(idAu,"proxima");
+            alert("Audiencia Notificada");
+            
         } else {
-            alert("algo salio mal")
+            alert("algo salio mal");
         }
     } else {
-        alert("Primero debe guardar la audiencia")
+        alert("Primero debe guardar la audiencia");
     }
 
 }

@@ -229,7 +229,7 @@ def darmatoFecha (fecha):
     return fechaFomat;
 
 def quitarFormatoFecha (fecha):
-    fechaFomat = datetime.strftime(fecha, '%d/%m/%Y' )
+    fechaFomat = datetime.strftime(fecha, '%m/%d/%Y' )
     return fechaFomat;
 
 def crearMensaje (audiencia):
@@ -271,6 +271,10 @@ def NotificarAudienciaCorreo (idAu):
             print(contactos)
             
         return True
+    return False
+
+def cambiarEsadoAu (idAu):
+    respuesta = actualizarEstadoAudienciaPrxima(idAu)
     return False
 
 def BorrarInvolucradoAudiencia(IdAu,idIn):

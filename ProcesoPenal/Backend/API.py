@@ -92,3 +92,7 @@ def NotificarWhatsapp (IdAu):
 def borrarInvolucrado (IdAu,idIn):
     respuesta = lg.BorrarInvolucradoAudiencia(IdAu,idIn)
     return respuesta
+@app.get("/CabiarEstadoAudiencia/{IdAu},{estado}")
+def CabiarEstadoAudiencia (IdAu,estado):
+    respuesta = lg.actualizarEstadoAudienciaPrxima(IdAu,estado)
+    return respuesta

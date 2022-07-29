@@ -1,7 +1,24 @@
 import {BuscarAudienciasCaso} from "./conexionAPI.js";
+import {ActualizarProximasAudiecias} from "./conexionAPI.js";
+import {proximasAudiencias} from "./conexionAPI.js";
+
 
 var url = window.location.href;
 let valitator = url.indexOf("idCa");
+let audiencias = await proximasAudiencias(0);
+if(audiencias != undefined){
+    audiencias.forEach(caso =>{
+        let fechaAu = new Date(caso.FechaAudiencia);
+        var fecha = new Date();
+        let hoy = new Date();
+        if(fechaAu<=hoy){
+            ActualizarProximasAudiecias(caso.IdAudiencias,"NOTIFICADA");
+            console.log(fechaAu.getDate());
+            console.log(hoy.getDate());
+        }
+    }
+    )
+}
 if(valitator != -1){
     let idCaso = url.slice(valitator+5, url.length);
     idCaso = parseInt(idCaso);

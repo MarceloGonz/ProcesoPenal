@@ -6,23 +6,33 @@ import { casosTerminados } from "./conexionAPI.js";
 let audiencias = await proximasAudiencias(0);
 if(audiencias != undefined){
     audiencias.forEach(caso =>{
-        let idCaso = caso.IdCasos;
-        let Nombrecaso = caso.Nombrecaso;
-        let CodigoCaso = caso.CodigoCaso;
-        let IdAudiencias = caso.IdAudiencias;
-        let FechaAudiencia = caso.FechaAudiencia;
-        let NumeroAudiencia = caso.NumeroAudiencia;
-
-        let tarjeta = `<a href="Registro.html?idCa=${idCaso},idAu=${IdAudiencias}" class="tarjetas proximas">
-        <div class="headerTargeta headerAudiencia">
-        <h3 id="nombreCaso">Caso: ${Nombrecaso}</h3>
-        </div>
-        <h3>Audiencia ${NumeroAudiencia} </h3>
-        <h3>Fecha: ${FechaAudiencia}</h3>
-        <h3>Codigo del caso: ${CodigoCaso}</h3>
-        </a>`;
-
-        document.querySelector('.tarjetasProximas').innerHTML += tarjeta;
+        let fechaAu = new Date(caso.FechaAudiencia);
+        var fecha = new Date();
+        let hoy = new Date();
+        console.log(fechaAu.getDate())
+        console.log(hoy.getDate())
+        
+        if(fechaAu>=hoy){
+            
+            let idCaso = caso.IdCasos;
+            let Nombrecaso = caso.Nombrecaso;
+            let CodigoCaso = caso.CodigoCaso;
+            let IdAudiencias = caso.IdAudiencias;
+            let FechaAudiencia = caso.FechaAudiencia;
+            let NumeroAudiencia = caso.NumeroAudiencia;
+    
+            let tarjeta = `<a href="Registro.html?idCa=${idCaso},idAu=${IdAudiencias}" class="tarjetas proximas">
+            <div class="headerTargeta headerAudiencia">
+            <h3 id="nombreCaso">Caso: ${Nombrecaso}</h3>
+            </div>
+            <h3>Audiencia ${NumeroAudiencia} </h3>
+            <h3>Fecha: ${FechaAudiencia}</h3>
+            <h3>Codigo del caso: ${CodigoCaso}</h3>
+            </a>`;
+    
+            document.querySelector('.tarjetasProximas').innerHTML += tarjeta;
+        }
+        
     })
 }
 
