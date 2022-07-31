@@ -11,6 +11,11 @@ class usuario(BaseModel):
     clave : str
     rol : str
 
+class EstadoActulizar(BaseModel):
+       
+    idCaso : str
+    fechaFin : str
+    estado : str
 
 class Contacto(BaseModel):
     tipoContacto : str

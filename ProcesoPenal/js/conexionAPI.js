@@ -14,9 +14,23 @@ export async  function notificar(idAu)  {
     return validador;
 }
 
-export async  function ActualizarProximasAudiecias(idAu,estado)  {
+export async  function ActualizarProximasAudiecias(idAu)  {
     const respuesta = await fetch(urlBase+
-    `/CabiarEstadoAudiencia/${idAu},${estado}`);
+    `/CabiarEstadoAudiencia/${idAu}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
+export async  function AnterioresIn(idCaso)  {
+    const respuesta = await fetch(urlBase+
+    `/TraerInvolucradosAnteriorAudiencia/${idCaso}`);
+    let validador = await respuesta.json();
+    return validador;
+}
+
+export async  function CambiarEstadoCaso(idCaso,estado,fechaFin)  {
+    const respuesta = await fetch(urlBase+
+    `/cambiarEstadoCaso/${idCaso},${estado},${fechaFin}`);
     let validador = await respuesta.json();
     return validador;
 }

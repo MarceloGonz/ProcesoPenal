@@ -92,7 +92,19 @@ def NotificarWhatsapp (IdAu):
 def borrarInvolucrado (IdAu,idIn):
     respuesta = lg.BorrarInvolucradoAudiencia(IdAu,idIn)
     return respuesta
+
 @app.get("/CabiarEstadoAudiencia/{IdAu},{estado}")
 def CabiarEstadoAudiencia (IdAu,estado):
     respuesta = lg.actualizarEstadoAudienciaPrxima(IdAu,estado)
     return respuesta
+
+@app.get("/TraerInvolucradosAnteriorAudiencia/{idCaso}")
+def TraerInvolucradosAnteriorAudiencia (idCaso):
+    respuesta = lg.involucradosUltimaAudienciaIdCaso(idCaso)
+    return respuesta
+
+@app.get("/cambiarEstadoCaso/{idCaso},{estado},{fechaFin}")
+def cambiarEstadoCaso (idCaso,estado,fechaFin):
+    respuesta = lg.cambiarEstadoCaso(idCaso,estado,fechaFin)
+    return respuesta
+

@@ -7,6 +7,8 @@ import { BuscarCasoAudiencia } from "./conexionAPI.js";
 import { notificar } from "./conexionAPI.js";
 import { borrarInvolucrado } from "./conexionAPI.js";
 import { ActualizarProximasAudiecias } from "./conexionAPI.js";
+import { AnterioresIn } from "./conexionAPI.js";
+
 
 
 
@@ -24,7 +26,9 @@ if (valitatorIdCa != -1 && valitatorIdAu == -1) {
     idCaso = url.slice(valitatorIdCa + 5, url.length);
     idCaso = parseInt(idCaso);
     let caso = await BuscarAudienciasCaso(idCaso);
+    let involucradosAAudiencia = await AnterioresIn(idCaso);
     mostrarCaso(caso);
+    mostrarInvolucrados(involucradosAAudiencia);
 } else if (valitatorIdCa != -1 && valitatorIdAu != -1) {
     let valitatorComa = url.indexOf(",");
     idCaso = url.slice(valitatorIdCa + 5, valitatorComa);
@@ -41,9 +45,12 @@ function mostrarCaso(caso) {
     if (caso.NombreCaso != undefined) {
         document.querySelector('#NombreCaso').value = caso.NombreCaso;
         document.querySelector('#NombreCaso').disabled = true;
-        if (caso.Estado == "Terminado") {
-            document.querySelector('#cbEstadoProceso').click();
+        if(caso.Estado == "Terminado"){
+            document.querySelector('.cotainerEstadoCaso').innerHTML = '<h3 class="estadoCaso" id="CasoTerminado">Estado: Terminado</h3>';
+        }else{
+            document.querySelector('.cotainerEstadoCaso').innerHTML = '<h3 class="estadoCaso" id="CasoProceso">Estado: En proceso</h3>';
         }
+
         document.querySelector('#Categorias').value = caso.Categoria;
     }
 }
@@ -186,7 +193,6 @@ function GuardarCaso() {
     var fecha = new Date();
     let hoy = fecha.toLocaleDateString();
 
-    let EstadoCasoB = document.querySelector('#cbEstadoProceso').checked;
     let hora = document.querySelector('#Hora').value;
     let minutos = document.querySelector('#Minutos').value;
     let categoriaCaso = document.querySelector('#Categorias');
@@ -197,15 +203,12 @@ function GuardarCaso() {
     //involucrados.contacto y idPersona 
     Audiencia.IdCasos = idCaso;
     Audiencia.NombreCaso = document.querySelector('#NombreCaso').value;
-    Audiencia.EstadoCaso = (EstadoCasoB ? "Terminado" : "En proceso");
+    //Audiencia.EstadoCaso = (EstadoCasoB ? "Terminado" : "En proceso");
+    Audiencia.EstadoCaso = "En proceso"
     Audiencia.CodigoCaso = "001AB";
     Audiencia.fechaCreacionCaso = hoy;
 
-    if (EstadoCasoB) {
-        Audiencia.fechaFinCaso = hoy;
-    } else {
-        Audiencia.fechaFinCaso = "";
-    }
+
     Audiencia.Categoria = categoriaCaso.options[categoriaCaso.selectedIndex].value;
     Audiencia.IdAudiencias = idAu;
     Audiencia.direccionAudiencia = document.querySelector('#Direcion').value;

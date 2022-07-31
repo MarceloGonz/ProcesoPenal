@@ -15,7 +15,7 @@ def ultimoInsert(tableName):
     else:
       return row
     # añadir verificacion se row es de tipo None
-    
+#METODOS ACTUALIZAR 
 def actualizarCaso(caso):
     query = ""
     if(caso["fechaFinCaso"]!=""):
@@ -53,13 +53,24 @@ def actualizarEstadoAudienciaPrxima(idAu,estado):
     con.commit()
     return True
 
-def EliminarPersonasAudienciaIdAu(idAudiencia):
-    query = f"""DELETE FROM  "PersonasAudiencia"
-    WHERE "IdAudiencias" = {idAudiencia}
-    """
+def actualizarEstadoCaso(idCa,estado,fechaFin):
+    query=""
+    if(fechaFin ==""):
+        query = f"""UPDATE "Casos"
+        SET "EstadoCaso"='{estado}'
+        WHERE "IdCasos"={idCa};
+        """
+    else:
+        query = f"""UPDATE "Casos"
+        SET "EstadoCaso"='{estado}',"FechaFin"='{fechaFin}'
+        WHERE "IdCasos"={idCa};
+        """
     cursor.execute(query)
     con.commit()
+    return True
 
+
+#METODOS INSERTAR
 def insertarPersonas(persona):
     LastInsert = ultimoInsert("Personas")
     lastId = LastInsert[0]+1
@@ -156,7 +167,7 @@ def insertarPersonasAudiencia(personasAudiencia, idAudiencia):
         query, (personasAudiencia["IdPersona"], idAudiencia, personasAudiencia["RolPersona"]))
     con.commit()
 
-
+#metodos Buscar
 def buscarUltimaAudienciaIdCaso(idCaso):
     query = f"""SELECT * FROM public."Audiencias"
     WHERE "IdCaso" = {idCaso} ORDER BY "IdAudiencias" DESC LIMIT 1"""
@@ -235,7 +246,7 @@ def buscarAudienciasProximas (offset):
     return row
 
 def buscarUltimaAudienciaIdCaso (IdCaso):
-    query = f"""SELECT "NumeroAudiencia" 
+    query = f"""SELECT "NumeroAudiencia","IdAudiencias"
     FROM "Audiencias"  
     WHERE "IdCasos" = {IdCaso} 
     ORDER BY "NumeroAudiencia" 
@@ -284,6 +295,13 @@ def EliminarPersonasAudienciaIdAu(idAudiencia):
 def EliminarPersonaAudienciaidPe(idAudiencia, idPersona):
     query = f"""DELETE FROM  "PersonasAudiencia"
     WHERE "IdAudiencias" = {idAudiencia} AND "IdPersonas" = {idPersona}
+    """
+    cursor.execute(query)
+    con.commit()
+
+def EliminarPersonasAudienciaIdAu(idAudiencia):
+    query = f"""DELETE FROM  "PersonasAudiencia"
+    WHERE "IdAudiencias" = {idAudiencia}
     """
     cursor.execute(query)
     con.commit()

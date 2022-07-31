@@ -2,6 +2,7 @@ from datetime import datetime
 from conexionQuery import *
 from notificar import NotificarAhora
 from notificarCorreos import EnvairCorreo
+import json
 
 def validarCredenciales (credenciales):
     respuesta = {}
@@ -228,6 +229,11 @@ def darmatoFecha (fecha):
     fechaFomat = datetime.strftime(fecha_dt,'%Y-%m-%d')
     return fechaFomat;
 
+def darmatoFecha2 (fecha):
+    fecha_dt = datetime.strptime(fecha, '%Y-%m-%d')
+    fechaFomat = datetime.strftime(fecha_dt,'%Y-%m-%d')
+    return fechaFomat;
+
 def quitarFormatoFecha (fecha):
     fechaFomat = datetime.strftime(fecha, '%m/%d/%Y' )
     return fechaFomat;
@@ -243,7 +249,6 @@ def NotificarAudiencia (idAu):
         respuesta = buscarInvolucradosIdAudiencia(idAu)
         for inv in respuesta:
             contactos = buscarContactosPersona(inv[0])
-            print(contactos)
             celNumber = contactos[0][3]
             mensaje = crearMensaje(respuestaAu)
             NotificarAhora(celNumber[1:],mensaje)
@@ -280,3 +285,22 @@ def cambiarEsadoAu (idAu):
 def BorrarInvolucradoAudiencia(IdAu,idIn):
     respuesta = EliminarPersonaAudienciaidPe(IdAu,idIn)
     return respuesta;
+
+def involucradosUltimaAudienciaIdCaso(IdCaso):
+    respuesta = buscarUltimaAudienciaIdCaso(IdCaso)
+    print(respuesta)
+    idAu = respuesta[1]
+    involucrados = buscarInvolucradosIdAudiencia(idAu)
+    listaInvocrados = []
+    if(involucrados != None):
+        for row in involucrados:
+            respuestaPersona = buscarPersonId(row[0])
+            involucrado = buscarInvolucrado(respuestaPersona[3])
+            involucrado['rol']=row[2]
+            listaInvocrados.append(involucrado)
+    return listaInvocrados;
+
+def cambiarEstadoCaso(idCaso,estado,fechaFin):
+    fechaFin = darmatoFecha2(fechaFin)
+    respuseta = actualizarEstadoCaso(idCaso,estado,fechaFin)
+    return True;

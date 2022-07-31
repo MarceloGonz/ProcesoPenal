@@ -34,6 +34,9 @@ main{
 .DetalleAudiencia{
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-rows: 0.3fr 4fr 0.5fr;
+  grid-template-columns: 1fr ;
 }
 
 .DetalleAudiencia
@@ -208,5 +211,96 @@ main{
     transition: 0.4s;
     right: -15px;
     top: 0;
+}
+.EstadoCasoContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+ .etiquetaSwitch {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.7rem;
+  border: rgba(0, 0, 0, 0.1) solid 2px;
+  border-radius: 5px;
+  height: 1.8rem;
+  padding: 0 3px;
+  width: 110px;
+  text-align: center;
+}
+
+ #enProceso {
+  color: #A24247 ;
+  background-color: transparent;
+  border:solid #A24247 1px;
+
+
+}
+
+ #terminado {
+  color: #548273;
+  background-color: transparent;
+  border: solid #548273 1px;
+
+
+}
+
+ .switch {
+  --button-width: 3.5em;
+  --button-height: 2em;
+  --toggle-diameter: 1.5em;
+  --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+  --toggle-shadow-offset: 10px;
+  --toggle-wider: 3em;
+  --color-grey: #A24247;
+  --color-green: #548273;
+}
+
+ .slider {
+  display: inline-block;
+  width: var(--button-width);
+  height: var(--button-height);
+  background-color: var(--color-grey);
+  border-radius: calc(var(--button-height) / 2);
+  position: relative;
+  transition: 0.3s all ease-in-out;
+  border: var(--negro) solid 2px;
+  margin: 0 10px;
+}
+
+ .slider::after {
+  content: "";
+  display: inline-block;
+  width: var(--toggle-diameter);
+  height: var(--toggle-diameter);
+  background-color: #fff;
+  border-radius: calc(var(--toggle-diameter) / 2);
+  position: absolute;
+  top: var(--button-toggle-offset);
+  transform: translateX(var(--button-toggle-offset));
+  box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+  transition: 0.3s all ease-in-out;
+}
+
+ .switch input[type="checkbox"]:checked+.slider {
+  background-color: var(--color-green);
+}
+
+ .switch input[type="checkbox"]:checked+.slider::after {
+  transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+  box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+
+ .switch input[type="checkbox"] {
+  display: none;
+}
+
+ .switch input[type="checkbox"]:active+.slider::after {
+  width: var(--toggle-wider);
+}
+
+ .switch input[type="checkbox"]:checked:active+.slider::after {
+  transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
 }
 
