@@ -303,4 +303,4 @@ def involucradosUltimaAudienciaIdCaso(IdCaso):
 def cambiarEstadoCaso(idCaso,estado,fechaFin):
     fechaFin = darmatoFecha2(fechaFin)
     respuseta = actualizarEstadoCaso(idCaso,estado,fechaFin)
-    return True;
+    return respuseta;
