@@ -14,9 +14,9 @@ export async  function notificar(idAu)  {
     return validador;
 }
 
-export async  function ActualizarProximasAudiecias(idAu)  {
+export async  function ActualizarProximasAudiecias(idAu,estado)  {
     const respuesta = await fetch(urlBase+
-    `/CabiarEstadoAudiencia/${idAu}`);
+    `/CabiarEstadoAudiencia/${idAu},${estado}`);
     let validador = await respuesta.json();
     return validador;
 }
