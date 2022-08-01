@@ -11,12 +11,9 @@ let audiencias = await proximasAudiencias(0);
 if (audiencias != undefined) {
     audiencias.forEach(caso => {
         let fechaAu = new Date(caso.FechaAudiencia);
-        var fecha = new Date();
         let hoy = new Date();
         if (fechaAu <= hoy) {
             ActualizarProximasAudiecias(caso.IdAudiencias, "NOTIFICADA");
-            console.log(fechaAu.getDate());
-            console.log(hoy.getDate());
         }
     }
     )

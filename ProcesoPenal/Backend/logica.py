@@ -82,6 +82,7 @@ def guardarAudiencia (audiencia):
 
     for per in audiencia["listaInvolucrados"]:
         insertarPersonasAudiencia(per,audiencia["IdAudiencias"])
+    return audiencia["IdCasos"]
 
 def proximasAudiencias (pagina):
     offset = 20*pagina 

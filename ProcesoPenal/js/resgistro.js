@@ -187,7 +187,7 @@ async function añadirInvolucrado() {
 const Guardar = document.querySelector('#Guardar');
 Guardar.addEventListener("click", GuardarCaso);
 
-function GuardarCaso() {
+async function GuardarCaso() {
     var Audiencia = {};
     let contador = 0;
     var fecha = new Date();
@@ -207,8 +207,7 @@ function GuardarCaso() {
     Audiencia.EstadoCaso = "En proceso"
     Audiencia.CodigoCaso = "001AB";
     Audiencia.fechaCreacionCaso = hoy;
-
-
+    Audiencia.fechaFinCaso = "";
     Audiencia.Categoria = categoriaCaso.options[categoriaCaso.selectedIndex].value;
     Audiencia.IdAudiencias = idAu;
     Audiencia.direccionAudiencia = document.querySelector('#Direcion').value;
@@ -231,9 +230,15 @@ function GuardarCaso() {
         })
     }
     console.log(Audiencia);
-    let validator = GuardarCasoAPI(Audiencia);
-    alert("caso guardado");
-    window.location = `casosDetalle.html?idCa=${idCaso}`;
+    let validator = await GuardarCasoAPI(Audiencia);
+    if(validator!=undefined){
+        idCaso = validator;
+        alert("caso guardado");
+        window.location = `casosDetalle.html?idCa=${idCaso}`;
+    }else{
+        alert("error");
+    }
+    
 }
 
 const btnVerAudiencias = document.querySelector('#ver');

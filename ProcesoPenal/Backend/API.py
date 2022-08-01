@@ -42,8 +42,8 @@ def inContacto(Contacto: mE.addContacto):
 
 @app.post("/GuardarAudiencia")
 def GuarAudiencia (Audiencia: mE.Caso):
-    lg.guardarAudiencia(Audiencia.dict())
-    return True
+    respuseta = lg.guardarAudiencia(Audiencia.dict())
+    return respuseta
 
 @app.get("/validarUsuario/{usuario},{clave}")
 def validarUsuario (usuario, clave):
