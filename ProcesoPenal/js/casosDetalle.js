@@ -31,7 +31,7 @@ if (valitator != -1) {
     if (caso.Estado == "Terminado") {
         document.querySelector('#cbEstadoProceso').click();
     }
-if(caso!=undefined){
+if(caso.Audiencias!=undefined){
     if (caso.Audiencias.length > 0) {
         caso.Audiencias.forEach(Audiencia => {
             let idAu = Audiencia.IdAudiencias;
